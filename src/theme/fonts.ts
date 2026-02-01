@@ -1,6 +1,6 @@
 export const FONTS = {
   display: "'Syne', sans-serif",
-  heading: "'General Sans', sans-serif",
+  heading: "'Satoshi', sans-serif",
   body: "'DM Sans', sans-serif",
   mono: "'JetBrains Mono', monospace",
 } as const;

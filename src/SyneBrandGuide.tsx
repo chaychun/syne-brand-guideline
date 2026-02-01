@@ -30,7 +30,7 @@ export default function SyneBrandGuide() {
         rel="stylesheet"
       />
       <link
-        href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap"
+        href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap"
         rel="stylesheet"
       />
 
@@ -84,7 +84,7 @@ export default function SyneBrandGuide() {
         {/* Typography */}
         <Section
           title="Typography"
-          subtitle="Syne for display. General Sans for headings. DM Sans for body. JetBrains Mono for code."
+          subtitle="Syne for display. Satoshi for headings. DM Sans for body. JetBrains Mono for code."
           t={t}
         >
           <div
@@ -108,23 +108,23 @@ export default function SyneBrandGuide() {
               },
               {
                 f: FONTS.heading,
-                w: 600,
+                w: 500,
                 s: 28,
-                label: "H1 / General Sans 600",
+                label: "H1 / Satoshi 500",
                 text: "Cards, spaces, and the library",
               },
               {
                 f: FONTS.heading,
                 w: 500,
                 s: 22,
-                label: "H2 / General Sans 500",
+                label: "H2 / Satoshi 500",
                 text: "Pinned connections surface prominently",
               },
               {
                 f: FONTS.heading,
                 w: 500,
                 s: 17,
-                label: "H3 / General Sans 500",
+                label: "H3 / Satoshi 500",
                 text: "Every card shows its relationships",
               },
               {
@@ -136,9 +136,9 @@ export default function SyneBrandGuide() {
               },
               {
                 f: FONTS.body,
-                w: 500,
+                w: 400,
                 s: 14,
-                label: "Body Small / DM Sans 500",
+                label: "Body Small / DM Sans 400",
                 text: "Created 3 days ago · 12 connections · Design space",
               },
               {
@@ -182,11 +182,11 @@ export default function SyneBrandGuide() {
             {[
               { s: 48, label: "Display", use: "Hero, splash", font: "Syne", w: 600 },
               { s: 36, label: "Display Alt", use: "Large titles", font: "Syne", w: 500 },
-              { s: 28, label: "H1", use: "Page titles", font: "General Sans", w: 600 },
-              { s: 22, label: "H2", use: "Section headers", font: "General Sans", w: 500 },
-              { s: 17, label: "H3", use: "Card titles", font: "General Sans", w: 500 },
+              { s: 28, label: "H1", use: "Page titles", font: "Satoshi", w: 500 },
+              { s: 22, label: "H2", use: "Section headers", font: "Satoshi", w: 500 },
+              { s: 17, label: "H3", use: "Card titles", font: "Satoshi", w: 500 },
               { s: 16, label: "Body", use: "Note content", font: "DM Sans", w: 400 },
-              { s: 14, label: "Body Sm", use: "Metadata", font: "DM Sans", w: 500 },
+              { s: 14, label: "Body Sm", use: "Metadata", font: "DM Sans", w: 400 },
               { s: 12, label: "Caption", use: "Labels", font: "DM Sans", w: 500 },
               { s: 11, label: "Overline", use: "Tags", font: "JetBrains Mono", w: 400 },
             ].map((item) => (
@@ -204,7 +204,7 @@ export default function SyneBrandGuide() {
                     fontFamily:
                       item.font === "Syne"
                         ? FONTS.display
-                        : item.font === "General Sans"
+                        : item.font === "Satoshi"
                           ? FONTS.heading
                           : item.font === "JetBrains Mono"
                             ? FONTS.mono
@@ -305,8 +305,8 @@ export default function SyneBrandGuide() {
             >
               <GlassCard t={t} style={{ width: "100%", maxWidth: 260 }}>
                 <div
-                  className="mb-1.5 text-[15px] font-semibold"
-                  style={{ fontFamily: FONTS.heading, color: t.fg }}
+                  className="mb-1.5 text-[15px] font-heading font-medium"
+                  style={{ color: t.fg }}
                 >
                   Design principles
                 </div>
@@ -335,8 +335,8 @@ export default function SyneBrandGuide() {
             >
               <GlassCard t={t} style={{ width: "100%", maxWidth: 260 }}>
                 <div
-                  className="mb-1.5 text-[15px] font-semibold"
-                  style={{ fontFamily: FONTS.heading, color: t.fg }}
+                  className="mb-1.5 text-[15px] font-heading font-medium"
+                  style={{ color: t.fg }}
                 >
                   Meeting with team
                 </div>
@@ -377,8 +377,8 @@ export default function SyneBrandGuide() {
                 </GlassSection>
                 <OpaqueSection t={t}>
                   <div
-                    className="mb-3 text-[15px] font-semibold"
-                    style={{ fontFamily: FONTS.heading, color: t.fg }}
+                    className="mb-3 text-[15px] font-heading font-medium"
+                    style={{ color: t.fg }}
                   >
                     Building your app
                   </div>
@@ -463,15 +463,14 @@ export default function SyneBrandGuide() {
         <Section title="Buttons" subtitle="Pill-shaped. Three variants." t={t}>
           <div className="flex flex-wrap items-center gap-3">
             <button
-              className="cursor-pointer rounded-full border-none px-7 py-3 text-sm font-medium text-white"
-              style={{ fontFamily: FONTS.heading, background: COLORS.primary[500] }}
+              className="cursor-pointer rounded-full border-none px-7 py-3 font-heading text-sm font-medium text-white"
+              style={{ background: COLORS.primary[500] }}
             >
               Primary action
             </button>
             <button
-              className="cursor-pointer rounded-full px-7 py-3 text-sm font-medium"
+              className="cursor-pointer rounded-full px-7 py-3 font-heading text-sm font-medium"
               style={{
-                fontFamily: FONTS.heading,
                 color: t.fg,
                 background: t.surface,
                 border: `1px solid ${t.border}`,
@@ -480,14 +479,14 @@ export default function SyneBrandGuide() {
               Secondary
             </button>
             <button
-              className="cursor-pointer rounded-full border-none bg-transparent px-7 py-3 text-sm font-medium"
-              style={{ fontFamily: FONTS.heading, color: t.accent }}
+              className="cursor-pointer rounded-full border-none bg-transparent px-7 py-3 font-heading text-sm font-medium"
+              style={{ color: t.accent }}
             >
               Tertiary
             </button>
             <button
-              className="cursor-pointer rounded-full border-none px-4 py-2 text-[13px] font-medium"
-              style={{ fontFamily: FONTS.heading, color: t.fgSecondary, background: t.inputBg }}
+              className="cursor-pointer rounded-full border-none px-4 py-2 font-heading text-[13px] font-medium"
+              style={{ color: t.fgSecondary, background: t.inputBg }}
             >
               Small
             </button>
@@ -670,10 +669,7 @@ export default function SyneBrandGuide() {
             {/* Library */}
             <PhoneFrame t={t} bg={t.bg}>
               <div className="px-5 pb-5 pt-8">
-                <div
-                  className="mb-0.5 text-2xl font-semibold tracking-tight"
-                  style={{ fontFamily: FONTS.heading, color: t.fg }}
-                >
+                <div className="text-h1 mb-0.5" style={{ color: t.fg }}>
                   Library
                 </div>
                 <div className="mb-4 text-[13px]" style={{ color: t.fgSecondary }}>
@@ -741,8 +737,8 @@ export default function SyneBrandGuide() {
                       style={{ background: card.bg, border: `1px solid ${t.borderSubtle}` }}
                     >
                       <div
-                        className="mb-0.5 text-[13px] font-medium"
-                        style={{ fontFamily: FONTS.heading, color: t.fg }}
+                        className="mb-0.5 font-heading text-[13px] font-medium"
+                        style={{ color: t.fg }}
                       >
                         {card.title}
                       </div>
@@ -785,10 +781,7 @@ export default function SyneBrandGuide() {
                     ···
                   </span>
                 </div>
-                <div
-                  className="mb-1 text-[22px] font-semibold tracking-tight"
-                  style={{ fontFamily: FONTS.heading, color: t.fg }}
-                >
+                <div className="text-h2 mb-1" style={{ color: t.fg }}>
                   Design principles
                 </div>
                 <div className="mb-4 text-xs" style={{ color: t.fgTertiary }}>
@@ -814,10 +807,7 @@ export default function SyneBrandGuide() {
                     style={{ background: t.inputBg }}
                   >
                     <div>
-                      <div
-                        className="text-sm font-medium"
-                        style={{ fontFamily: FONTS.heading, color: t.fg }}
-                      >
+                      <div className="font-heading text-sm font-medium" style={{ color: t.fg }}>
                         {conn.title}
                       </div>
                       <div className="text-[11px]" style={{ color: t.fgTertiary }}>
@@ -858,10 +848,7 @@ export default function SyneBrandGuide() {
                         "radial-gradient(circle, rgba(242,140,62,0.2) 0%, rgba(196,184,217,0.1) 60%, transparent 100%)",
                     }}
                   />
-                  <div
-                    className="-mt-20 mb-2 text-center text-[22px] font-semibold tracking-tight"
-                    style={{ fontFamily: FONTS.heading, color: t.fg }}
-                  >
+                  <div className="text-h2 -mt-20 mb-2 text-center" style={{ color: t.fg }}>
                     What's on your mind?
                   </div>
                   <div className="text-center text-sm" style={{ color: t.fgSecondary }}>
@@ -913,10 +900,7 @@ export default function SyneBrandGuide() {
                     border: `1px solid ${isDark ? "rgba(242,140,62,0.12)" : COLORS.primary[100]}`,
                   }}
                 >
-                  <div
-                    className="mb-1 text-xl font-semibold"
-                    style={{ fontFamily: FONTS.heading, color: t.fg }}
-                  >
+                  <div className="text-h2 mb-1" style={{ color: t.fg }}>
                     Design
                   </div>
                   <div className="text-[13px]" style={{ color: t.fgSecondary }}>
@@ -954,10 +938,7 @@ export default function SyneBrandGuide() {
                     style={{ borderBottom: `1px solid ${t.borderSubtle}` }}
                   >
                     <div>
-                      <div
-                        className="text-sm font-medium"
-                        style={{ fontFamily: FONTS.heading, color: t.fg }}
-                      >
+                      <div className="font-heading text-sm font-medium" style={{ color: t.fg }}>
                         {c}
                       </div>
                       <div className="text-[11px]" style={{ color: t.fgTertiary }}>
@@ -979,10 +960,7 @@ export default function SyneBrandGuide() {
                   className="mb-2 rounded-[14px] p-4 opacity-50"
                   style={{ background: t.surface }}
                 >
-                  <div
-                    className="mb-1 text-base font-semibold"
-                    style={{ fontFamily: FONTS.heading, color: t.fg }}
-                  >
+                  <div className="text-h3 mb-1" style={{ color: t.fg }}>
                     Best new movies 2025
                   </div>
                   <div className="flex gap-2">
@@ -1010,10 +988,7 @@ export default function SyneBrandGuide() {
                       className="mx-auto mb-3 size-12 rounded-[14px]"
                       style={{ background: GRADIENTS.warmGlow }}
                     />
-                    <div
-                      className="text-base font-semibold"
-                      style={{ fontFamily: FONTS.heading, color: t.fg }}
-                    >
+                    <div className="text-h3" style={{ color: t.fg }}>
                       Save to Syne
                     </div>
                   </div>
@@ -1022,8 +997,8 @@ export default function SyneBrandGuide() {
                     style={{ background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)" }}
                   >
                     <div
-                      className="mb-0.5 text-[13px] font-medium"
-                      style={{ fontFamily: FONTS.heading, color: t.fg }}
+                      className="mb-0.5 font-heading text-[13px] font-medium"
+                      style={{ color: t.fg }}
                     >
                       Best New Movies of 2025
                     </div>
@@ -1052,8 +1027,8 @@ export default function SyneBrandGuide() {
                     ))}
                   </div>
                   <button
-                    className="w-full cursor-pointer rounded-[14px] border-none py-3.5 text-sm font-medium text-white"
-                    style={{ fontFamily: FONTS.heading, background: COLORS.primary[500] }}
+                    className="w-full cursor-pointer rounded-[14px] border-none py-3.5 font-heading text-sm font-medium text-white"
+                    style={{ background: COLORS.primary[500] }}
                   >
                     Save Card
                   </button>
@@ -1081,7 +1056,7 @@ export default function SyneBrandGuide() {
               },
               {
                 title: "Type hierarchy matters",
-                desc: "Syne for display moments. General Sans for clarity. DM Sans for the quiet work of readability.",
+                desc: "Syne for display moments. Satoshi for clarity. DM Sans for the quiet work of readability.",
               },
               {
                 title: "Glass for elevation",
@@ -1097,10 +1072,7 @@ export default function SyneBrandGuide() {
                 className="rounded-lg p-6"
                 style={{ background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)" }}
               >
-                <div
-                  className="mb-2 text-[15px] font-semibold"
-                  style={{ fontFamily: FONTS.heading, color: t.fg }}
-                >
+                <div className="mb-2 font-heading text-[15px] font-medium" style={{ color: t.fg }}>
                   {p.title}
                 </div>
                 <div className="text-[13px] leading-relaxed" style={{ color: t.fgSecondary }}>
