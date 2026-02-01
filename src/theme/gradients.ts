@@ -36,25 +36,33 @@ export const GRADIENTS = {
     sunsetHColors.map((i) => SUNSET_COLORS[i]),
     sunsetHStops,
   ),
+  // Teal/sage mixed gradients - simple 2-color transitions
+  oasis: "linear-gradient(180deg, #F5C4A1 0%, #CCDFE0 100%)",
+  lagoon: "linear-gradient(135deg, #A8C9CB 0%, #FAF9F7 100%)",
+  meadow: "linear-gradient(180deg, #C8D4C0 0%, #F5EFDA 100%)",
+  horizon: "linear-gradient(135deg, #E6F0F0 0%, #FFEDD9 100%)",
+  grove: "linear-gradient(180deg, #A8B8A0 0%, #F5C4A1 100%)",
 } as const;
 
 export const GRADIENTS_DARK = {
-  warmGlow:
-    "radial-gradient(ellipse at 50% 50%, rgba(242,140,62,0.4) 0%, rgba(180,100,50,0.25) 35%, rgba(85,73,114,0.2) 70%, rgba(45,38,61,0.15) 100%)",
-  sunrise:
-    "linear-gradient(135deg, rgba(180,100,50,0.3) 0%, rgba(242,140,62,0.35) 30%, rgba(180,80,70,0.3) 60%, rgba(85,73,114,0.25) 100%)",
-  mist: "linear-gradient(180deg, #1C1A17 0%, #252320 25%, #2D2A25 50%, #252320 75%, #1C1A17 100%)",
-  ember:
-    "radial-gradient(circle at 30% 70%, rgba(242,140,62,0.35) 0%, rgba(180,80,70,0.25) 40%, rgba(85,73,114,0.2) 80%, #1C1A17 100%)",
-  dusk: "linear-gradient(135deg, rgba(45,38,61,0.4) 0%, rgba(180,100,50,0.25) 40%, rgba(242,140,62,0.3) 70%, rgba(85,73,114,0.35) 100%)",
-  subtle:
-    "linear-gradient(180deg, #1F1D1A 0%, #2A2824 35%, #33302A 50%, #2A2824 65%, #1F1D1A 100%)",
+  warmGlow: "radial-gradient(ellipse at 50% 50%, #E07020 0%, #B85A18 35%, #1C1A17 100%)",
+  sunrise: "linear-gradient(135deg, #1C1A17 0%, #E8836B 50%, #5E9499 100%)",
+  mist: "linear-gradient(180deg, #1C1A17 0%, #33302A 50%, #1C1A17 100%)",
+  ember: "radial-gradient(circle at 30% 70%, #F28C3E 0%, #E8836B 40%, #1C1A17 100%)",
+  dusk: "linear-gradient(135deg, #5E9499 0%, #E8836B 50%, #1C1A17 100%)",
+  subtle: "linear-gradient(180deg, #1C1A17 0%, #33302A 50%, #1C1A17 100%)",
   sunset: buildGradient("180deg", SUNSET_COLORS, sunsetStops),
   sunsetH: buildGradient(
     "90deg",
     sunsetHColors.map((i) => SUNSET_COLORS[i]),
     sunsetHStops,
   ),
+  // Dark mode versions - vibrant colors on dark
+  oasis: "linear-gradient(180deg, #E8836B 0%, #5E9499 100%)",
+  lagoon: "linear-gradient(135deg, #5E9499 0%, #1C1A17 100%)",
+  meadow: "linear-gradient(180deg, #A8B8A0 0%, #33302A 100%)",
+  horizon: "linear-gradient(135deg, #5E9499 0%, #F5C4A1 100%)",
+  grove: "linear-gradient(180deg, #A8B8A0 0%, #E8836B 100%)",
 } as const;
 
 export type Gradients = typeof GRADIENTS;

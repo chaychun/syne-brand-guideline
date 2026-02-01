@@ -1,17 +1,27 @@
+import type { Theme } from "../../theme";
+
 interface GradientCardProps {
   gradient: string;
   name: string;
+  t: Theme;
   height?: number;
 }
 
-export function GradientCard({ gradient, name, height = 120 }: GradientCardProps) {
+export function GradientCard({ gradient, name, t, height = 120 }: GradientCardProps) {
   return (
     <div className="text-center">
       <div
-        className="w-full rounded-lg border border-black/5 dark:border-white/10"
-        style={{ height, background: gradient }}
-      />
-      <div className="mt-2 font-mono text-[10px] text-neutral-500 dark:text-neutral-400">
+        className="overflow-hidden rounded-2xl p-1.5 backdrop-blur-[20px]"
+        style={{
+          background: t.glassEdge,
+          border: `1px solid ${t.glassBorder}`,
+          boxShadow: t.glassShadow,
+          WebkitBackdropFilter: "blur(20px)",
+        }}
+      >
+        <div className="w-full rounded-xl" style={{ height, background: gradient }} />
+      </div>
+      <div className="mt-2 font-mono text-[10px]" style={{ color: t.fgTertiary }}>
         {name}
       </div>
     </div>

@@ -276,33 +276,14 @@ export default function SyneBrandGuide() {
         {/* Gradients */}
         <Section
           title="Gradients"
-          subtitle="Warm center, cool edges. Light and dark variants."
+          subtitle="Warm center, cool edges. Adapts to light and dark modes."
           t={t}
         >
-          <div
-            className="mb-3 font-mono text-[10px] uppercase tracking-wide"
-            style={{ color: t.fgTertiary }}
-          >
-            Light
-          </div>
           <div className="grid grid-cols-3 gap-4">
-            {Object.entries(GRADIENTS)
+            {Object.entries(g)
               .filter(([k]) => !k.startsWith("sunset"))
               .map(([k, v]) => (
-                <GradientCard key={k} gradient={v} name={k} />
-              ))}
-          </div>
-          <div
-            className="mb-3 mt-8 font-mono text-[10px] uppercase tracking-wide"
-            style={{ color: t.fgTertiary }}
-          >
-            Dark
-          </div>
-          <div className="grid grid-cols-3 gap-4">
-            {Object.entries(GRADIENTS_DARK)
-              .filter(([k]) => !k.startsWith("sunset"))
-              .map(([k, v]) => (
-                <GradientCard key={k} gradient={v} name={k} />
+                <GradientCard key={k} gradient={v} name={k} t={t} />
               ))}
           </div>
         </Section>
