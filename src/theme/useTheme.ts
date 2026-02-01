@@ -1,6 +1,25 @@
 import { COLORS } from "./colors";
 
-export function useTheme(isDark) {
+export interface Theme {
+  bg: string;
+  surface: string;
+  surfaceRaised: string;
+  fg: string;
+  fgSecondary: string;
+  fgTertiary: string;
+  border: string;
+  borderSubtle: string;
+  accent: string;
+  accentSubtle: string;
+  accentText: string;
+  glassBg: string;
+  glassEdge: string;
+  glassBorder: string;
+  inputBg: string;
+  tagBg: string;
+}
+
+export function useTheme(isDark: boolean): Theme {
   return {
     bg: isDark ? COLORS.neutral[950] : COLORS.neutral[50],
     surface: isDark ? COLORS.neutral[900] : COLORS.neutral[0],

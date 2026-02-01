@@ -1,0 +1,6 @@
+{
+  "$schema": "https://oxc.rs/schemas/oxfmt.json",
+  "experimentalTailwindcss": {
+    "stylesheet": "./src/index.css"
+  }
+}

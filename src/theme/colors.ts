@@ -44,4 +44,6 @@ export const COLORS = {
     sage: "#A8B8A0",
     cream: "#F5EFDA",
   },
-};
+} as const;
+
+export type Colors = typeof COLORS;

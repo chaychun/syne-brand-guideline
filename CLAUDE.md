@@ -4,8 +4,9 @@ Interactive brand guide for Syne.
 
 ## Stack
 
-- React 19, Vite 7
-- oxlint (linting), oxfmt (formatting)
+- React 19, TypeScript, Vite 7
+- Tailwind CSS v4
+- oxlint (linting), oxfmt (formatting with Tailwind class sorting)
 - bun (package manager)
 
 ## Scripts
@@ -14,8 +15,11 @@ Interactive brand guide for Syne.
 - `bun run build` — production build
 - `bun run lint` — lint + fix
 - `bun run format` — format code
-- `bun run check` — CI check (lint + format)
+- `bun run check` — CI check (typecheck + lint + format)
 
 ## Structure
 
-- `src/SyneBrandGuide.jsx` — main component with all design tokens and UI
+- `src/SyneBrandGuide.tsx` — main component
+- `src/theme/` — design tokens (colors, gradients, fonts, useTheme hook)
+- `src/components/` — reusable components (atoms + molecules)
+- `src/index.css` — Tailwind config with custom theme tokens

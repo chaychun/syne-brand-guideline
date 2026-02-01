@@ -3,18 +3,17 @@ import { COLORS, GRADIENTS, FONTS, useTheme } from "./theme";
 import { ColorSwatch, GradientCard, Section, GlassCard, PhoneFrame } from "./components";
 
 export default function SyneBrandGuide() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const isDark = theme === "dark";
   const t = useTheme(isDark);
 
   return (
     <div
+      className="min-h-screen transition-colors duration-400"
       style={{
-        minHeight: "100vh",
         background: t.bg,
         color: t.fg,
         fontFamily: FONTS.body,
-        transition: "background 0.4s, color 0.4s",
       }}
     >
       <link
@@ -27,88 +26,44 @@ export default function SyneBrandGuide() {
       />
 
       {/* HERO */}
-      <div
-        style={{
-          position: "relative",
-          overflow: "hidden",
-          padding: "80px 48px 64px",
-          maxWidth: 960,
-          margin: "0 auto",
-        }}
-      >
+      <div className="relative mx-auto max-w-[960px] overflow-hidden px-12 pb-16 pt-20">
         <div
+          className="pointer-events-none absolute -right-[120px] -top-[120px] size-[500px] rounded-full blur-[80px]"
           style={{
-            position: "absolute",
-            top: -120,
-            right: -120,
-            width: 500,
-            height: 500,
-            borderRadius: "50%",
             background: GRADIENTS.warmGlow,
             opacity: isDark ? 0.12 : 0.35,
-            filter: "blur(80px)",
-            pointerEvents: "none",
           }}
         />
-        <div style={{ position: "relative" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: 48,
-            }}
-          >
+        <div className="relative">
+          <div className="mb-12 flex items-center justify-between">
             <div
-              style={{
-                fontFamily: FONTS.display,
-                fontWeight: 600,
-                fontSize: 18,
-                letterSpacing: "-0.01em",
-              }}
+              className="text-lg font-semibold tracking-tight"
+              style={{ fontFamily: FONTS.display }}
             >
               Syne
             </div>
             <button
               onClick={() => setTheme(isDark ? "light" : "dark")}
+              className="cursor-pointer rounded-full border bg-transparent px-3.5 py-1.5 font-mono text-[11px]"
               style={{
-                fontFamily: FONTS.mono,
-                fontSize: 11,
                 color: t.fgSecondary,
-                background: "none",
-                border: `1px solid ${t.border}`,
-                padding: "6px 14px",
-                borderRadius: 99,
-                cursor: "pointer",
+                borderColor: t.border,
               }}
             >
               {isDark ? "☀ Light" : "● Dark"}
             </button>
           </div>
           <h1
-            style={{
-              fontFamily: FONTS.display,
-              fontWeight: 600,
-              fontSize: 56,
-              lineHeight: 1.05,
-              letterSpacing: "-0.03em",
-              margin: 0,
-              marginBottom: 16,
-            }}
+            className="m-0 mb-4 text-[56px] font-semibold leading-[1.05] tracking-tight"
+            style={{ fontFamily: FONTS.display }}
           >
             Brand
             <br />
             Identity
           </h1>
           <p
-            style={{
-              fontFamily: FONTS.body,
-              fontSize: 16,
-              color: t.fgSecondary,
-              maxWidth: 400,
-              lineHeight: 1.6,
-              margin: 0,
-            }}
+            className="m-0 max-w-[400px] text-base leading-relaxed"
+            style={{ color: t.fgSecondary }}
           >
             Visual system for Syne — a spatial knowledge tool where connections are primary, content
             is secondary.
@@ -116,7 +71,7 @@ export default function SyneBrandGuide() {
         </div>
       </div>
 
-      <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 48px 120px" }}>
+      <div className="mx-auto max-w-[960px] px-12 pb-30">
         {/* Typography */}
         <Section
           title="Typography"
@@ -124,12 +79,8 @@ export default function SyneBrandGuide() {
           t={t}
         >
           <div
-            style={{
-              background: t.surface,
-              borderRadius: 20,
-              padding: 40,
-              border: `1px solid ${t.border}`,
-            }}
+            className="rounded-xl p-10"
+            style={{ background: t.surface, border: `1px solid ${t.border}` }}
           >
             {[
               {
@@ -189,16 +140,10 @@ export default function SyneBrandGuide() {
                 text: "card.connections.filter(.explicit)",
               },
             ].map((item, i) => (
-              <div key={i} style={{ marginBottom: 24 }}>
+              <div key={i} className="mb-6">
                 <div
-                  style={{
-                    fontFamily: FONTS.mono,
-                    fontSize: 10,
-                    color: t.fgTertiary,
-                    marginBottom: 4,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                  }}
+                  className="mb-1 font-mono text-[10px] uppercase tracking-wide"
+                  style={{ color: t.fgTertiary }}
                 >
                   {item.label}
                 </div>
@@ -222,12 +167,8 @@ export default function SyneBrandGuide() {
         {/* Type Scale */}
         <Section title="Type Scale" t={t}>
           <div
-            style={{
-              background: t.surface,
-              borderRadius: 20,
-              padding: 32,
-              border: `1px solid ${t.border}`,
-            }}
+            className="rounded-xl p-8"
+            style={{ background: t.surface, border: `1px solid ${t.border}` }}
           >
             {[
               { s: 48, label: "Display", use: "Hero, splash", font: "Syne", w: 600 },
@@ -242,20 +183,14 @@ export default function SyneBrandGuide() {
             ].map((item) => (
               <div
                 key={item.label}
-                style={{
-                  display: "flex",
-                  alignItems: "baseline",
-                  gap: 16,
-                  padding: "12px 0",
-                  borderBottom: `1px solid ${t.borderSubtle}`,
-                }}
+                className="flex items-baseline gap-4 py-3"
+                style={{ borderBottom: `1px solid ${t.borderSubtle}` }}
               >
-                <div
-                  style={{ fontFamily: FONTS.mono, fontSize: 10, color: t.fgTertiary, width: 36 }}
-                >
+                <div className="w-9 font-mono text-[10px]" style={{ color: t.fgTertiary }}>
                   {item.s}px
                 </div>
                 <div
+                  className="flex-1 leading-tight"
                   style={{
                     fontFamily:
                       item.font === "Syne"
@@ -268,21 +203,12 @@ export default function SyneBrandGuide() {
                     fontWeight: item.w,
                     fontSize: item.s,
                     color: t.fg,
-                    lineHeight: 1.2,
-                    flex: 1,
                     letterSpacing: item.s > 24 ? "-0.02em" : "0",
                   }}
                 >
                   {item.label}
                 </div>
-                <div
-                  style={{
-                    fontFamily: FONTS.mono,
-                    fontSize: 10,
-                    color: t.fgTertiary,
-                    textAlign: "right",
-                  }}
-                >
+                <div className="text-right font-mono text-[10px]" style={{ color: t.fgTertiary }}>
                   {item.font} {item.w}
                   <br />
                   {item.use}
@@ -294,7 +220,7 @@ export default function SyneBrandGuide() {
 
         {/* Colors */}
         <Section title="Color — Primary" subtitle="Warm orange. The signature." t={t}>
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <div className="flex flex-wrap gap-2.5">
             {Object.entries(COLORS.primary).map(([k, v]) => (
               <ColorSwatch key={k} color={v} name={k} hex={v} />
             ))}
@@ -302,7 +228,7 @@ export default function SyneBrandGuide() {
         </Section>
 
         <Section title="Color — Secondary" subtitle="Cool lavender. The counterbalance." t={t}>
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <div className="flex flex-wrap gap-2.5">
             {Object.entries(COLORS.secondary).map(([k, v]) => (
               <ColorSwatch key={k} color={v} name={k} hex={v} />
             ))}
@@ -310,7 +236,7 @@ export default function SyneBrandGuide() {
         </Section>
 
         <Section title="Color — Neutral" subtitle="Warm grays. Never blue-tinted." t={t}>
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <div className="flex flex-wrap gap-2.5">
             {Object.entries(COLORS.neutral).map(([k, v]) => (
               <ColorSwatch key={k} color={v} name={k} hex={v} />
             ))}
@@ -318,7 +244,7 @@ export default function SyneBrandGuide() {
         </Section>
 
         <Section title="Color — Accents" t={t}>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <div className="flex flex-wrap gap-3">
             {Object.entries(COLORS.accent).map(([k, v]) => (
               <ColorSwatch key={k} color={v} name={k} hex={v} />
             ))}
@@ -327,7 +253,7 @@ export default function SyneBrandGuide() {
 
         {/* Gradients */}
         <Section title="Gradients" subtitle="Warm center, cool edges." t={t}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+          <div className="grid grid-cols-3 gap-4">
             {Object.entries(GRADIENTS)
               .filter(([k]) => !k.startsWith("sunset"))
               .map(([k, v]) => (
@@ -342,15 +268,11 @@ export default function SyneBrandGuide() {
           subtitle="Black → Orange → White through our primary. For rich backgrounds."
           t={t}
         >
-          <div style={{ borderRadius: 20, overflow: "hidden" }}>
-            <div
-              style={{ height: 200, background: GRADIENTS.sunset, borderRadius: "20px 20px 0 0" }}
-            />
-            <div
-              style={{ height: 80, background: GRADIENTS.sunsetH, borderRadius: "0 0 20px 20px" }}
-            />
+          <div className="overflow-hidden rounded-xl">
+            <div className="h-[200px] rounded-t-xl" style={{ background: GRADIENTS.sunset }} />
+            <div className="h-20 rounded-b-xl" style={{ background: GRADIENTS.sunsetH }} />
           </div>
-          <div style={{ display: "flex", gap: 6, marginTop: 16, justifyContent: "center" }}>
+          <div className="mt-4 flex justify-center gap-1.5">
             {[
               "#0F0E0C",
               "#1C1A17",
@@ -370,13 +292,8 @@ export default function SyneBrandGuide() {
             ].map((c) => (
               <div
                 key={c}
-                style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: 8,
-                  background: c,
-                  border: "1px solid rgba(128,128,128,0.15)",
-                }}
+                className="size-8 rounded-lg border border-gray-500/15"
+                style={{ background: c }}
               />
             ))}
           </div>
@@ -388,52 +305,29 @@ export default function SyneBrandGuide() {
           subtitle="Glass edge strip with opaque body. Best on gradient backgrounds."
           t={t}
         >
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+          <div className="grid grid-cols-2 gap-6">
             <div
-              style={{
-                background: GRADIENTS.dusk,
-                borderRadius: 24,
-                padding: 32,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+              className="flex items-center justify-center rounded-2xl p-8"
+              style={{ background: GRADIENTS.dusk }}
             >
               <GlassCard t={t} style={{ width: "100%", maxWidth: 260 }}>
                 <div
-                  style={{
-                    fontFamily: FONTS.heading,
-                    fontWeight: 600,
-                    fontSize: 15,
-                    color: t.fg,
-                    marginBottom: 6,
-                  }}
+                  className="mb-1.5 text-[15px] font-semibold"
+                  style={{ fontFamily: FONTS.heading, color: t.fg }}
                 >
                   Design principles
                 </div>
-                <div
-                  style={{
-                    fontFamily: FONTS.body,
-                    fontSize: 13,
-                    color: t.fgSecondary,
-                    lineHeight: 1.5,
-                    marginBottom: 12,
-                  }}
-                >
+                <div className="mb-3 text-[13px] leading-relaxed" style={{ color: t.fgSecondary }}>
                   Notes on spatial thinking and connection-first design.
                 </div>
-                <div style={{ display: "flex", gap: 6 }}>
+                <div className="flex gap-1.5">
                   {["Design", "Core"].map((tag) => (
                     <span
                       key={tag}
+                      className="rounded-full px-2.5 py-0.5 text-[11px] font-medium"
                       style={{
-                        fontFamily: FONTS.body,
-                        fontSize: 11,
-                        fontWeight: 500,
                         color: COLORS.primary[600],
                         background: "rgba(242,140,62,0.1)",
-                        padding: "3px 10px",
-                        borderRadius: 99,
                       }}
                     >
                       {tag}
@@ -443,39 +337,20 @@ export default function SyneBrandGuide() {
               </GlassCard>
             </div>
             <div
-              style={{
-                background: GRADIENTS.ember,
-                borderRadius: 24,
-                padding: 32,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+              className="flex items-center justify-center rounded-2xl p-8"
+              style={{ background: GRADIENTS.ember }}
             >
               <GlassCard t={t} style={{ width: "100%", maxWidth: 260 }}>
                 <div
-                  style={{
-                    fontFamily: FONTS.heading,
-                    fontWeight: 600,
-                    fontSize: 15,
-                    color: t.fg,
-                    marginBottom: 6,
-                  }}
+                  className="mb-1.5 text-[15px] font-semibold"
+                  style={{ fontFamily: FONTS.heading, color: t.fg }}
                 >
                   Meeting with team
                 </div>
-                <div
-                  style={{
-                    fontFamily: FONTS.body,
-                    fontSize: 13,
-                    color: t.fgSecondary,
-                    lineHeight: 1.5,
-                    marginBottom: 12,
-                  }}
-                >
+                <div className="mb-3 text-[13px] leading-relaxed" style={{ color: t.fgSecondary }}>
                   Discuss new card creation flow and capture UX.
                 </div>
-                <div style={{ fontFamily: FONTS.body, fontSize: 11, color: t.fgTertiary }}>
+                <div className="text-[11px]" style={{ color: t.fgTertiary }}>
                   Today · 3:00 PM
                 </div>
               </GlassCard>
@@ -485,64 +360,33 @@ export default function SyneBrandGuide() {
 
         {/* Buttons */}
         <Section title="Buttons" subtitle="Pill-shaped. Three variants." t={t}>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+          <div className="flex flex-wrap items-center gap-3">
             <button
-              style={{
-                fontFamily: FONTS.heading,
-                fontWeight: 500,
-                fontSize: 14,
-                color: "#FFF",
-                background: COLORS.primary[500],
-                border: "none",
-                padding: "12px 28px",
-                borderRadius: 99,
-                cursor: "pointer",
-              }}
+              className="cursor-pointer rounded-full border-none px-7 py-3 text-sm font-medium text-white"
+              style={{ fontFamily: FONTS.heading, background: COLORS.primary[500] }}
             >
               Primary action
             </button>
             <button
+              className="cursor-pointer rounded-full px-7 py-3 text-sm font-medium"
               style={{
                 fontFamily: FONTS.heading,
-                fontWeight: 500,
-                fontSize: 14,
                 color: t.fg,
                 background: t.surface,
                 border: `1px solid ${t.border}`,
-                padding: "12px 28px",
-                borderRadius: 99,
-                cursor: "pointer",
               }}
             >
               Secondary
             </button>
             <button
-              style={{
-                fontFamily: FONTS.heading,
-                fontWeight: 500,
-                fontSize: 14,
-                color: t.accent,
-                background: "transparent",
-                border: "none",
-                padding: "12px 28px",
-                borderRadius: 99,
-                cursor: "pointer",
-              }}
+              className="cursor-pointer rounded-full border-none bg-transparent px-7 py-3 text-sm font-medium"
+              style={{ fontFamily: FONTS.heading, color: t.accent }}
             >
               Tertiary
             </button>
             <button
-              style={{
-                fontFamily: FONTS.heading,
-                fontWeight: 500,
-                fontSize: 13,
-                color: t.fgSecondary,
-                background: t.inputBg,
-                border: "none",
-                padding: "8px 16px",
-                borderRadius: 99,
-                cursor: "pointer",
-              }}
+              className="cursor-pointer rounded-full border-none px-4 py-2 text-[13px] font-medium"
+              style={{ fontFamily: FONTS.heading, color: t.fgSecondary, background: t.inputBg }}
             >
               Small
             </button>
@@ -551,7 +395,7 @@ export default function SyneBrandGuide() {
 
         {/* Tags */}
         <Section title="Tags & Connections" t={t}>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <div className="flex flex-wrap gap-2">
             {[
               { label: "Design", bg: t.accentSubtle, color: t.accentText },
               {
@@ -574,14 +418,10 @@ export default function SyneBrandGuide() {
             ].map((tag) => (
               <span
                 key={tag.label}
+                className="rounded-full px-3.5 py-1.5 text-xs font-medium"
                 style={{
-                  fontFamily: FONTS.body,
-                  fontSize: 12,
-                  fontWeight: 500,
                   color: tag.color,
                   background: tag.bg,
-                  padding: "5px 14px",
-                  borderRadius: 99,
                   border: tag.border
                     ? `1px solid ${isDark ? "rgba(242,140,62,0.25)" : COLORS.primary[200]}`
                     : "none",
@@ -595,33 +435,26 @@ export default function SyneBrandGuide() {
 
         {/* Inputs */}
         <Section title="Inputs" t={t}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 400 }}>
+          <div className="flex max-w-[400px] flex-col gap-4">
             <input
               type="text"
               placeholder="Search cards..."
               readOnly
+              className="box-border w-full rounded-[14px] px-[18px] py-3.5 text-[15px] outline-none"
               style={{
                 fontFamily: FONTS.body,
-                fontSize: 15,
                 color: t.fg,
                 background: t.inputBg,
                 border: `1px solid ${t.border}`,
-                padding: "14px 18px",
-                borderRadius: 14,
-                outline: "none",
-                width: "100%",
-                boxSizing: "border-box",
               }}
             />
             <div
+              className="rounded-[14px] px-[17px] py-[13px] text-[15px]"
               style={{
                 fontFamily: FONTS.body,
-                fontSize: 15,
                 color: t.fg,
                 background: t.inputBg,
                 border: `2px solid ${COLORS.primary[300]}`,
-                padding: "13px 17px",
-                borderRadius: 14,
                 boxShadow: `0 0 0 4px ${isDark ? "rgba(242,140,62,0.1)" : COLORS.primary[50]}`,
               }}
             >
@@ -632,40 +465,22 @@ export default function SyneBrandGuide() {
 
         {/* Spacing & Radius */}
         <Section title="Spacing & Radius" subtitle="Base 4px. Generous rounding." t={t}>
-          <div style={{ display: "flex", gap: 32, flexWrap: "wrap" }}>
+          <div className="flex flex-wrap gap-8">
             <div>
               <div
-                style={{
-                  fontFamily: FONTS.mono,
-                  fontSize: 10,
-                  color: t.fgTertiary,
-                  marginBottom: 12,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                }}
+                className="mb-3 font-mono text-[10px] uppercase tracking-wide"
+                style={{ color: t.fgTertiary }}
               >
                 Spacing
               </div>
-              <div style={{ display: "flex", alignItems: "flex-end", gap: 6 }}>
+              <div className="flex items-end gap-1.5">
                 {[4, 8, 12, 16, 20, 24, 32, 40, 48, 64].map((s) => (
-                  <div key={s} style={{ textAlign: "center" }}>
+                  <div key={s} className="text-center">
                     <div
-                      style={{
-                        width: 24,
-                        height: s,
-                        borderRadius: 4,
-                        background: COLORS.primary[400],
-                        opacity: 0.6,
-                      }}
+                      className="w-6 rounded opacity-60"
+                      style={{ height: s, background: COLORS.primary[400] }}
                     />
-                    <div
-                      style={{
-                        fontFamily: FONTS.mono,
-                        fontSize: 8,
-                        color: t.fgTertiary,
-                        marginTop: 3,
-                      }}
-                    >
+                    <div className="mt-0.5 font-mono text-[8px]" style={{ color: t.fgTertiary }}>
                       {s}
                     </div>
                   </div>
@@ -674,18 +489,12 @@ export default function SyneBrandGuide() {
             </div>
             <div>
               <div
-                style={{
-                  fontFamily: FONTS.mono,
-                  fontSize: 10,
-                  color: t.fgTertiary,
-                  marginBottom: 12,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                }}
+                className="mb-3 font-mono text-[10px] uppercase tracking-wide"
+                style={{ color: t.fgTertiary }}
               >
                 Radius
               </div>
-              <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+              <div className="flex items-center gap-3">
                 {[
                   { r: 8, l: "sm" },
                   { r: 12, l: "md" },
@@ -693,24 +502,16 @@ export default function SyneBrandGuide() {
                   { r: 20, l: "xl" },
                   { r: 99, l: "full" },
                 ].map((item) => (
-                  <div key={item.l} style={{ textAlign: "center" }}>
+                  <div key={item.l} className="text-center">
                     <div
+                      className="size-12"
                       style={{
-                        width: 48,
-                        height: 48,
                         borderRadius: item.r,
                         border: `2px solid ${COLORS.primary[300]}`,
                         background: isDark ? "rgba(242,140,62,0.05)" : "rgba(242,140,62,0.03)",
                       }}
                     />
-                    <div
-                      style={{
-                        fontFamily: FONTS.mono,
-                        fontSize: 9,
-                        color: t.fgTertiary,
-                        marginTop: 4,
-                      }}
-                    >
+                    <div className="mt-1 font-mono text-[9px]" style={{ color: t.fgTertiary }}>
                       {item.r}px
                     </div>
                   </div>
@@ -722,7 +523,7 @@ export default function SyneBrandGuide() {
 
         {/* Theme Tokens */}
         <Section title="Theme Tokens" t={t}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          <div className="grid grid-cols-2 gap-3">
             {[
               { token: "background", l: COLORS.neutral[50], d: COLORS.neutral[950] },
               { token: "surface", l: COLORS.neutral[0], d: COLORS.neutral[900] },
@@ -735,30 +536,21 @@ export default function SyneBrandGuide() {
             ].map((item) => (
               <div
                 key={item.token}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "10px 14px",
-                  borderRadius: 12,
-                  background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)",
-                }}
+                className="flex items-center gap-3 rounded-md px-3.5 py-2.5"
+                style={{ background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)" }}
               >
                 <div
+                  className="size-8 shrink-0 rounded-lg"
                   style={{
-                    width: 32,
-                    height: 32,
-                    borderRadius: 8,
-                    flexShrink: 0,
                     background: isDark ? item.d : item.l,
                     border: `1px solid ${t.border}`,
                   }}
                 />
                 <div>
-                  <div style={{ fontFamily: FONTS.mono, fontSize: 11, color: t.fg }}>
+                  <div className="font-mono text-[11px]" style={{ color: t.fg }}>
                     {item.token}
                   </div>
-                  <div style={{ fontFamily: FONTS.mono, fontSize: 10, color: t.fgTertiary }}>
+                  <div className="font-mono text-[10px]" style={{ color: t.fgTertiary }}>
                     {isDark ? item.d : item.l}
                   </div>
                 </div>
@@ -773,68 +565,43 @@ export default function SyneBrandGuide() {
           subtitle="iPhone mockups showing how the system applies."
           t={t}
         >
-          <div style={{ display: "flex", gap: 24, overflowX: "auto", padding: "8px 0 24px" }}>
+          <div className="flex gap-6 overflow-x-auto py-2 pb-6">
             {/* Library */}
             <PhoneFrame t={t} bg={t.bg}>
-              <div style={{ padding: "32px 20px 20px" }}>
+              <div className="px-5 pb-5 pt-8">
                 <div
-                  style={{
-                    fontFamily: FONTS.heading,
-                    fontWeight: 600,
-                    fontSize: 24,
-                    color: t.fg,
-                    marginBottom: 2,
-                    letterSpacing: "-0.01em",
-                  }}
+                  className="mb-0.5 text-2xl font-semibold tracking-tight"
+                  style={{ fontFamily: FONTS.heading, color: t.fg }}
                 >
                   Library
                 </div>
-                <div
-                  style={{
-                    fontFamily: FONTS.body,
-                    fontSize: 13,
-                    color: t.fgSecondary,
-                    marginBottom: 16,
-                  }}
-                >
+                <div className="mb-4 text-[13px]" style={{ color: t.fgSecondary }}>
                   47 cards · 3 spaces
                 </div>
                 <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    padding: "12px 16px",
-                    borderRadius: 14,
-                    background: t.inputBg,
-                    marginBottom: 20,
-                  }}
+                  className="mb-5 flex items-center gap-2 rounded-[14px] px-4 py-3"
+                  style={{ background: t.inputBg }}
                 >
-                  <span style={{ opacity: 0.4, fontSize: 14 }}>🔍</span>
-                  <span style={{ fontFamily: FONTS.body, fontSize: 14, color: t.fgTertiary }}>
+                  <span className="text-sm opacity-40">🔍</span>
+                  <span className="text-sm" style={{ color: t.fgTertiary }}>
                     Search cards...
                   </span>
                 </div>
-                <div style={{ display: "flex", gap: 6, marginBottom: 16 }}>
+                <div className="mb-4 flex gap-1.5">
                   {["All", "Notes", "Links", "Images"].map((f, i) => (
                     <span
                       key={f}
+                      className="whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-medium"
                       style={{
-                        fontFamily: FONTS.body,
-                        fontSize: 12,
-                        fontWeight: 500,
                         color: i === 0 ? "#FFF" : t.fgSecondary,
                         background: i === 0 ? t.accent : t.tagBg,
-                        padding: "6px 14px",
-                        borderRadius: 99,
-                        whiteSpace: "nowrap",
                       }}
                     >
                       {f}
                     </span>
                   ))}
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                <div className="grid grid-cols-2 gap-2.5">
                   {[
                     {
                       title: "Design system",
@@ -869,25 +636,16 @@ export default function SyneBrandGuide() {
                   ].map((card) => (
                     <div
                       key={card.title}
-                      style={{
-                        padding: 14,
-                        borderRadius: 14,
-                        background: card.bg,
-                        border: `1px solid ${t.borderSubtle}`,
-                      }}
+                      className="rounded-[14px] p-3.5"
+                      style={{ background: card.bg, border: `1px solid ${t.borderSubtle}` }}
                     >
                       <div
-                        style={{
-                          fontFamily: FONTS.heading,
-                          fontWeight: 500,
-                          fontSize: 13,
-                          color: t.fg,
-                          marginBottom: 3,
-                        }}
+                        className="mb-0.5 text-[13px] font-medium"
+                        style={{ fontFamily: FONTS.heading, color: t.fg }}
                       >
                         {card.title}
                       </div>
-                      <div style={{ fontFamily: FONTS.body, fontSize: 11, color: t.fgTertiary }}>
+                      <div className="text-[11px]" style={{ color: t.fgTertiary }}>
                         {card.meta}
                       </div>
                     </div>
@@ -895,32 +653,18 @@ export default function SyneBrandGuide() {
                 </div>
               </div>
               <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-around",
-                  padding: "12px 20px 32px",
-                  borderTop: `1px solid ${t.borderSubtle}`,
-                  marginTop: 16,
-                }}
+                className="mt-4 flex justify-around px-5 pb-8 pt-3"
+                style={{ borderTop: `1px solid ${t.borderSubtle}` }}
               >
                 {["Library", "Search", "Capture"].map((tab, i) => (
-                  <div key={tab} style={{ textAlign: "center" }}>
+                  <div key={tab} className="text-center">
                     <div
-                      style={{
-                        width: 20,
-                        height: 20,
-                        borderRadius: 6,
-                        background: i === 0 ? t.accent : t.tagBg,
-                        margin: "0 auto 4px",
-                      }}
+                      className="mx-auto mb-1 size-5 rounded-md"
+                      style={{ background: i === 0 ? t.accent : t.tagBg }}
                     />
                     <div
-                      style={{
-                        fontFamily: FONTS.body,
-                        fontSize: 10,
-                        fontWeight: 500,
-                        color: i === 0 ? t.accent : t.fgTertiary,
-                      }}
+                      className="text-[10px] font-medium"
+                      style={{ color: i === 0 ? t.accent : t.fgTertiary }}
                     >
                       {tab}
                     </div>
@@ -931,58 +675,31 @@ export default function SyneBrandGuide() {
 
             {/* Card Detail */}
             <PhoneFrame t={t} bg={t.bg}>
-              <div style={{ padding: "32px 20px 20px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 20 }}>
-                  <span style={{ fontFamily: FONTS.body, fontSize: 14, color: t.accent }}>
+              <div className="px-5 pb-5 pt-8">
+                <div className="mb-5 flex justify-between">
+                  <span className="text-sm" style={{ color: t.accent }}>
                     ← Back
                   </span>
-                  <span style={{ fontFamily: FONTS.body, fontSize: 14, color: t.fgTertiary }}>
+                  <span className="text-sm" style={{ color: t.fgTertiary }}>
                     ···
                   </span>
                 </div>
                 <div
-                  style={{
-                    fontFamily: FONTS.heading,
-                    fontWeight: 600,
-                    fontSize: 22,
-                    color: t.fg,
-                    marginBottom: 4,
-                    letterSpacing: "-0.01em",
-                  }}
+                  className="mb-1 text-[22px] font-semibold tracking-tight"
+                  style={{ fontFamily: FONTS.heading, color: t.fg }}
                 >
                   Design principles
                 </div>
-                <div
-                  style={{
-                    fontFamily: FONTS.body,
-                    fontSize: 12,
-                    color: t.fgTertiary,
-                    marginBottom: 16,
-                  }}
-                >
+                <div className="mb-4 text-xs" style={{ color: t.fgTertiary }}>
                   Note · Created Jan 28 · 5 connections
                 </div>
-                <div
-                  style={{
-                    fontFamily: FONTS.body,
-                    fontSize: 15,
-                    color: t.fgSecondary,
-                    lineHeight: 1.6,
-                    marginBottom: 20,
-                  }}
-                >
+                <div className="mb-5 text-[15px] leading-relaxed" style={{ color: t.fgSecondary }}>
                   The core insight: connections are primary, content is secondary. A card is an
                   anchor point in a network of relationships.
                 </div>
                 <div
-                  style={{
-                    fontFamily: FONTS.mono,
-                    fontSize: 10,
-                    color: t.fgTertiary,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    marginBottom: 10,
-                  }}
+                  className="mb-2.5 font-mono text-[10px] uppercase tracking-wide"
+                  style={{ color: t.fgTertiary }}
                 >
                   Pinned
                 </div>
@@ -992,57 +709,36 @@ export default function SyneBrandGuide() {
                 ].map((conn) => (
                   <div
                     key={conn.title}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      padding: "12px 14px",
-                      borderRadius: 12,
-                      background: t.inputBg,
-                      marginBottom: 8,
-                    }}
+                    className="mb-2 flex items-center justify-between rounded-md px-3.5 py-3"
+                    style={{ background: t.inputBg }}
                   >
                     <div>
                       <div
-                        style={{
-                          fontFamily: FONTS.heading,
-                          fontWeight: 500,
-                          fontSize: 14,
-                          color: t.fg,
-                        }}
+                        className="text-sm font-medium"
+                        style={{ fontFamily: FONTS.heading, color: t.fg }}
                       >
                         {conn.title}
                       </div>
-                      <div style={{ fontFamily: FONTS.body, fontSize: 11, color: t.fgTertiary }}>
+                      <div className="text-[11px]" style={{ color: t.fgTertiary }}>
                         {conn.type}
                       </div>
                     </div>
-                    <div style={{ fontSize: 12, color: t.fgTertiary }}>→</div>
+                    <div className="text-xs" style={{ color: t.fgTertiary }}>
+                      →
+                    </div>
                   </div>
                 ))}
                 <div
-                  style={{
-                    fontFamily: FONTS.mono,
-                    fontSize: 10,
-                    color: t.fgTertiary,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    marginTop: 20,
-                    marginBottom: 10,
-                  }}
+                  className="mb-2.5 mt-5 font-mono text-[10px] uppercase tracking-wide"
+                  style={{ color: t.fgTertiary }}
                 >
                   Connections
                 </div>
                 {["UX research notes", "Card interaction sketch", "Meeting Jan 25"].map((c) => (
                   <div
                     key={c}
-                    style={{
-                      padding: "10px 0",
-                      borderBottom: `1px solid ${t.borderSubtle}`,
-                      fontFamily: FONTS.body,
-                      fontSize: 14,
-                      color: t.fg,
-                    }}
+                    className="py-2.5 text-sm"
+                    style={{ borderBottom: `1px solid ${t.borderSubtle}`, color: t.fg }}
                   >
                     {c}
                   </div>
@@ -1052,110 +748,44 @@ export default function SyneBrandGuide() {
 
             {/* Quick Capture */}
             <PhoneFrame t={t} bg={GRADIENTS.mist}>
-              <div
-                style={{
-                  padding: "32px 20px 20px",
-                  minHeight: 440,
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <div
-                  style={{
-                    flex: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
+              <div className="flex min-h-[440px] flex-col px-5 pb-5 pt-8">
+                <div className="flex flex-1 flex-col items-center justify-center">
                   <div
+                    className="mb-8 size-[180px] rounded-full blur-[20px]"
                     style={{
-                      width: 180,
-                      height: 180,
-                      borderRadius: "50%",
                       background:
                         "radial-gradient(circle, rgba(242,140,62,0.2) 0%, rgba(196,184,217,0.1) 60%, transparent 100%)",
-                      marginBottom: 32,
-                      filter: "blur(20px)",
                     }}
                   />
                   <div
-                    style={{
-                      fontFamily: FONTS.heading,
-                      fontWeight: 600,
-                      fontSize: 22,
-                      color: t.fg,
-                      textAlign: "center",
-                      marginBottom: 8,
-                      marginTop: -80,
-                      letterSpacing: "-0.01em",
-                    }}
+                    className="-mt-20 mb-2 text-center text-[22px] font-semibold tracking-tight"
+                    style={{ fontFamily: FONTS.heading, color: t.fg }}
                   >
                     What's on your mind?
                   </div>
-                  <div
-                    style={{
-                      fontFamily: FONTS.body,
-                      fontSize: 14,
-                      color: t.fgSecondary,
-                      textAlign: "center",
-                    }}
-                  >
+                  <div className="text-center text-sm" style={{ color: t.fgSecondary }}>
                     Capture a note, link, or image
                   </div>
                 </div>
                 <GlassCard t={t} style={{ marginTop: "auto" }}>
-                  <div
-                    style={{
-                      fontFamily: FONTS.body,
-                      fontSize: 15,
-                      color: t.fgTertiary,
-                      minHeight: 44,
-                    }}
-                  >
+                  <div className="min-h-[44px] text-[15px]" style={{ color: t.fgTertiary }}>
                     Start typing...
                   </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      marginTop: 12,
-                    }}
-                  >
-                    <div style={{ display: "flex", gap: 8 }}>
+                  <div className="mt-3 flex items-center justify-between">
+                    <div className="flex gap-2">
                       {["📷", "🔗", "#"].map((icon) => (
                         <div
                           key={icon}
-                          style={{
-                            width: 32,
-                            height: 32,
-                            borderRadius: 10,
-                            background: t.tagBg,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            fontSize: 14,
-                          }}
+                          className="flex size-8 items-center justify-center rounded-[10px] text-sm"
+                          style={{ background: t.tagBg }}
                         >
                           {icon}
                         </div>
                       ))}
                     </div>
                     <div
-                      style={{
-                        width: 36,
-                        height: 36,
-                        borderRadius: 10,
-                        background: COLORS.primary[500],
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "#FFF",
-                        fontSize: 16,
-                        fontWeight: 700,
-                      }}
+                      className="flex size-9 items-center justify-center rounded-[10px] text-base font-bold text-white"
+                      style={{ background: COLORS.primary[500] }}
                     >
                       ↑
                     </div>
@@ -1166,61 +796,43 @@ export default function SyneBrandGuide() {
 
             {/* Space View */}
             <PhoneFrame t={t} bg={t.bg}>
-              <div style={{ padding: "32px 20px 20px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 20 }}>
-                  <span style={{ fontFamily: FONTS.body, fontSize: 14, color: t.accent }}>
+              <div className="px-5 pb-5 pt-8">
+                <div className="mb-5 flex justify-between">
+                  <span className="text-sm" style={{ color: t.accent }}>
                     ← Library
                   </span>
-                  <span style={{ fontFamily: FONTS.body, fontSize: 14, color: t.fgTertiary }}>
+                  <span className="text-sm" style={{ color: t.fgTertiary }}>
                     ···
                   </span>
                 </div>
                 <div
+                  className="mb-4 rounded-lg p-5"
                   style={{
-                    padding: 20,
-                    borderRadius: 16,
-                    marginBottom: 16,
                     background: isDark ? "rgba(242,140,62,0.06)" : COLORS.primary[50],
                     border: `1px solid ${isDark ? "rgba(242,140,62,0.12)" : COLORS.primary[100]}`,
                   }}
                 >
                   <div
-                    style={{
-                      fontFamily: FONTS.heading,
-                      fontWeight: 600,
-                      fontSize: 20,
-                      color: t.fg,
-                      marginBottom: 4,
-                    }}
+                    className="mb-1 text-xl font-semibold"
+                    style={{ fontFamily: FONTS.heading, color: t.fg }}
                   >
                     Design
                   </div>
-                  <div style={{ fontFamily: FONTS.body, fontSize: 13, color: t.fgSecondary }}>
+                  <div className="text-[13px]" style={{ color: t.fgSecondary }}>
                     Space · 8 cards · Static
                   </div>
                 </div>
                 <div
-                  style={{
-                    display: "flex",
-                    gap: 4,
-                    marginBottom: 16,
-                    background: t.inputBg,
-                    borderRadius: 10,
-                    padding: 3,
-                    width: "fit-content",
-                  }}
+                  className="mb-4 flex w-fit gap-1 rounded-[10px] p-0.5"
+                  style={{ background: t.inputBg }}
                 >
                   {["Grid", "List"].map((m, i) => (
                     <span
                       key={m}
+                      className="rounded-lg px-3.5 py-1.5 text-xs font-medium"
                       style={{
-                        fontFamily: FONTS.body,
-                        fontSize: 12,
-                        fontWeight: 500,
                         color: i === 0 ? t.fg : t.fgTertiary,
                         background: i === 0 ? t.surface : "transparent",
-                        padding: "5px 14px",
-                        borderRadius: 8,
                         boxShadow: i === 0 ? "0 1px 3px rgba(0,0,0,0.06)" : "none",
                       }}
                     >
@@ -1237,30 +849,23 @@ export default function SyneBrandGuide() {
                 ].map((c) => (
                   <div
                     key={c}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      padding: "14px 0",
-                      borderBottom: `1px solid ${t.borderSubtle}`,
-                    }}
+                    className="flex items-center justify-between py-3.5"
+                    style={{ borderBottom: `1px solid ${t.borderSubtle}` }}
                   >
                     <div>
                       <div
-                        style={{
-                          fontFamily: FONTS.heading,
-                          fontWeight: 500,
-                          fontSize: 14,
-                          color: t.fg,
-                        }}
+                        className="text-sm font-medium"
+                        style={{ fontFamily: FONTS.heading, color: t.fg }}
                       >
                         {c}
                       </div>
-                      <div style={{ fontFamily: FONTS.body, fontSize: 11, color: t.fgTertiary }}>
+                      <div className="text-[11px]" style={{ color: t.fgTertiary }}>
                         Note · 3 connections
                       </div>
                     </div>
-                    <div style={{ fontSize: 12, color: t.fgTertiary }}>→</div>
+                    <div className="text-xs" style={{ color: t.fgTertiary }}>
+                      →
+                    </div>
                   </div>
                 ))}
               </div>
@@ -1268,131 +873,77 @@ export default function SyneBrandGuide() {
 
             {/* Safari Extension */}
             <PhoneFrame t={t} bg="#E8E5E0">
-              <div style={{ padding: "32px 20px 20px" }}>
+              <div className="px-5 pb-5 pt-8">
                 <div
-                  style={{
-                    padding: 16,
-                    borderRadius: 14,
-                    background: t.surface,
-                    marginBottom: 8,
-                    opacity: 0.5,
-                  }}
+                  className="mb-2 rounded-[14px] p-4 opacity-50"
+                  style={{ background: t.surface }}
                 >
                   <div
-                    style={{
-                      fontFamily: FONTS.heading,
-                      fontWeight: 600,
-                      fontSize: 16,
-                      color: t.fg,
-                      marginBottom: 4,
-                    }}
+                    className="mb-1 text-base font-semibold"
+                    style={{ fontFamily: FONTS.heading, color: t.fg }}
                   >
                     Best new movies 2025
                   </div>
-                  <div style={{ display: "flex", gap: 8 }}>
+                  <div className="flex gap-2">
                     {[1, 2, 3].map((i) => (
                       <div
                         key={i}
-                        style={{ width: 60, height: 80, borderRadius: 8, background: t.inputBg }}
+                        className="h-20 w-[60px] rounded-lg"
+                        style={{ background: t.inputBg }}
                       />
                     ))}
                   </div>
                 </div>
                 <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    padding: "10px 14px",
-                    borderRadius: 12,
-                    background: t.surface,
-                    border: `1px solid ${t.border}`,
-                    marginBottom: 12,
-                    opacity: 0.6,
-                  }}
+                  className="mb-3 flex items-center gap-2 rounded-md px-3.5 py-2.5 opacity-60"
+                  style={{ background: t.surface, border: `1px solid ${t.border}` }}
                 >
-                  <span style={{ fontSize: 12 }}>◁ ▷</span>
-                  <span
-                    style={{
-                      fontFamily: FONTS.body,
-                      fontSize: 13,
-                      color: t.fgSecondary,
-                      flex: 1,
-                      textAlign: "center",
-                    }}
-                  >
+                  <span className="text-xs">◁ ▷</span>
+                  <span className="flex-1 text-center text-[13px]" style={{ color: t.fgSecondary }}>
                     movies.example.com
                   </span>
                 </div>
                 <GlassCard t={t} style={{ marginTop: 20 }}>
-                  <div style={{ textAlign: "center", marginBottom: 16 }}>
+                  <div className="mb-4 text-center">
                     <div
-                      style={{
-                        width: 48,
-                        height: 48,
-                        borderRadius: 14,
-                        margin: "0 auto 12px",
-                        background: GRADIENTS.warmGlow,
-                      }}
+                      className="mx-auto mb-3 size-12 rounded-[14px]"
+                      style={{ background: GRADIENTS.warmGlow }}
                     />
                     <div
-                      style={{
-                        fontFamily: FONTS.heading,
-                        fontWeight: 600,
-                        fontSize: 16,
-                        color: t.fg,
-                      }}
+                      className="text-base font-semibold"
+                      style={{ fontFamily: FONTS.heading, color: t.fg }}
                     >
                       Save to Syne
                     </div>
                   </div>
                   <div
-                    style={{
-                      padding: 14,
-                      borderRadius: 12,
-                      background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)",
-                      marginBottom: 12,
-                    }}
+                    className="mb-3 rounded-md p-3.5"
+                    style={{ background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)" }}
                   >
                     <div
-                      style={{
-                        fontFamily: FONTS.heading,
-                        fontWeight: 500,
-                        fontSize: 13,
-                        color: t.fg,
-                        marginBottom: 2,
-                      }}
+                      className="mb-0.5 text-[13px] font-medium"
+                      style={{ fontFamily: FONTS.heading, color: t.fg }}
                     >
                       Best New Movies of 2025
                     </div>
-                    <div style={{ fontFamily: FONTS.body, fontSize: 11, color: t.fgTertiary }}>
+                    <div className="text-[11px]" style={{ color: t.fgTertiary }}>
                       movies.example.com
                     </div>
                   </div>
                   <div
-                    style={{
-                      fontFamily: FONTS.mono,
-                      fontSize: 10,
-                      color: t.fgTertiary,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.05em",
-                      marginBottom: 8,
-                    }}
+                    className="mb-2 font-mono text-[10px] uppercase tracking-wide"
+                    style={{ color: t.fgTertiary }}
                   >
                     Add to space
                   </div>
-                  <div style={{ display: "flex", gap: 6, marginBottom: 16 }}>
+                  <div className="mb-4 flex gap-1.5">
                     {["Entertainment", "Research"].map((s) => (
                       <span
                         key={s}
+                        className="rounded-full px-3 py-1.5 text-[11px] font-medium"
                         style={{
-                          fontFamily: FONTS.body,
-                          fontSize: 11,
-                          fontWeight: 500,
                           color: s === "Entertainment" ? "#FFF" : t.fgSecondary,
                           background: s === "Entertainment" ? t.accent : t.tagBg,
-                          padding: "5px 12px",
-                          borderRadius: 99,
                         }}
                       >
                         {s}
@@ -1400,18 +951,8 @@ export default function SyneBrandGuide() {
                     ))}
                   </div>
                   <button
-                    style={{
-                      width: "100%",
-                      fontFamily: FONTS.heading,
-                      fontWeight: 500,
-                      fontSize: 14,
-                      color: "#FFF",
-                      background: COLORS.primary[500],
-                      border: "none",
-                      padding: "14px",
-                      borderRadius: 14,
-                      cursor: "pointer",
-                    }}
+                    className="w-full cursor-pointer rounded-[14px] border-none py-3.5 text-sm font-medium text-white"
+                    style={{ fontFamily: FONTS.heading, background: COLORS.primary[500] }}
                   >
                     Save Card
                   </button>
@@ -1423,7 +964,7 @@ export default function SyneBrandGuide() {
 
         {/* Design Principles */}
         <Section title="Design Principles" t={t}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+          <div className="grid grid-cols-2 gap-4">
             {[
               {
                 title: "Warm, not hot",
@@ -1452,31 +993,16 @@ export default function SyneBrandGuide() {
             ].map((p) => (
               <div
                 key={p.title}
-                style={{
-                  padding: 24,
-                  borderRadius: 16,
-                  background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)",
-                }}
+                className="rounded-lg p-6"
+                style={{ background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)" }}
               >
                 <div
-                  style={{
-                    fontFamily: FONTS.heading,
-                    fontWeight: 600,
-                    fontSize: 15,
-                    color: t.fg,
-                    marginBottom: 8,
-                  }}
+                  className="mb-2 text-[15px] font-semibold"
+                  style={{ fontFamily: FONTS.heading, color: t.fg }}
                 >
                   {p.title}
                 </div>
-                <div
-                  style={{
-                    fontFamily: FONTS.body,
-                    fontSize: 13,
-                    color: t.fgSecondary,
-                    lineHeight: 1.6,
-                  }}
-                >
+                <div className="text-[13px] leading-relaxed" style={{ color: t.fgSecondary }}>
                   {p.desc}
                 </div>
               </div>
@@ -1484,18 +1010,14 @@ export default function SyneBrandGuide() {
           </div>
         </Section>
 
-        <div style={{ textAlign: "center", paddingTop: 40, borderTop: `1px solid ${t.border}` }}>
+        <div className="pt-10 text-center" style={{ borderTop: `1px solid ${t.border}` }}>
           <div
-            style={{
-              fontFamily: FONTS.display,
-              fontWeight: 600,
-              fontSize: 32,
-              letterSpacing: "-0.02em",
-            }}
+            className="text-[32px] font-semibold tracking-tight"
+            style={{ fontFamily: FONTS.display }}
           >
             Syne
           </div>
-          <div style={{ fontFamily: FONTS.mono, fontSize: 10, color: t.fgTertiary, marginTop: 8 }}>
+          <div className="mt-2 font-mono text-[10px]" style={{ color: t.fgTertiary }}>
             Brand Identity v2.0 · February 2026
           </div>
         </div>

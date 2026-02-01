@@ -1,12 +1,85 @@
-@import "./styles/variables.css";
+@import "tailwindcss";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@theme {
+  /* Primary */
+  --color-primary-50: #fff7f0;
+  --color-primary-100: #ffedd9;
+  --color-primary-200: #ffd8b0;
+  --color-primary-300: #ffc087;
+  --color-primary-400: #ffa55e;
+  --color-primary-500: #f28c3e;
+  --color-primary-600: #e07020;
+  --color-primary-700: #b85a18;
+  --color-primary-800: #8f4513;
+  --color-primary-900: #6b3410;
+
+  /* Secondary */
+  --color-secondary-50: #f5f3f7;
+  --color-secondary-100: #ebe7f0;
+  --color-secondary-200: #d5cfe1;
+  --color-secondary-300: #bab0ce;
+  --color-secondary-400: #9e91ba;
+  --color-secondary-500: #8273a6;
+  --color-secondary-600: #6b5c8e;
+  --color-secondary-700: #554972;
+  --color-secondary-800: #403757;
+  --color-secondary-900: #2d263d;
+
+  /* Neutral */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #faf9f7;
+  --color-neutral-100: #f3f1ee;
+  --color-neutral-200: #e8e5e0;
+  --color-neutral-300: #d4d0c9;
+  --color-neutral-400: #b5b0a7;
+  --color-neutral-500: #918b80;
+  --color-neutral-600: #6e695f;
+  --color-neutral-700: #4d4940;
+  --color-neutral-800: #33302a;
+  --color-neutral-900: #1c1a17;
+  --color-neutral-950: #0f0e0c;
+
+  /* Accent */
+  --color-accent-peach: #f5c4a1;
+  --color-accent-coral: #e8836b;
+  --color-accent-lavender: #c4b8d9;
+  --color-accent-sage: #a8b8a0;
+  --color-accent-cream: #f5efda;
+
+  /* Fonts */
+  --font-display: "Syne", sans-serif;
+  --font-heading: "General Sans", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Spacing */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 28px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+  --spacing-30: 120px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 40px;
+  --radius-full: 9999px;
 }
 
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
