@@ -5,5 +5,18 @@ import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [tsConfigPaths(), tanstackStart(), react(), tailwindcss()],
+  plugins: [
+    tsConfigPaths(),
+    tanstackStart({
+      spa: {
+        enabled: true,
+        prerender: {
+          enabled: true,
+          crawlLinks: true,
+        },
+      },
+    }),
+    react(),
+    tailwindcss(),
+  ],
 });
