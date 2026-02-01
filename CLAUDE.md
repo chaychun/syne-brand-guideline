@@ -4,8 +4,8 @@ Interactive brand guide for Syne.
 
 ## Stack
 
-- React 19, TypeScript, Vite 7
-- Tailwind CSS v4
+- Astro 5, React 19, TypeScript
+- Tailwind CSS v4 (via @tailwindcss/vite)
 - oxlint (linting), oxfmt (formatting with Tailwind class sorting)
 - bun (package manager)
 
@@ -13,13 +13,18 @@ Interactive brand guide for Syne.
 
 - `bun dev` — dev server
 - `bun run build` — production build
+- `bun run preview` — preview production build
 - `bun run lint` — lint + fix
 - `bun run format` — format code
-- `bun run check` — CI check (typecheck + lint + format)
+- `bun run check` — CI check (astro check + lint + format)
 
 ## Structure
 
-- `src/SyneBrandGuide.tsx` — main component
+- `src/pages/` — Astro pages (index, brand, 404)
+- `src/layouts/` — Astro layouts (BaseLayout)
+- `src/SyneBrandGuide.tsx` — main brand guide component
+- `src/components/` — reusable React components (atoms + molecules)
+- `src/sections/` — brand guide content sections
 - `src/theme/` — design tokens (colors, gradients, fonts, useTheme hook)
-- `src/components/` — reusable components (atoms + molecules)
 - `src/index.css` — Tailwind config with custom theme tokens
+- `astro.config.mjs` — Astro configuration

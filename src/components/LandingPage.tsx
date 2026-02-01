@@ -1,20 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { GRADIENTS, FONTS, useTheme, Icon } from "../theme";
 import { GlassCard, GlassContainer, PhoneFrame, Logo } from "../components";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Syne" },
-      {
-        name: "description",
-        content: "A better way to think, create, and bring your ideas to life.",
-      },
-    ],
-  }),
-  component: LandingPage,
-});
 
 function QuickCapturePhone({ t, g }: { t: ReturnType<typeof useTheme>; g: typeof GRADIENTS }) {
   return (
@@ -67,7 +53,7 @@ function QuickCapturePhone({ t, g }: { t: ReturnType<typeof useTheme>; g: typeof
   );
 }
 
-function LandingPage() {
+export default function LandingPage() {
   const [email, setEmail] = useState("");
   const t = useTheme(false);
   const g = GRADIENTS;

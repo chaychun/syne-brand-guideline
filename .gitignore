@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Astro
+.astro
+
+# Backup folder (migration)
+_backup
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
