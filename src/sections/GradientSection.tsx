@@ -11,7 +11,7 @@ export function GradientSection({ t, g }: SectionProps) {
         subtitle="Warm center, cool edges. Adapts to light and dark modes."
         t={t}
       >
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
           {Object.entries(g)
             .filter(([k]) => !k.startsWith("sunset"))
             .map(([k, v]) => (
@@ -27,14 +27,17 @@ export function GradientSection({ t, g }: SectionProps) {
         t={t}
       >
         <div className="overflow-hidden rounded-xl">
-          <div className="h-[200px] rounded-t-xl" style={{ background: GRADIENTS.sunset }} />
-          <div className="h-20 rounded-b-xl" style={{ background: GRADIENTS.sunsetH }} />
+          <div
+            className="h-[140px] rounded-t-xl sm:h-[200px]"
+            style={{ background: GRADIENTS.sunset }}
+          />
+          <div className="h-14 rounded-b-xl sm:h-20" style={{ background: GRADIENTS.sunsetH }} />
         </div>
-        <div className="mt-4 flex justify-center gap-1.5">
+        <div className="mt-4 flex flex-wrap justify-center gap-1.5">
           {SUNSET_COLORS.map((c) => (
             <div
               key={c}
-              className="size-8 rounded-lg border border-gray-500/15"
+              className="size-6 rounded-lg border border-gray-500/15 sm:size-8"
               style={{ background: c }}
             />
           ))}

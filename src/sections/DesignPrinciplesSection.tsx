@@ -4,7 +4,7 @@ import type { SectionProps } from "./types";
 export function DesignPrinciplesSection({ t, isDark }: SectionProps) {
   return (
     <Section title="Design Principles" t={t}>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {[
           {
             title: "Warm, not hot",

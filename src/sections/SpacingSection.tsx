@@ -7,16 +7,16 @@ export function SpacingSection({ t, isDark }: SectionProps) {
     <>
       {/* Spacing & Radius */}
       <Section title="Spacing & Radius" subtitle="Base 4px. Generous rounding." t={t}>
-        <div className="flex flex-wrap gap-8">
+        <div className="flex flex-col gap-8 sm:flex-row sm:flex-wrap">
           <div>
             <div className="text-overline mb-3" style={{ color: t.fgTertiary }}>
               Spacing
             </div>
-            <div className="flex items-end gap-1.5">
+            <div className="flex flex-wrap items-end gap-1.5">
               {[4, 8, 12, 16, 20, 24, 32, 40, 48, 64].map((s) => (
                 <div key={s} className="text-center">
                   <div
-                    className="w-6 rounded opacity-60"
+                    className="w-5 rounded opacity-60 sm:w-6"
                     style={{ height: s, background: COLORS.primary[400] }}
                   />
                   <div className="mt-0.5 font-mono text-[8px]" style={{ color: t.fgTertiary }}>
@@ -30,7 +30,7 @@ export function SpacingSection({ t, isDark }: SectionProps) {
             <div className="text-overline mb-3" style={{ color: t.fgTertiary }}>
               Radius
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               {[
                 { r: 8, l: "sm" },
                 { r: 12, l: "md" },
@@ -40,7 +40,7 @@ export function SpacingSection({ t, isDark }: SectionProps) {
               ].map((item) => (
                 <div key={item.l} className="text-center">
                   <div
-                    className="size-12"
+                    className="size-10 sm:size-12"
                     style={{
                       borderRadius: item.r,
                       border: `2px solid ${COLORS.primary[300]}`,
@@ -59,7 +59,7 @@ export function SpacingSection({ t, isDark }: SectionProps) {
 
       {/* Theme Tokens */}
       <Section title="Theme Tokens" t={t}>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {[
             { token: "background", l: COLORS.neutral[50], d: COLORS.neutral[950] },
             { token: "surface", l: COLORS.neutral[0], d: COLORS.neutral[900] },

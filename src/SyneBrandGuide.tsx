@@ -34,7 +34,7 @@ export default function SyneBrandGuide() {
     >
       <HeroSection {...sectionProps} setTheme={setTheme} />
 
-      <div className="mx-auto max-w-[960px] px-12 pb-30 pt-16">
+      <div className="mx-auto max-w-[960px] px-5 pb-30 pt-10 sm:px-8 md:px-12 md:pt-16">
         {/* 1. Design Principles */}
         <DesignPrinciplesSection {...sectionProps} />
 

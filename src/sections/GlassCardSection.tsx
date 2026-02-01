@@ -11,9 +11,9 @@ export function GlassCardSection({ t, isDark, g }: SectionProps) {
         subtitle="Glass edge on all sides with opaque body. Best on gradient backgrounds."
         t={t}
       >
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div
-            className="flex items-center justify-center rounded-2xl p-8"
+            className="flex items-center justify-center rounded-2xl p-5 sm:p-8"
             style={{ background: g.dusk }}
           >
             <GlassCard t={t} style={{ width: "100%", maxWidth: 260 }}>
@@ -40,7 +40,7 @@ export function GlassCardSection({ t, isDark, g }: SectionProps) {
             </GlassCard>
           </div>
           <div
-            className="flex items-center justify-center rounded-2xl p-8"
+            className="flex items-center justify-center rounded-2xl p-5 sm:p-8"
             style={{ background: g.ember }}
           >
             <GlassCard t={t} style={{ width: "100%", maxWidth: 260 }}>
@@ -64,9 +64,9 @@ export function GlassCardSection({ t, isDark, g }: SectionProps) {
         subtitle="Compose GlassContainer with GlassSection and OpaqueSection in any order."
         t={t}
       >
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div
-            className="flex items-center justify-center rounded-2xl p-8"
+            className="flex items-center justify-center rounded-2xl p-5 sm:p-8"
             style={{ background: g.mist }}
           >
             <GlassContainer t={t} style={{ width: "100%", maxWidth: 280 }}>
@@ -113,7 +113,7 @@ export function GlassCardSection({ t, isDark, g }: SectionProps) {
             </GlassContainer>
           </div>
           <div
-            className="flex items-center justify-center rounded-2xl p-8"
+            className="flex items-center justify-center rounded-2xl p-5 sm:p-8"
             style={{ background: g.dusk }}
           >
             <GlassContainer t={t} style={{ width: "100%", maxWidth: 280 }}>

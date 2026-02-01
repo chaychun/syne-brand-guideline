@@ -12,7 +12,7 @@ export function TypographySection({ t }: SectionProps) {
         t={t}
       >
         <div
-          className="rounded-xl p-10"
+          className="rounded-xl p-5 sm:p-8 md:p-10"
           style={{ background: t.surface, border: `1px solid ${t.border}` }}
         >
           {[
@@ -100,7 +100,7 @@ export function TypographySection({ t }: SectionProps) {
       {/* Type Scale */}
       <Section title="Type Scale" t={t}>
         <div
-          className="rounded-xl p-8"
+          className="rounded-xl p-5 sm:p-6 md:p-8"
           style={{ background: t.surface, border: `1px solid ${t.border}` }}
         >
           {[
@@ -116,11 +116,16 @@ export function TypographySection({ t }: SectionProps) {
           ].map((item) => (
             <div
               key={item.label}
-              className="flex items-baseline gap-4 py-3"
+              className="flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:gap-4"
               style={{ borderBottom: `1px solid ${t.borderSubtle}` }}
             >
-              <div className="w-9 font-mono text-[10px]" style={{ color: t.fgTertiary }}>
-                {item.s}px
+              <div className="font-mono text-[10px] sm:w-9" style={{ color: t.fgTertiary }}>
+                {item.s}px · {item.font} {item.w}
+                <span className="hidden sm:inline">
+                  <br />
+                </span>
+                <span className="sm:hidden"> · </span>
+                <span className="sm:hidden">{item.use}</span>
               </div>
               <div
                 className="flex-1 leading-tight"
@@ -141,7 +146,10 @@ export function TypographySection({ t }: SectionProps) {
               >
                 {item.label}
               </div>
-              <div className="text-right font-mono text-[10px]" style={{ color: t.fgTertiary }}>
+              <div
+                className="hidden text-right font-mono text-[10px] sm:block"
+                style={{ color: t.fgTertiary }}
+              >
                 {item.font} {item.w}
                 <br />
                 {item.use}
