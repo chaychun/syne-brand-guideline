@@ -12,8 +12,19 @@ export function HeroSection({ t, isDark, setTheme }: HeroSectionProps) {
       {/* Fixed header bar */}
       <div className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-5">
         {/* Logo */}
-        <div style={{ color: isDark ? "#FFFBF7" : "#1E1C1A" }}>
-          <Logo width={90} />
+        <div className="relative h-[26px] w-[90px]">
+          <div
+            className="absolute inset-0 transition-opacity duration-400"
+            style={{ opacity: isDark ? 1 : 0, color: "#FFFBF7" }}
+          >
+            <Logo width={90} />
+          </div>
+          <div
+            className="absolute inset-0 transition-opacity duration-400"
+            style={{ opacity: isDark ? 0 : 1, color: "#1E1C1A" }}
+          >
+            <Logo width={90} />
+          </div>
         </div>
 
         {/* Theme toggle */}
@@ -25,8 +36,31 @@ export function HeroSection({ t, isDark, setTheme }: HeroSectionProps) {
             background: isDark ? "rgba(255,255,255,0.9)" : "rgba(30,28,26,0.9)",
           }}
         >
-          <Icon name={isDark ? "sun" : "moon"} size={14} />
-          {isDark ? "Light" : "Dark"}
+          <span className="relative size-[14px]">
+            <span
+              className="absolute inset-0 transition-opacity duration-400"
+              style={{ opacity: isDark ? 1 : 0 }}
+            >
+              <Icon name="sun" size={14} />
+            </span>
+            <span
+              className="absolute inset-0 transition-opacity duration-400"
+              style={{ opacity: isDark ? 0 : 1 }}
+            >
+              <Icon name="moon" size={14} />
+            </span>
+          </span>
+          <span className="relative w-[30px]">
+            <span
+              className="absolute inset-0 transition-opacity duration-400"
+              style={{ opacity: isDark ? 1 : 0 }}
+            >
+              Light
+            </span>
+            <span className="transition-opacity duration-400" style={{ opacity: isDark ? 0 : 1 }}>
+              Dark
+            </span>
+          </span>
         </button>
       </div>
 
@@ -114,10 +148,23 @@ export function HeroSection({ t, isDark, setTheme }: HeroSectionProps) {
           }}
         >
           <div className="relative mx-auto max-w-[960px] px-12 pb-20 pt-40">
-            <h1 className="m-0 mb-4 font-display text-[56px] font-semibold leading-[1.05] tracking-tight">
-              Brand
-              <br />
-              Identity
+            <h1 className="relative m-0 mb-4 font-display text-[56px] font-semibold leading-[1.05] tracking-tight">
+              <span
+                className="transition-opacity duration-400"
+                style={{ opacity: isDark ? 1 : 0, color: "#F3F1EE" }}
+              >
+                Brand
+                <br />
+                Identity
+              </span>
+              <span
+                className="absolute inset-0 transition-opacity duration-400"
+                style={{ opacity: isDark ? 0 : 1, color: "#33302A" }}
+              >
+                Brand
+                <br />
+                Identity
+              </span>
             </h1>
             <p
               className="text-body m-0 max-w-[400px] leading-relaxed"

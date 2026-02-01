@@ -90,6 +90,13 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 400ms;
   }
+
+  /* Disable transitions on SVG internals - transition the SVG container instead */
+  svg *,
+  svg *::before,
+  svg *::after {
+    transition: none;
+  }
 }
 
 @utility text-display {
