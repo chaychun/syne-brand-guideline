@@ -30,15 +30,6 @@ export function HeroSection({ t, isDark, setTheme }: HeroSectionProps) {
         </button>
       </div>
 
-      <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet"
-      />
-      <link
-        href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap"
-        rel="stylesheet"
-      />
-
       {/* HERO */}
       <div className="relative overflow-hidden">
         {/* Background color blobs layer */}

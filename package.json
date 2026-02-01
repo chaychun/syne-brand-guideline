@@ -13,11 +13,14 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
+    "@tanstack/react-router": "^1.157.18",
+    "@tanstack/react-start": "^1.157.18",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/router-plugin": "^1.157.18",
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
@@ -25,6 +28,7 @@
     "oxlint": "^1.42.0",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "vite-tsconfig-paths": "^6.0.5"
   }
 }
