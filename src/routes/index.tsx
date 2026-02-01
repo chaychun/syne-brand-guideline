@@ -110,6 +110,7 @@ function LandingPage() {
 
           {/* Single-line email signup */}
           <GlassContainer t={t}>
+            {/* TODO: Implement waitlist API integration */}
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -129,6 +130,7 @@ function LandingPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email to join the waitlist"
+                  aria-label="Email address"
                   className="text-body w-full border-none bg-transparent outline-none"
                   style={{ color: t.fg }}
                 />
