@@ -20,6 +20,7 @@ export const Route = createRootRoute({
     ],
   }),
   component: RootComponent,
+  notFoundComponent: NotFoundComponent,
 });
 
 function RootComponent() {
@@ -41,5 +42,16 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <Scripts />
       </body>
     </html>
+  );
+}
+
+function NotFoundComponent() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-neutral-50">
+      <div className="text-center">
+        <h1 className="mb-2 font-display text-4xl font-semibold text-neutral-900">404</h1>
+        <p className="text-body text-neutral-600">Page not found</p>
+      </div>
+    </div>
   );
 }
