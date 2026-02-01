@@ -9,6 +9,7 @@ import {
   GlassCardSection,
   ComponentsSection,
   SpacingSection,
+  LogoSection,
   IconsSection,
   MobileUISection,
   FooterSection,
@@ -33,7 +34,7 @@ export default function SyneBrandGuide() {
     >
       <HeroSection {...sectionProps} setTheme={setTheme} />
 
-      <div className="mx-auto max-w-[960px] px-12 pb-30">
+      <div className="mx-auto max-w-[960px] px-12 pb-30 pt-16">
         {/* 1. Design Principles */}
         <DesignPrinciplesSection {...sectionProps} />
 
@@ -49,10 +50,13 @@ export default function SyneBrandGuide() {
         <ComponentsSection {...sectionProps} />
         <SpacingSection {...sectionProps} />
 
-        {/* 5. Icons */}
+        {/* 5. Logo */}
+        <LogoSection {...sectionProps} />
+
+        {/* 6. Icons */}
         <IconsSection {...sectionProps} />
 
-        {/* 6. Mobile UI */}
+        {/* 7. Mobile UI */}
         <MobileUISection {...sectionProps} />
 
         <FooterSection {...sectionProps} />
