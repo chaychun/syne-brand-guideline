@@ -49,6 +49,7 @@ export function OpaqueSection({ t, children, className = "" }: OpaqueSectionProp
       className={`rounded-xl p-5 ${className}`}
       style={{
         background: t.cardBg,
+        border: `1px solid ${t.border}`,
       }}
     >
       {children}

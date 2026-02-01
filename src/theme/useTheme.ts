@@ -33,16 +33,16 @@ export function useTheme(isDark: boolean): Theme {
     fgTertiary: isDark ? COLORS.neutral[500] : COLORS.neutral[400],
     border: isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)",
     borderSubtle: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)",
-    accent: isDark ? COLORS.primary[400] : COLORS.primary[500],
+    accent: isDark ? COLORS.primary[500] : COLORS.primary[500],
     accentSubtle: isDark ? "rgba(242,140,62,0.12)" : COLORS.primary[50],
     accentText: isDark ? COLORS.primary[300] : COLORS.primary[600],
-    glassBg: isDark ? "rgba(15,14,12,0.85)" : "rgba(255,255,255,0.88)",
-    glassEdge: isDark ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.5)",
-    glassBorder: isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.06)",
+    glassBg: isDark ? "rgba(15,14,12,0.88)" : "rgba(255,255,255,0.88)",
+    glassEdge: isDark ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.5)",
+    glassBorder: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.06)",
     glassShadow: isDark
-      ? "0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06)"
+      ? "0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)"
       : "0 8px 32px rgba(0,0,0,0.08)",
-    cardBg: isDark ? COLORS.neutral[800] : COLORS.neutral[0],
+    cardBg: isDark ? COLORS.neutral[900] : COLORS.neutral[0],
     inputBg: isDark ? COLORS.neutral[800] : COLORS.neutral[100],
     tagBg: isDark ? "rgba(255,255,255,0.06)" : COLORS.neutral[100],
   };
