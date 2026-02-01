@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { COLORS, GRADIENTS, SUNSET_COLORS, FONTS, useTheme } from "./theme";
-import { ColorSwatch, GradientCard, Section, GlassCard, PhoneFrame } from "./components";
+import {
+  ColorSwatch,
+  GradientCard,
+  Section,
+  GlassCard,
+  GlassContainer,
+  GlassSection,
+  OpaqueSection,
+  PhoneFrame,
+} from "./components";
 
 export default function SyneBrandGuide() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -286,7 +295,7 @@ export default function SyneBrandGuide() {
         {/* Glass Card */}
         <Section
           title="Glass Card"
-          subtitle="Glass edge strip with opaque body. Best on gradient backgrounds."
+          subtitle="Glass edge on all sides with opaque body. Best on gradient backgrounds."
           t={t}
         >
           <div className="grid grid-cols-2 gap-6">
@@ -338,6 +347,114 @@ export default function SyneBrandGuide() {
                   Today · 3:00 PM
                 </div>
               </GlassCard>
+            </div>
+          </div>
+        </Section>
+
+        {/* Glass Card Composable */}
+        <Section
+          title="Glass Card Composable"
+          subtitle="Compose GlassContainer with GlassSection and OpaqueSection in any order."
+          t={t}
+        >
+          <div className="grid grid-cols-2 gap-6">
+            <div
+              className="flex items-center justify-center rounded-2xl p-8"
+              style={{ background: GRADIENTS.mist }}
+            >
+              <GlassContainer t={t} style={{ width: "100%", maxWidth: 280 }}>
+                <GlassSection>
+                  <div className="space-y-2">
+                    <div
+                      className="h-2.5 w-24 rounded-full"
+                      style={{ background: isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.08)" }}
+                    />
+                    <div
+                      className="h-2.5 w-40 rounded-full"
+                      style={{ background: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.05)" }}
+                    />
+                  </div>
+                </GlassSection>
+                <OpaqueSection t={t}>
+                  <div
+                    className="mb-3 text-[15px] font-semibold"
+                    style={{ fontFamily: FONTS.heading, color: t.fg }}
+                  >
+                    Building your app
+                  </div>
+                  {["Setting up auth", "Database schema", "Email notifications"].map((step, i) => (
+                    <div key={step} className="mb-2 flex items-center gap-2.5">
+                      <div
+                        className="flex size-5 items-center justify-center rounded-full text-[10px]"
+                        style={{
+                          background: i < 2 ? "rgba(76,175,80,0.12)" : t.tagBg,
+                          color: i < 2 ? "#4CAF50" : t.fgTertiary,
+                        }}
+                      >
+                        {i < 2 ? "✓" : "○"}
+                      </div>
+                      <span
+                        className="text-[13px]"
+                        style={{ color: i < 2 ? t.fgSecondary : t.fgTertiary }}
+                      >
+                        {step}
+                      </span>
+                    </div>
+                  ))}
+                </OpaqueSection>
+              </GlassContainer>
+            </div>
+            <div
+              className="flex items-center justify-center rounded-2xl p-8"
+              style={{ background: GRADIENTS.dusk }}
+            >
+              <GlassContainer t={t} style={{ width: "100%", maxWidth: 280 }}>
+                <GlassSection>
+                  <div className="space-y-2">
+                    <div
+                      className="h-2.5 w-32 rounded-full"
+                      style={{ background: isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.08)" }}
+                    />
+                    <div
+                      className="h-2.5 w-48 rounded-full"
+                      style={{ background: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.05)" }}
+                    />
+                  </div>
+                </GlassSection>
+                <OpaqueSection t={t}>
+                  <div className="text-[15px]" style={{ color: t.fgTertiary }}>
+                    What would you change?
+                  </div>
+                  <div className="mt-4 flex items-center gap-2">
+                    <div
+                      className="flex size-8 items-center justify-center rounded-lg text-sm"
+                      style={{ border: `1px solid ${t.border}`, color: t.fgTertiary }}
+                    >
+                      +
+                    </div>
+                    <div
+                      className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[12px]"
+                      style={{ border: `1px solid ${t.border}`, color: t.fgSecondary }}
+                    >
+                      <span style={{ color: COLORS.primary[500] }}>✎</span> Add styling
+                    </div>
+                    <div
+                      className="ml-auto flex size-8 items-center justify-center rounded-lg text-sm text-white"
+                      style={{ background: COLORS.primary[500] }}
+                    >
+                      ↑
+                    </div>
+                  </div>
+                </OpaqueSection>
+                <GlassSection className="py-3">
+                  <div
+                    className="text-center text-[11px]"
+                    style={{ color: isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.3)" }}
+                  >
+                    Footer on glass
+                  </div>
+                </GlassSection>
+              </GlassContainer>
             </div>
           </div>
         </Section>

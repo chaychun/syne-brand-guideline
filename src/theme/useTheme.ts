@@ -15,6 +15,7 @@ export interface Theme {
   glassBg: string;
   glassEdge: string;
   glassBorder: string;
+  cardBg: string;
   inputBg: string;
   tagBg: string;
 }
@@ -35,6 +36,7 @@ export function useTheme(isDark: boolean): Theme {
     glassBg: isDark ? "rgba(15,14,12,0.85)" : "rgba(255,255,255,0.88)",
     glassEdge: isDark ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.5)",
     glassBorder: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.06)",
+    cardBg: isDark ? COLORS.neutral[900] : COLORS.neutral[0],
     inputBg: isDark ? COLORS.neutral[800] : COLORS.neutral[100],
     tagBg: isDark ? "rgba(255,255,255,0.06)" : COLORS.neutral[100],
   };
