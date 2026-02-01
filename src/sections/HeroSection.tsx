@@ -147,8 +147,8 @@ export function HeroSection({ t, isDark, setTheme }: HeroSectionProps) {
               : "inset 0 -1px 0 rgba(255,255,255,0.8)",
           }}
         >
-          <div className="relative mx-auto max-w-[960px] px-12 pb-20 pt-40">
-            <h1 className="relative m-0 mb-4 font-display text-[56px] font-semibold leading-[1.05] tracking-tight">
+          <div className="relative mx-auto max-w-[960px] px-5 pb-12 pt-28 sm:px-8 sm:pb-16 sm:pt-32 md:px-12 md:pb-20 md:pt-40">
+            <h1 className="relative m-0 mb-4 font-display text-[36px] font-semibold leading-[1.05] tracking-tight sm:text-[44px] md:text-[56px]">
               <span
                 className="transition-opacity duration-400"
                 style={{ opacity: isDark ? 1 : 0, color: "#F3F1EE" }}

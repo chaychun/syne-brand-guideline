@@ -14,10 +14,10 @@ interface ScreenShowcaseProps {
 function ScreenShowcase({ phone, title, description, features, reverse, t }: ScreenShowcaseProps) {
   return (
     <div
-      className={`flex flex-col items-center gap-8 py-10 md:flex-row md:gap-12 ${reverse ? "md:flex-row-reverse" : ""}`}
+      className={`flex flex-col items-center gap-6 py-8 sm:gap-8 sm:py-10 md:flex-row md:gap-12 ${reverse ? "md:flex-row-reverse" : ""}`}
     >
       <div className="shrink-0">{phone}</div>
-      <div className="flex max-w-sm flex-col">
+      <div className="flex max-w-sm flex-col text-center md:text-left">
         <h3 className="text-h2 mb-2" style={{ color: t.fg }}>
           {title}
         </h3>
@@ -25,7 +25,7 @@ function ScreenShowcase({ phone, title, description, features, reverse, t }: Scr
           {description}
         </p>
         {features && features.length > 0 && (
-          <ul className="mt-3 space-y-1">
+          <ul className="mt-3 inline-flex flex-col items-start space-y-1">
             {features.map((feature) => (
               <li
                 key={feature}

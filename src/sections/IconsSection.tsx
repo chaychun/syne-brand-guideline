@@ -6,26 +6,29 @@ export function IconsSection({ t }: SectionProps) {
   return (
     <Section title="Icons" subtitle="Phosphor icons. Regular weight." t={t}>
       <div
-        className="rounded-xl p-6"
+        className="rounded-xl p-4 sm:p-6"
         style={{ background: t.surface, border: `1px solid ${t.border}` }}
       >
-        <div className="grid grid-cols-8 gap-4">
+        <div className="grid grid-cols-4 gap-3 sm:grid-cols-6 sm:gap-4 md:grid-cols-8">
           {ICON_NAMES.map((name) => (
-            <div key={name} className="flex flex-col items-center gap-2">
+            <div key={name} className="flex flex-col items-center gap-1.5 sm:gap-2">
               <div
-                className="flex size-12 items-center justify-center rounded-xl"
+                className="flex size-10 items-center justify-center rounded-xl sm:size-12"
                 style={{ background: t.inputBg }}
               >
                 <Icon name={name} size={24} style={{ color: t.fg }} />
               </div>
-              <span className="font-mono text-[9px]" style={{ color: t.fgTertiary }}>
+              <span
+                className="max-w-full truncate font-mono text-[8px] sm:text-[9px]"
+                style={{ color: t.fgTertiary }}
+              >
                 {name}
               </span>
             </div>
           ))}
         </div>
       </div>
-      <div className="mt-6 grid grid-cols-2 gap-4">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div
           className="rounded-xl p-5"
           style={{ background: t.surface, border: `1px solid ${t.border}` }}
