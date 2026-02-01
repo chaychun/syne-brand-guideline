@@ -1,0 +1,12 @@
+export { HeroSection } from "./HeroSection";
+export { TypographySection } from "./TypographySection";
+export { ColorSection } from "./ColorSection";
+export { GradientSection } from "./GradientSection";
+export { GlassCardSection } from "./GlassCardSection";
+export { ComponentsSection } from "./ComponentsSection";
+export { SpacingSection } from "./SpacingSection";
+export { MobileUISection } from "./MobileUISection";
+export { DesignPrinciplesSection } from "./DesignPrinciplesSection";
+export { IconsSection } from "./IconsSection";
+export { FooterSection } from "./FooterSection";
+export type { SectionProps } from "./types";
