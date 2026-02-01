@@ -25,7 +25,7 @@ export default function SyneBrandGuide() {
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-400 ${isDark ? "dark" : ""}`}
+      className={`min-h-screen ${isDark ? "dark" : ""}`}
       style={{
         background: t.bg,
         color: t.fg,
