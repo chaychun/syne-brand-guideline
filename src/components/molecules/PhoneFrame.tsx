@@ -13,7 +13,7 @@ export function PhoneFrame({ children, bg, t }: PhoneFrameProps) {
       className="relative min-h-[560px] w-[280px] shrink-0 overflow-hidden rounded-3xl shadow-xl"
       style={{
         background: bg || t.bg,
-        border: `3px solid ${t.fg}`,
+        border: t.isDark ? "3px solid #000" : `3px solid ${t.fg}`,
       }}
     >
       {/* Dynamic Island */}

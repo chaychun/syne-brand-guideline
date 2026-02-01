@@ -12,10 +12,11 @@ interface GlassContainerProps {
 export function GlassContainer({ t, children, style, className = "" }: GlassContainerProps) {
   return (
     <div
-      className={`overflow-hidden rounded-2xl p-1.5 shadow-lg backdrop-blur-[20px] ${className}`}
+      className={`overflow-hidden rounded-2xl p-1.5 backdrop-blur-[20px] ${className}`}
       style={{
         background: t.glassEdge,
         border: `1px solid ${t.glassBorder}`,
+        boxShadow: t.glassShadow,
         WebkitBackdropFilter: "blur(20px)",
         ...style,
       }}

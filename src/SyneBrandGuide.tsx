@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { COLORS, GRADIENTS, SUNSET_COLORS, FONTS, useTheme, Icon, ICON_NAMES } from "./theme";
+import {
+  COLORS,
+  GRADIENTS,
+  GRADIENTS_DARK,
+  SUNSET_COLORS,
+  FONTS,
+  useTheme,
+  Icon,
+  ICON_NAMES,
+} from "./theme";
 import {
   ColorSwatch,
   GradientCard,
@@ -15,10 +24,11 @@ export default function SyneBrandGuide() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const isDark = theme === "dark";
   const t = useTheme(isDark);
+  const g = isDark ? GRADIENTS_DARK : GRADIENTS;
 
   return (
     <div
-      className="min-h-screen transition-colors duration-400"
+      className={`min-h-screen transition-colors duration-400 ${isDark ? "dark" : ""}`}
       style={{
         background: t.bg,
         color: t.fg,
@@ -52,8 +62,8 @@ export default function SyneBrandGuide() {
         <div
           className="pointer-events-none absolute -right-[120px] -top-[120px] size-[500px] rounded-full blur-[80px]"
           style={{
-            background: GRADIENTS.warmGlow,
-            opacity: isDark ? 0.12 : 0.35,
+            background: g.warmGlow,
+            opacity: isDark ? 0.4 : 0.35,
           }}
         />
         <div className="relative">
@@ -264,9 +274,32 @@ export default function SyneBrandGuide() {
         </Section>
 
         {/* Gradients */}
-        <Section title="Gradients" subtitle="Warm center, cool edges." t={t}>
+        <Section
+          title="Gradients"
+          subtitle="Warm center, cool edges. Light and dark variants."
+          t={t}
+        >
+          <div
+            className="mb-3 font-mono text-[10px] uppercase tracking-wide"
+            style={{ color: t.fgTertiary }}
+          >
+            Light
+          </div>
           <div className="grid grid-cols-3 gap-4">
             {Object.entries(GRADIENTS)
+              .filter(([k]) => !k.startsWith("sunset"))
+              .map(([k, v]) => (
+                <GradientCard key={k} gradient={v} name={k} />
+              ))}
+          </div>
+          <div
+            className="mb-3 mt-8 font-mono text-[10px] uppercase tracking-wide"
+            style={{ color: t.fgTertiary }}
+          >
+            Dark
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            {Object.entries(GRADIENTS_DARK)
               .filter(([k]) => !k.startsWith("sunset"))
               .map(([k, v]) => (
                 <GradientCard key={k} gradient={v} name={k} />
@@ -304,7 +337,7 @@ export default function SyneBrandGuide() {
           <div className="grid grid-cols-2 gap-6">
             <div
               className="flex items-center justify-center rounded-2xl p-8"
-              style={{ background: GRADIENTS.dusk }}
+              style={{ background: g.dusk }}
             >
               <GlassCard t={t} style={{ width: "100%", maxWidth: 260 }}>
                 <div
@@ -334,7 +367,7 @@ export default function SyneBrandGuide() {
             </div>
             <div
               className="flex items-center justify-center rounded-2xl p-8"
-              style={{ background: GRADIENTS.ember }}
+              style={{ background: g.ember }}
             >
               <GlassCard t={t} style={{ width: "100%", maxWidth: 260 }}>
                 <div
@@ -363,7 +396,7 @@ export default function SyneBrandGuide() {
           <div className="grid grid-cols-2 gap-6">
             <div
               className="flex items-center justify-center rounded-2xl p-8"
-              style={{ background: GRADIENTS.mist }}
+              style={{ background: g.mist }}
             >
               <GlassContainer t={t} style={{ width: "100%", maxWidth: 280 }}>
                 <GlassSection>
@@ -413,7 +446,7 @@ export default function SyneBrandGuide() {
             </div>
             <div
               className="flex items-center justify-center rounded-2xl p-8"
-              style={{ background: GRADIENTS.dusk }}
+              style={{ background: g.dusk }}
             >
               <GlassContainer t={t} style={{ width: "100%", maxWidth: 280 }}>
                 <GlassSection>
@@ -865,7 +898,7 @@ export default function SyneBrandGuide() {
             </PhoneFrame>
 
             {/* Quick Capture */}
-            <PhoneFrame t={t} bg={GRADIENTS.mist}>
+            <PhoneFrame t={t} bg={g.mist}>
               <div className="flex min-h-[440px] flex-col px-5 pb-5 pt-8">
                 <div className="flex flex-1 flex-col items-center justify-center">
                   <div
@@ -990,7 +1023,7 @@ export default function SyneBrandGuide() {
             </PhoneFrame>
 
             {/* Safari Extension */}
-            <PhoneFrame t={t} bg="#E8E5E0">
+            <PhoneFrame t={t} bg={isDark ? "#1C1A17" : "#E8E5E0"}>
               <div className="px-5 pb-5 pt-8">
                 <div
                   className="mb-2 rounded-[14px] p-4 opacity-50"
@@ -1022,7 +1055,7 @@ export default function SyneBrandGuide() {
                   <div className="mb-4 text-center">
                     <div
                       className="mx-auto mb-3 size-12 rounded-[14px]"
-                      style={{ background: GRADIENTS.warmGlow }}
+                      style={{ background: g.warmGlow }}
                     />
                     <div className="text-h3" style={{ color: t.fg }}>
                       Save to Syne

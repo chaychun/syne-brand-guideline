@@ -38,4 +38,24 @@ export const GRADIENTS = {
   ),
 } as const;
 
+export const GRADIENTS_DARK = {
+  warmGlow:
+    "radial-gradient(ellipse at 50% 50%, rgba(242,140,62,0.4) 0%, rgba(180,100,50,0.25) 35%, rgba(85,73,114,0.2) 70%, rgba(45,38,61,0.15) 100%)",
+  sunrise:
+    "linear-gradient(135deg, rgba(180,100,50,0.3) 0%, rgba(242,140,62,0.35) 30%, rgba(180,80,70,0.3) 60%, rgba(85,73,114,0.25) 100%)",
+  mist: "linear-gradient(180deg, #1C1A17 0%, #252320 25%, #2D2A25 50%, #252320 75%, #1C1A17 100%)",
+  ember:
+    "radial-gradient(circle at 30% 70%, rgba(242,140,62,0.35) 0%, rgba(180,80,70,0.25) 40%, rgba(85,73,114,0.2) 80%, #1C1A17 100%)",
+  dusk: "linear-gradient(135deg, rgba(45,38,61,0.4) 0%, rgba(180,100,50,0.25) 40%, rgba(242,140,62,0.3) 70%, rgba(85,73,114,0.35) 100%)",
+  subtle:
+    "linear-gradient(180deg, #1F1D1A 0%, #2A2824 35%, #33302A 50%, #2A2824 65%, #1F1D1A 100%)",
+  sunset: buildGradient("180deg", SUNSET_COLORS, sunsetStops),
+  sunsetH: buildGradient(
+    "90deg",
+    sunsetHColors.map((i) => SUNSET_COLORS[i]),
+    sunsetHStops,
+  ),
+} as const;
+
 export type Gradients = typeof GRADIENTS;
+export type GradientsDark = typeof GRADIENTS_DARK;
