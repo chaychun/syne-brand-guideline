@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { COLORS, GRADIENTS, FONTS, useTheme } from "./theme";
+import { COLORS, GRADIENTS, SUNSET_COLORS, FONTS, useTheme } from "./theme";
 import { ColorSwatch, GradientCard, Section, GlassCard, PhoneFrame } from "./components";
 
 export default function SyneBrandGuide() {
@@ -273,23 +273,7 @@ export default function SyneBrandGuide() {
             <div className="h-20 rounded-b-xl" style={{ background: GRADIENTS.sunsetH }} />
           </div>
           <div className="mt-4 flex justify-center gap-1.5">
-            {[
-              "#0F0E0C",
-              "#1C1A17",
-              "#33302A",
-              "#4D4940",
-              "#6B3410",
-              "#8F4513",
-              "#B85A18",
-              "#E07020",
-              "#F28C3E",
-              "#FFA55E",
-              "#FFC087",
-              "#FFD8B0",
-              "#FFEDD9",
-              "#F3F1EE",
-              "#FFFFFF",
-            ].map((c) => (
+            {SUNSET_COLORS.map((c) => (
               <div
                 key={c}
                 className="size-8 rounded-lg border border-gray-500/15"
