@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { COLORS, GRADIENTS, SUNSET_COLORS, FONTS, useTheme } from "./theme";
+import { COLORS, GRADIENTS, SUNSET_COLORS, FONTS, useTheme, Icon, ICON_NAMES } from "./theme";
 import {
   ColorSwatch,
   GradientCard,
@@ -25,6 +25,19 @@ export default function SyneBrandGuide() {
         fontFamily: FONTS.body,
       }}
     >
+      {/* Floating theme toggle */}
+      <button
+        onClick={() => setTheme(isDark ? "light" : "dark")}
+        className="fixed right-6 top-6 z-50 flex cursor-pointer items-center gap-1.5 rounded-full px-4 py-2 font-mono text-[11px] shadow-lg backdrop-blur-xl transition-colors"
+        style={{
+          color: isDark ? COLORS.neutral[900] : COLORS.neutral[0],
+          background: isDark ? "rgba(255,255,255,0.9)" : "rgba(30,28,26,0.9)",
+        }}
+      >
+        <Icon name={isDark ? "sun" : "moon"} size={14} />
+        {isDark ? "Light" : "Dark"}
+      </button>
+
       <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet"
@@ -44,23 +57,13 @@ export default function SyneBrandGuide() {
           }}
         />
         <div className="relative">
-          <div className="mb-12 flex items-center justify-between">
+          <div className="mb-12">
             <div
               className="text-lg font-semibold tracking-tight"
               style={{ fontFamily: FONTS.display }}
             >
               Syne
             </div>
-            <button
-              onClick={() => setTheme(isDark ? "light" : "dark")}
-              className="cursor-pointer rounded-full border bg-transparent px-3.5 py-1.5 font-mono text-[11px]"
-              style={{
-                color: t.fgSecondary,
-                borderColor: t.border,
-              }}
-            >
-              {isDark ? "☀ Light" : "● Dark"}
-            </button>
           </div>
           <h1
             className="m-0 mb-4 text-[56px] font-semibold leading-[1.05] tracking-tight"
@@ -367,11 +370,15 @@ export default function SyneBrandGuide() {
                   <div className="space-y-2">
                     <div
                       className="h-2.5 w-24 rounded-full"
-                      style={{ background: isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.08)" }}
+                      style={{
+                        background: isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.08)",
+                      }}
                     />
                     <div
                       className="h-2.5 w-40 rounded-full"
-                      style={{ background: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.05)" }}
+                      style={{
+                        background: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.05)",
+                      }}
                     />
                   </div>
                 </GlassSection>
@@ -385,13 +392,13 @@ export default function SyneBrandGuide() {
                   {["Setting up auth", "Database schema", "Email notifications"].map((step, i) => (
                     <div key={step} className="mb-2 flex items-center gap-2.5">
                       <div
-                        className="flex size-5 items-center justify-center rounded-full text-[10px]"
+                        className="flex size-5 items-center justify-center rounded-full"
                         style={{
                           background: i < 2 ? "rgba(76,175,80,0.12)" : t.tagBg,
                           color: i < 2 ? "#4CAF50" : t.fgTertiary,
                         }}
                       >
-                        {i < 2 ? "✓" : "○"}
+                        <Icon name={i < 2 ? "check" : "loader"} size={12} />
                       </div>
                       <span
                         className="text-[13px]"
@@ -413,11 +420,15 @@ export default function SyneBrandGuide() {
                   <div className="space-y-2">
                     <div
                       className="h-2.5 w-32 rounded-full"
-                      style={{ background: isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.08)" }}
+                      style={{
+                        background: isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.08)",
+                      }}
                     />
                     <div
                       className="h-2.5 w-48 rounded-full"
-                      style={{ background: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.05)" }}
+                      style={{
+                        background: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.05)",
+                      }}
                     />
                   </div>
                 </GlassSection>
@@ -427,22 +438,23 @@ export default function SyneBrandGuide() {
                   </div>
                   <div className="mt-4 flex items-center gap-2">
                     <div
-                      className="flex size-8 items-center justify-center rounded-lg text-sm"
+                      className="flex size-8 items-center justify-center rounded-lg"
                       style={{ border: `1px solid ${t.border}`, color: t.fgTertiary }}
                     >
-                      +
+                      <Icon name="plus" size={16} />
                     </div>
                     <div
                       className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[12px]"
                       style={{ border: `1px solid ${t.border}`, color: t.fgSecondary }}
                     >
-                      <span style={{ color: COLORS.primary[500] }}>✎</span> Add styling
+                      <Icon name="pencil" size={14} style={{ color: COLORS.primary[500] }} />
+                      Add styling
                     </div>
                     <div
-                      className="ml-auto flex size-8 items-center justify-center rounded-lg text-sm text-white"
+                      className="ml-auto flex size-8 items-center justify-center rounded-lg text-white"
                       style={{ background: COLORS.primary[500] }}
                     >
-                      ↑
+                      <Icon name="arrowUp" size={16} />
                     </div>
                   </div>
                 </OpaqueSection>
@@ -679,7 +691,7 @@ export default function SyneBrandGuide() {
                   className="mb-5 flex items-center gap-2 rounded-[14px] px-4 py-3"
                   style={{ background: t.inputBg }}
                 >
-                  <span className="text-sm opacity-40">🔍</span>
+                  <Icon name="search" size={16} style={{ color: t.fgTertiary, opacity: 0.6 }} />
                   <span className="text-sm" style={{ color: t.fgTertiary }}>
                     Search cards...
                   </span>
@@ -753,17 +765,27 @@ export default function SyneBrandGuide() {
                 className="mt-4 flex justify-around px-5 pb-8 pt-3"
                 style={{ borderTop: `1px solid ${t.borderSubtle}` }}
               >
-                {["Library", "Search", "Capture"].map((tab, i) => (
-                  <div key={tab} className="text-center">
+                {[
+                  { label: "Library", icon: "book" as const },
+                  { label: "Search", icon: "search" as const },
+                  { label: "Capture", icon: "plus" as const },
+                ].map((tab, i) => (
+                  <div key={tab.label} className="text-center">
                     <div
-                      className="mx-auto mb-1 size-5 rounded-md"
-                      style={{ background: i === 0 ? t.accent : t.tagBg }}
-                    />
+                      className="mx-auto mb-1 flex size-7 items-center justify-center rounded-lg"
+                      style={{ background: i === 0 ? t.accent : "transparent" }}
+                    >
+                      <Icon
+                        name={tab.icon}
+                        size={18}
+                        style={{ color: i === 0 ? "#FFF" : t.fgTertiary }}
+                      />
+                    </div>
                     <div
                       className="text-[10px] font-medium"
                       style={{ color: i === 0 ? t.accent : t.fgTertiary }}
                     >
-                      {tab}
+                      {tab.label}
                     </div>
                   </div>
                 ))}
@@ -773,13 +795,20 @@ export default function SyneBrandGuide() {
             {/* Card Detail */}
             <PhoneFrame t={t} bg={t.bg}>
               <div className="px-5 pb-5 pt-8">
-                <div className="mb-5 flex justify-between">
-                  <span className="text-sm" style={{ color: t.accent }}>
-                    ← Back
-                  </span>
-                  <span className="text-sm" style={{ color: t.fgTertiary }}>
-                    ···
-                  </span>
+                <div className="mb-5 flex items-center justify-between">
+                  <button
+                    className="flex cursor-pointer items-center gap-1 border-none bg-transparent text-sm"
+                    style={{ color: t.accent }}
+                  >
+                    <Icon name="caretLeft" size={16} />
+                    Back
+                  </button>
+                  <button
+                    className="cursor-pointer border-none bg-transparent"
+                    style={{ color: t.fgTertiary }}
+                  >
+                    <Icon name="dots" size={20} />
+                  </button>
                 </div>
                 <div className="text-h2 mb-1" style={{ color: t.fg }}>
                   Design principles
@@ -814,9 +843,7 @@ export default function SyneBrandGuide() {
                         {conn.type}
                       </div>
                     </div>
-                    <div className="text-xs" style={{ color: t.fgTertiary }}>
-                      →
-                    </div>
+                    <Icon name="caretRight" size={16} style={{ color: t.fgTertiary }} />
                   </div>
                 ))}
                 <div
@@ -861,21 +888,25 @@ export default function SyneBrandGuide() {
                   </div>
                   <div className="mt-3 flex items-center justify-between">
                     <div className="flex gap-2">
-                      {["📷", "🔗", "#"].map((icon) => (
+                      {[
+                        { icon: "camera" as const },
+                        { icon: "link" as const },
+                        { icon: "hash" as const },
+                      ].map((item) => (
                         <div
-                          key={icon}
-                          className="flex size-8 items-center justify-center rounded-[10px] text-sm"
+                          key={item.icon}
+                          className="flex size-8 items-center justify-center rounded-[10px]"
                           style={{ background: t.tagBg }}
                         >
-                          {icon}
+                          <Icon name={item.icon} size={18} style={{ color: t.fgSecondary }} />
                         </div>
                       ))}
                     </div>
                     <div
-                      className="flex size-9 items-center justify-center rounded-[10px] text-base font-bold text-white"
+                      className="flex size-9 items-center justify-center rounded-[10px] text-white"
                       style={{ background: COLORS.primary[500] }}
                     >
-                      ↑
+                      <Icon name="arrowUp" size={20} />
                     </div>
                   </div>
                 </GlassCard>
@@ -885,13 +916,20 @@ export default function SyneBrandGuide() {
             {/* Space View */}
             <PhoneFrame t={t} bg={t.bg}>
               <div className="px-5 pb-5 pt-8">
-                <div className="mb-5 flex justify-between">
-                  <span className="text-sm" style={{ color: t.accent }}>
-                    ← Library
-                  </span>
-                  <span className="text-sm" style={{ color: t.fgTertiary }}>
-                    ···
-                  </span>
+                <div className="mb-5 flex items-center justify-between">
+                  <button
+                    className="flex cursor-pointer items-center gap-1 border-none bg-transparent text-sm"
+                    style={{ color: t.accent }}
+                  >
+                    <Icon name="caretLeft" size={16} />
+                    Library
+                  </button>
+                  <button
+                    className="cursor-pointer border-none bg-transparent"
+                    style={{ color: t.fgTertiary }}
+                  >
+                    <Icon name="dots" size={20} />
+                  </button>
                 </div>
                 <div
                   className="mb-4 rounded-lg p-5"
@@ -945,9 +983,7 @@ export default function SyneBrandGuide() {
                         Note · 3 connections
                       </div>
                     </div>
-                    <div className="text-xs" style={{ color: t.fgTertiary }}>
-                      →
-                    </div>
+                    <Icon name="caretRight" size={16} style={{ color: t.fgTertiary }} />
                   </div>
                 ))}
               </div>
@@ -1080,6 +1116,87 @@ export default function SyneBrandGuide() {
                 </div>
               </div>
             ))}
+          </div>
+        </Section>
+
+        {/* Icons */}
+        <Section title="Icons" subtitle="Phosphor icons. Regular weight." t={t}>
+          <div
+            className="rounded-xl p-6"
+            style={{ background: t.surface, border: `1px solid ${t.border}` }}
+          >
+            <div className="grid grid-cols-8 gap-4">
+              {ICON_NAMES.map((name) => (
+                <div key={name} className="flex flex-col items-center gap-2">
+                  <div
+                    className="flex size-12 items-center justify-center rounded-xl"
+                    style={{ background: t.inputBg }}
+                  >
+                    <Icon name={name} size={24} style={{ color: t.fg }} />
+                  </div>
+                  <span className="font-mono text-[9px]" style={{ color: t.fgTertiary }}>
+                    {name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="mt-6 grid grid-cols-2 gap-4">
+            <div
+              className="rounded-xl p-5"
+              style={{ background: t.surface, border: `1px solid ${t.border}` }}
+            >
+              <div
+                className="mb-3 font-mono text-[10px] uppercase tracking-wide"
+                style={{ color: t.fgTertiary }}
+              >
+                Sizes
+              </div>
+              <div className="flex items-end gap-4">
+                {[14, 18, 24, 32, 40].map((size) => (
+                  <div key={size} className="flex flex-col items-center gap-1.5">
+                    <Icon name="sparkle" size={size} style={{ color: t.accent }} />
+                    <span className="font-mono text-[9px]" style={{ color: t.fgTertiary }}>
+                      {size}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div
+              className="rounded-xl p-5"
+              style={{ background: t.surface, border: `1px solid ${t.border}` }}
+            >
+              <div
+                className="mb-3 font-mono text-[10px] uppercase tracking-wide"
+                style={{ color: t.fgTertiary }}
+              >
+                In Context
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  className="flex cursor-pointer items-center gap-2 rounded-full border-none px-4 py-2 text-sm font-medium text-white"
+                  style={{ background: COLORS.primary[500] }}
+                >
+                  <Icon name="plus" size={16} />
+                  New Card
+                </button>
+                <button
+                  className="flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"
+                  style={{ color: t.fg, background: t.inputBg }}
+                >
+                  <Icon name="search" size={16} />
+                  Search
+                </button>
+                <button
+                  className="flex cursor-pointer items-center gap-1.5 rounded-full border-none bg-transparent px-3 py-2 text-sm font-medium"
+                  style={{ color: t.accent }}
+                >
+                  <Icon name="link" size={16} />
+                  Connect
+                </button>
+              </div>
+            </div>
           </div>
         </Section>
 
