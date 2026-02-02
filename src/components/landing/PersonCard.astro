@@ -1,0 +1,23 @@
+---
+import Icon from "../Icon.astro";
+import GlassContainer from "../GlassContainer.astro";
+
+interface Props {
+  name: string;
+  role: string;
+}
+
+const { name, role } = Astro.props;
+---
+
+<GlassContainer>
+  <div class="flex items-center gap-2.5 p-2">
+    <div class="flex size-8 items-center justify-center rounded-full bg-gradient-to-br from-primary-300 to-primary-500">
+      <Icon name="user" size={16} class="text-white" />
+    </div>
+    <div>
+      <div class="font-heading text-[13px] font-medium text-theme-fg">{name}</div>
+      <div class="font-body text-[11px] text-theme-fg-tertiary">{role}</div>
+    </div>
+  </div>
+</GlassContainer>

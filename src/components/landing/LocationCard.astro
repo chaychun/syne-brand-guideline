@@ -1,0 +1,31 @@
+---
+import Icon from "../Icon.astro";
+
+interface Props {
+  name: string;
+  address: string;
+}
+
+const { name, address } = Astro.props;
+---
+
+<div class="overflow-hidden rounded-lg border border-theme-border bg-theme-card-bg shadow-lg">
+  <!-- Map visual -->
+  <div class="map-area relative h-[120px] overflow-hidden bg-gradient-to-br from-[#2a2d3a] to-[#1e2028]">
+    <div class="absolute inset-0">
+      <div class="map-line absolute left-[-50%] top-[30%] h-0.5 w-[200%] -rotate-[35deg] bg-white/[0.08]"></div>
+      <div class="map-line absolute left-[-50%] top-[60%] h-0.5 w-[200%] -rotate-[35deg] bg-white/[0.08]"></div>
+      <div class="map-line absolute left-[40%] top-[-50%] h-[200%] w-0.5 rotate-[35deg] bg-white/[0.08]"></div>
+    </div>
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div class="flex size-11 items-center justify-center rounded-full bg-neutral-500/60 text-white backdrop-blur-sm">
+        <Icon name="mapPin" size={16} weight="fill" />
+      </div>
+    </div>
+  </div>
+  <!-- Info -->
+  <div class="p-3.5">
+    <div class="font-heading text-[17px] font-medium text-theme-fg">{name}</div>
+    <div class="font-body text-[13px] text-theme-fg-tertiary">{address}</div>
+  </div>
+</div>

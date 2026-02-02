@@ -1,0 +1,39 @@
+---
+import GlassContainer from "../GlassContainer.astro";
+
+interface Props {
+  source: string;
+  title: string;
+}
+
+const { source, title } = Astro.props;
+---
+
+<GlassContainer>
+  <div class="overflow-hidden rounded-xl bg-theme-card-bg">
+    <div class="p-3.5">
+      <div class="mb-1 font-mono text-[10px] font-medium uppercase tracking-wider text-accent-coral">
+        {source}
+      </div>
+      <h4 class="font-heading text-[14px] font-semibold leading-snug text-theme-fg">
+        {title}
+      </h4>
+    </div>
+    <div class="article-visual h-20"></div>
+  </div>
+</GlassContainer>
+
+<style>
+  .article-visual {
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      #ffa55e 0%,
+      #f5c4a1 35%,
+      #d5cfe1 70%,
+      #ebe7f0 100%
+    );
+  }
+  :global([data-theme="dark"]) .article-visual {
+    background: radial-gradient(ellipse at 50% 50%, #e07020 0%, #b85a18 35%, #1c1a17 100%);
+  }
+</style>

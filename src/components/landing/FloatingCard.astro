@@ -1,0 +1,39 @@
+---
+interface Props {
+  class?: string;
+  delay?: string;
+}
+
+const { class: className = "", delay = "0s" } = Astro.props;
+---
+
+<div
+  class:list={["floating-card absolute", className]}
+  style={`animation-delay: ${delay}`}
+>
+  <slot />
+</div>
+
+<style>
+  .floating-card {
+    animation: float-card 6s ease-in-out infinite;
+  }
+
+  @keyframes float-card {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .floating-card {
+      opacity: 0.35;
+      transform: scale(0.8);
+      animation-duration: 8s;
+    }
+  }
+</style>
