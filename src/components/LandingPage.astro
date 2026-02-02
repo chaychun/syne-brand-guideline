@@ -23,9 +23,9 @@ import PhoneMockup from "./landing/PhoneMockup.astro";
   <BlobBackground />
 
   <!-- Floating app elements -->
-  <div class="pointer-events-none absolute inset-0 max-md:z-[1]">
-    <!-- Note card - Top left -->
-    <FloatingCard class="left-[10%] top-[8%] w-[200px] max-lg:w-[180px] max-md:left-[2%] max-md:top-[4%] max-md:w-[160px] max-sm:w-[140px]" delay="0s">
+  <div class="floating-cards-container pointer-events-none absolute inset-0 max-md:z-[1]">
+    <!-- Note card - Top left (visible on all screens, peek from edge on smaller) -->
+    <FloatingCard class="left-[10%] top-[8%] w-[200px] max-lg:w-[180px] max-md:-left-[5%] max-md:top-[3%] max-md:w-[160px] max-sm:-left-[10%] max-sm:top-[2%] max-sm:w-[140px]" delay="0s">
       <GlassCard>
         <h3 class="mb-2.5 font-heading text-[15px] font-semibold leading-tight text-theme-fg">
           The cost of lost knowledge
@@ -36,30 +36,30 @@ import PhoneMockup from "./landing/PhoneMockup.astro";
       </GlassCard>
     </FloatingCard>
 
-    <!-- Quote card - Top right -->
-    <FloatingCard class="right-[18%] top-[6%] w-[300px] max-lg:right-[12%] max-lg:w-[260px] max-md:right-[2%] max-md:top-[3%] max-md:w-[210px] max-sm:hidden" delay="-1.5s">
+    <!-- Quote card - Top right (visible on all screens, peek from edge on smaller) -->
+    <FloatingCard class="right-[18%] top-[6%] w-[300px] max-lg:right-[12%] max-lg:w-[260px] max-md:-right-[5%] max-md:top-[2%] max-md:w-[220px] max-sm:-right-[12%] max-sm:w-[200px]" delay="-1.5s">
       <GlassContainer>
         <QuoteCard day="MON" date="10" title="Thought of the day" quote="Nature does not hurry; yet everything is accomplished." />
       </GlassContainer>
     </FloatingCard>
 
-    <!-- Book card - Left side -->
-    <FloatingCard class="left-[23%] top-[38%] w-[140px] max-md:bottom-[34%] max-md:left-[2%] max-md:top-auto max-md:w-[100px] max-sm:hidden" delay="-3s">
+    <!-- Book card - Left side (hidden at 1150px and below - too close to content) -->
+    <FloatingCard class="left-[23%] top-[38%] w-[140px] max-[1150px]:hidden" delay="-3s">
       <BookCard title="Meditations" author="Marcus Aurelius" />
     </FloatingCard>
 
-    <!-- Location card - Right side -->
-    <FloatingCard class="bottom-[43%] right-[19%] w-[180px] max-md:bottom-[32%] max-md:right-[2%] max-md:w-[140px] max-sm:w-[120px]" delay="-2s">
+    <!-- Location card - Right side (only visible on large desktop) -->
+    <FloatingCard class="bottom-[43%] right-[19%] w-[180px] max-[1150px]:hidden" delay="-2s">
       <LocationCard name="Eiffel Tower" address="Champ de Mars, Paris" />
     </FloatingCard>
 
-    <!-- Article card - Bottom left -->
-    <FloatingCard class="bottom-[12%] left-[14%] w-[190px] max-md:hidden" delay="-4s">
+    <!-- Article card - Bottom left (visible on all screens, peek from edge on smaller) -->
+    <FloatingCard class="bottom-[12%] left-[14%] w-[190px] max-lg:left-[3%] max-lg:w-[170px] max-md:-left-[8%] max-md:bottom-[28%] max-md:w-[160px] max-sm:-left-[12%] max-sm:bottom-[32%]" delay="-4s">
       <ArticleCard source="The New Yorker" title="Should You Just Give Up?" />
     </FloatingCard>
 
-    <!-- Social card - Bottom right -->
-    <FloatingCard class="bottom-[11%] right-[28%] w-[170px] max-md:hidden" delay="-1s">
+    <!-- Social card - Bottom right (hidden at 1150px and below - too close to content) -->
+    <FloatingCard class="bottom-[11%] right-[28%] w-[170px] max-[1150px]:hidden" delay="-1s">
       <SocialCard
         number="10"
         lines={["*logo tips*", "from a", "*type designer*"]}
@@ -67,26 +67,26 @@ import PhoneMockup from "./landing/PhoneMockup.astro";
       />
     </FloatingCard>
 
-    <!-- Vinyl/Music card - Right side -->
-    <FloatingCard class="right-[5%] top-[52%] w-[180px] max-lg:hidden" delay="-2.5s">
+    <!-- Vinyl/Music card - Right side (moves to location card spot on smaller screens) -->
+    <FloatingCard class="right-[5%] top-[52%] w-[180px] max-[1150px]:right-[12%] max-[1150px]:top-[38%] max-lg:right-[3%] max-lg:top-[42%] max-lg:w-[160px] max-md:-right-[8%] max-md:top-[38%] max-md:w-[150px] max-sm:-right-[15%] max-sm:top-[35%]" delay="-2.5s">
       <VinylCard />
     </FloatingCard>
 
-    <!-- Search bar -->
+    <!-- Search bar (hidden on large and below) -->
     <FloatingCard class="right-[10%] top-[24%] max-lg:hidden" delay="-3.5s">
       <SearchBar placeholder="Search your thoughts..." />
     </FloatingCard>
 
-    <!-- Space tag -->
-    <FloatingCard class="bottom-[10%] left-[10%] max-md:bottom-[26%] max-md:left-[2%]" delay="-4.5s">
+    <!-- Space tag - subtle accent on mobile -->
+    <FloatingCard class="bottom-[10%] left-[10%] max-md:bottom-[32%] max-md:left-[3%] max-sm:bottom-[38%]" delay="-4.5s">
       <div class="inline-flex items-center rounded-full border border-primary-100 bg-primary-50 px-3.5 py-2 font-heading text-[13px] font-medium text-primary-600 dark:border-primary-500/20 dark:bg-primary-500/10 dark:text-primary-400">
         <Icon name="folderOpen" size={14} class="mr-1.5" />
         Research
       </div>
     </FloatingCard>
 
-    <!-- Connection count -->
-    <FloatingCard class="left-[26%] top-[36%] max-lg:hidden" delay="-5s">
+    <!-- Connection count (hidden at 1150px and below - clutters center) -->
+    <FloatingCard class="left-[26%] top-[36%] max-[1150px]:hidden" delay="-5s">
       <div class="rounded-xl border border-theme-glass-border bg-theme-glass-bg px-3.5 py-2.5 backdrop-blur-[20px]">
         <div class="flex items-center gap-2 font-body text-[13px] text-theme-fg-secondary">
           <Icon name="graph" size={16} class="text-primary-500" />
@@ -95,8 +95,8 @@ import PhoneMockup from "./landing/PhoneMockup.astro";
       </div>
     </FloatingCard>
 
-    <!-- Person card -->
-    <FloatingCard class="left-[20%] top-[18%] max-md:hidden" delay="-1.2s">
+    <!-- Person card (hidden at 1150px and below - overlaps with note card) -->
+    <FloatingCard class="left-[20%] top-[18%] max-[1150px]:hidden" delay="-1.2s">
       <PersonCard name="Sarah Chen" role="Designer" />
     </FloatingCard>
   </div>
