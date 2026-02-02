@@ -1,0 +1,86 @@
+---
+import Section from "./Section.astro";
+import ColorSwatch from "./ColorSwatch.astro";
+
+const primaryColors = {
+  50: "#FFF7F0",
+  100: "#FFEDD9",
+  200: "#FFD8B0",
+  300: "#FFC087",
+  400: "#FFA55E",
+  500: "#F28C3E",
+  600: "#E07020",
+  700: "#B85A18",
+  800: "#8F4513",
+  900: "#6B3410",
+};
+
+const secondaryColors = {
+  50: "#F5F3F7",
+  100: "#EBE7F0",
+  200: "#D5CFE1",
+  300: "#BAB0CE",
+  400: "#9E91BA",
+  500: "#8273A6",
+  600: "#6B5C8E",
+  700: "#554972",
+  800: "#403757",
+  900: "#2D263D",
+};
+
+const neutralColors = {
+  0: "#FFFFFF",
+  50: "#FAF9F7",
+  100: "#F3F1EE",
+  200: "#E8E5E0",
+  300: "#D4D0C9",
+  400: "#B5B0A7",
+  500: "#918B80",
+  600: "#6E695F",
+  700: "#4D4940",
+  800: "#33302A",
+  900: "#1C1A17",
+  950: "#0F0E0C",
+};
+
+const accentColors = {
+  peach: "#F5C4A1",
+  coral: "#E8836B",
+  lavender: "#C4B8D9",
+  sage: "#A8B8A0",
+  cream: "#F5EFDA",
+  seafoam: "#A8C9CB",
+};
+---
+
+<Section title="Color — Primary" subtitle="Warm orange. The signature.">
+  <div class="flex flex-wrap gap-2.5">
+    {Object.entries(primaryColors).map(([k, v]) => (
+      <ColorSwatch color={v} name={k} hex={v} />
+    ))}
+  </div>
+</Section>
+
+<Section title="Color — Secondary" subtitle="Cool lavender. The counterbalance.">
+  <div class="flex flex-wrap gap-2.5">
+    {Object.entries(secondaryColors).map(([k, v]) => (
+      <ColorSwatch color={v} name={k} hex={v} />
+    ))}
+  </div>
+</Section>
+
+<Section title="Color — Neutral" subtitle="Warm grays. Never blue-tinted.">
+  <div class="flex flex-wrap gap-2.5">
+    {Object.entries(neutralColors).map(([k, v]) => (
+      <ColorSwatch color={v} name={k} hex={v} />
+    ))}
+  </div>
+</Section>
+
+<Section title="Color — Accents">
+  <div class="flex flex-wrap gap-3">
+    {Object.entries(accentColors).map(([k, v]) => (
+      <ColorSwatch color={v} name={k} hex={v} />
+    ))}
+  </div>
+</Section>

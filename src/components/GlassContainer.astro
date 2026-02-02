@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+  style?: string;
+}
+
+const { class: className = "", style = "" } = Astro.props;
+---
+
+<div class={`glass-container overflow-hidden rounded-2xl p-1.5 backdrop-blur-[20px] ${className}`} style={style}>
+  <slot />
+</div>
+
+<style>
+  .glass-container {
+    background: var(--theme-glass-edge);
+    border: 1px solid var(--theme-glass-border);
+    box-shadow: var(--theme-glass-shadow);
+    -webkit-backdrop-filter: blur(20px);
+  }
+</style>

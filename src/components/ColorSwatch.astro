@@ -1,0 +1,40 @@
+---
+interface Props {
+  color: string;
+  name?: string;
+  hex?: string;
+}
+
+const { color, name, hex } = Astro.props;
+const displayHex = hex || color;
+---
+
+<div class="color-swatch cursor-pointer text-center" data-hex={displayHex}>
+  <div
+    class="size-16 rounded-md border border-black/5 transition-transform hover:scale-105"
+    style={`background-color: ${color};`}
+  ></div>
+  {name && <div class="mt-1 font-mono text-[9px] text-neutral-500">{name}</div>}
+  <div class="swatch-hex font-mono text-[9px] text-neutral-400">{displayHex}</div>
+</div>
+
+<script>
+  document.querySelectorAll(".color-swatch").forEach((swatch) => {
+    swatch.addEventListener("click", () => {
+      const hex = swatch.getAttribute("data-hex");
+      if (hex) {
+        navigator.clipboard?.writeText(hex);
+        const hexEl = swatch.querySelector(".swatch-hex");
+        if (hexEl) {
+          const original = hexEl.textContent;
+          hexEl.textContent = "copied!";
+          hexEl.style.color = "#F28C3E";
+          setTimeout(() => {
+            hexEl.textContent = original;
+            hexEl.style.color = "";
+          }, 1200);
+        }
+      }
+    });
+  });
+</script>

@@ -1,0 +1,183 @@
+---
+import Logo from "./Logo.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<!-- Fixed header bar -->
+<div class="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-5">
+  <!-- Logo with theme-aware colors -->
+  <div class="relative h-[26px] w-[90px]">
+    <div class="logo-dark absolute inset-0 text-[#FFFBF7]">
+      <Logo width={90} />
+    </div>
+    <div class="logo-light absolute inset-0 text-[#1E1C1A]">
+      <Logo width={90} />
+    </div>
+  </div>
+
+  <!-- Theme toggle -->
+  <ThemeToggle />
+</div>
+
+<!-- HERO -->
+<div class="relative overflow-hidden">
+  <!-- Background color blobs layer -->
+  <div class="hero-bg absolute inset-0">
+    <!-- Primary warm blob - top right -->
+    <div class="hero-blob-primary pointer-events-none absolute -right-[60px] -top-[40px] size-[380px] rounded-full blur-[80px]"></div>
+    <!-- Secondary teal blob - bottom left -->
+    <div class="hero-blob-teal pointer-events-none absolute -bottom-[80px] -left-[60px] size-[320px] rounded-full blur-[80px]"></div>
+    <!-- Lavender blob - top left -->
+    <div class="hero-blob-lavender pointer-events-none absolute -left-[40px] top-[10%] size-[280px] rounded-full blur-[90px]"></div>
+    <!-- Coral accent - center right -->
+    <div class="hero-blob-coral pointer-events-none absolute right-[10%] top-[40%] size-[250px] rounded-full blur-[70px]"></div>
+    <!-- Sage green blob - bottom center -->
+    <div class="hero-blob-sage pointer-events-none absolute bottom-[-60px] left-[30%] size-[300px] rounded-full blur-[90px]"></div>
+    <!-- Peach blob - top center -->
+    <div class="hero-blob-peach pointer-events-none absolute -top-[30px] left-[40%] size-[220px] rounded-full blur-[70px]"></div>
+    <!-- Deep purple blob - bottom right -->
+    <div class="hero-blob-purple pointer-events-none absolute -bottom-[40px] right-[20%] size-[260px] rounded-full blur-[85px]"></div>
+    <!-- Small bright orange accent - mid left -->
+    <div class="hero-blob-orange pointer-events-none absolute left-[15%] top-[60%] size-[180px] rounded-full blur-[60px]"></div>
+  </div>
+
+  <!-- Glass panel with backdrop blur -->
+  <div class="hero-glass relative">
+    <div class="relative mx-auto max-w-[960px] px-5 pb-12 pt-28 sm:px-8 sm:pb-16 sm:pt-32 md:px-12 md:pb-20 md:pt-40">
+      <h1 class="relative m-0 mb-4 font-display text-[36px] font-semibold leading-[1.05] tracking-tight sm:text-[44px] md:text-[56px]">
+        <span class="hero-title-dark">
+          Brand<br />Identity
+        </span>
+        <span class="hero-title-light absolute inset-0">
+          Brand<br />Identity
+        </span>
+      </h1>
+      <p class="text-body m-0 max-w-[400px] leading-relaxed text-theme-fg-secondary">
+        Visual system for Syne — a spatial knowledge tool where connections are primary,
+        content is secondary.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Logo visibility based on theme */
+  .logo-light {
+    opacity: 1;
+  }
+  .logo-dark {
+    opacity: 0;
+  }
+  :global([data-theme="dark"]) .logo-light {
+    opacity: 0;
+  }
+  :global([data-theme="dark"]) .logo-dark {
+    opacity: 1;
+  }
+
+  /* Title visibility based on theme */
+  .hero-title-light {
+    color: #33302A;
+    opacity: 1;
+  }
+  .hero-title-dark {
+    color: #F3F1EE;
+    opacity: 0;
+  }
+  :global([data-theme="dark"]) .hero-title-light {
+    opacity: 0;
+  }
+  :global([data-theme="dark"]) .hero-title-dark {
+    opacity: 1;
+  }
+
+  /* Hero background */
+  .hero-bg {
+    background: #FAF9F7;
+  }
+  :global([data-theme="dark"]) .hero-bg {
+    background: #0F0E0C;
+  }
+
+  /* Blobs - light mode */
+  .hero-blob-primary {
+    background: #FFA55E;
+    opacity: 0.65;
+  }
+  .hero-blob-teal {
+    background: #7FB0B4;
+    opacity: 0.55;
+  }
+  .hero-blob-lavender {
+    background: #9E91BA;
+    opacity: 0.5;
+  }
+  .hero-blob-coral {
+    background: #E8836B;
+    opacity: 0.5;
+  }
+  .hero-blob-sage {
+    background: #8BB282;
+    opacity: 0.45;
+  }
+  .hero-blob-peach {
+    background: #F5C4A1;
+    opacity: 0.55;
+  }
+  .hero-blob-purple {
+    background: #BAB0CE;
+    opacity: 0.5;
+  }
+  .hero-blob-orange {
+    background: #F28C3E;
+    opacity: 0.5;
+  }
+
+  /* Blobs - dark mode */
+  :global([data-theme="dark"]) .hero-blob-primary {
+    background: #E07020;
+    opacity: 0.6;
+  }
+  :global([data-theme="dark"]) .hero-blob-teal {
+    background: #5E9499;
+    opacity: 0.5;
+  }
+  :global([data-theme="dark"]) .hero-blob-lavender {
+    background: #8273A6;
+    opacity: 0.45;
+  }
+  :global([data-theme="dark"]) .hero-blob-coral {
+    background: #E8836B;
+    opacity: 0.45;
+  }
+  :global([data-theme="dark"]) .hero-blob-sage {
+    background: #6A9760;
+    opacity: 0.4;
+  }
+  :global([data-theme="dark"]) .hero-blob-peach {
+    background: #F5C4A1;
+    opacity: 0.4;
+  }
+  :global([data-theme="dark"]) .hero-blob-purple {
+    background: #554972;
+    opacity: 0.5;
+  }
+  :global([data-theme="dark"]) .hero-blob-orange {
+    background: #F28C3E;
+    opacity: 0.5;
+  }
+
+  /* Glass panel */
+  .hero-glass {
+    background: rgba(250, 249, 247, 0.7);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.8);
+  }
+  :global([data-theme="dark"]) .hero-glass {
+    background: rgba(15, 14, 12, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+  }
+</style>

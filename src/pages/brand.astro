@@ -1,0 +1,33 @@
+---
+import BrandLayout from "../layouts/BrandLayout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import DesignPrinciplesSection from "../components/DesignPrinciplesSection.astro";
+import TypographySection from "../components/TypographySection.astro";
+import ColorSection from "../components/ColorSection.astro";
+import GradientSection from "../components/GradientSection.astro";
+import SpacingSection from "../components/SpacingSection.astro";
+import FooterSection from "../components/FooterSection.astro";
+import GlassCardSection from "../components/GlassCardSection.astro";
+import ComponentsSection from "../components/ComponentsSection.astro";
+import LogoSection from "../components/LogoSection.astro";
+import IconsSection from "../components/IconsSection.astro";
+import MobileUISection from "../components/MobileUISection.astro";
+---
+
+<BrandLayout title="Syne Brand Guideline">
+  <HeroSection />
+
+  <div class="mx-auto max-w-[960px] px-5 pb-30 pt-10 sm:px-8 md:px-12 md:pt-16">
+    <DesignPrinciplesSection />
+    <TypographySection />
+    <ColorSection />
+    <GradientSection />
+    <GlassCardSection />
+    <ComponentsSection />
+    <SpacingSection />
+    <LogoSection />
+    <IconsSection />
+    <MobileUISection />
+    <FooterSection />
+  </div>
+</BrandLayout>
