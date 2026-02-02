@@ -1,0 +1,50 @@
+---
+import Section from "./Section.astro";
+
+const principles = [
+  {
+    title: "Warm, not hot",
+    desc: "Orange is an accent, not a flood. Warmth comes from the undertone in everything.",
+  },
+  {
+    title: "Soft geometry",
+    desc: "Generous radii. No sharp corners user-facing. Everything rounded and approachable.",
+  },
+  {
+    title: "Gradients as atmosphere",
+    desc: "Gradients for backgrounds and mood, not buttons or text. Environmental, not decorative.",
+  },
+  {
+    title: "Type hierarchy matters",
+    desc: "Syne for display moments. Satoshi for clarity. DM Sans for the quiet work of readability.",
+  },
+  {
+    title: "Glass for elevation",
+    desc: "Glass-edge cards for overlays and drawers. Opaque body, translucent edge.",
+  },
+  {
+    title: "Connection, visually",
+    desc: "The UI always hints at relationships. Tags, mentions, connections make the network visible.",
+  },
+];
+---
+
+<Section title="Design Principles">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    {principles.map((p) => (
+      <div class="principle-card rounded-lg p-6">
+        <div class="text-h3 mb-2 text-theme-fg">{p.title}</div>
+        <div class="text-body-sm leading-relaxed text-theme-fg-secondary">{p.desc}</div>
+      </div>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .principle-card {
+    background: rgba(0, 0, 0, 0.02);
+  }
+  :global([data-theme="dark"]) .principle-card {
+    background: rgba(255, 255, 255, 0.03);
+  }
+</style>

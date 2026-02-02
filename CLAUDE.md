@@ -21,10 +21,11 @@ Interactive brand guide for Syne.
 ## Structure
 
 - `src/pages/` — Astro pages (index, brand, 404)
-- `src/layouts/` — Astro layouts (BaseLayout)
-- `src/SyneBrandGuide.tsx` — main brand guide component
+- `src/layouts/` — Astro layouts (BaseLayout, BrandLayout)
 - `src/components/` — reusable React components (atoms + molecules)
-- `src/sections/` — brand guide content sections
+- `src/components/*.astro` — Astro components (Section, HeroSection, ColorSection, etc.)
+- `src/components/islands/` — React islands for complex interactive sections
+- `src/sections/` — brand guide content sections (React)
 - `src/theme/` — design tokens (colors, gradients, fonts, useTheme hook)
 - `src/index.css` — Tailwind config with custom theme tokens
 - `astro.config.mjs` — Astro configuration

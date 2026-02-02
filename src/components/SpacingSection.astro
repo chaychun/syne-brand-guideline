@@ -1,0 +1,103 @@
+---
+import Section from "./Section.astro";
+
+const spacings = [4, 8, 12, 16, 20, 24, 32, 40, 48, 64];
+const radii = [
+  { r: 8, l: "sm" },
+  { r: 12, l: "md" },
+  { r: 16, l: "lg" },
+  { r: 20, l: "xl" },
+  { r: 99, l: "full" },
+];
+
+const themeTokens = [
+  { token: "background", l: "#FAF9F7", d: "#0F0E0C" },
+  { token: "surface", l: "#FFFFFF", d: "#1C1A17" },
+  { token: "surface-raised", l: "#FFFFFF", d: "#33302A" },
+  { token: "text-primary", l: "#1C1A17", d: "#F3F1EE" },
+  { token: "text-secondary", l: "#918B80", d: "#B5B0A7" },
+  { token: "border", l: "rgba(0,0,0,0.06)", d: "rgba(255,255,255,0.08)" },
+  { token: "accent", l: "#F28C3E", d: "#FFA55E" },
+  { token: "accent-subtle", l: "#FFF7F0", d: "rgba(242,140,62,0.12)" },
+];
+---
+
+<Section title="Spacing & Radius" subtitle="Base 4px. Generous rounding.">
+  <div class="flex flex-col gap-8 sm:flex-row sm:flex-wrap">
+    <div>
+      <div class="text-overline mb-3 text-theme-fg-tertiary">Spacing</div>
+      <div class="flex flex-wrap items-end gap-1.5">
+        {spacings.map((s) => (
+          <div class="text-center">
+            <div class="w-5 rounded bg-primary-400 opacity-60 sm:w-6" style={`height: ${s}px;`}></div>
+            <div class="mt-0.5 font-mono text-[8px] text-theme-fg-tertiary">{s}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div>
+      <div class="text-overline mb-3 text-theme-fg-tertiary">Radius</div>
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        {radii.map((item) => (
+          <div class="text-center">
+            <div
+              class="radius-box size-10 border-2 border-primary-300 sm:size-12"
+              style={`border-radius: ${item.r}px;`}
+            ></div>
+            <div class="mt-1 font-mono text-[9px] text-theme-fg-tertiary">{item.r}px</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Section>
+
+<Section title="Theme Tokens">
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+    {themeTokens.map((item) => (
+      <div class="token-row flex items-center gap-3 rounded-md px-3.5 py-2.5">
+        <div
+          class="token-swatch size-8 shrink-0 rounded-lg border border-theme-border"
+          data-light={item.l}
+          data-dark={item.d}
+        ></div>
+        <div>
+          <div class="text-overline normal-case tracking-normal text-theme-fg">{item.token}</div>
+          <div class="token-value font-mono text-[10px] text-theme-fg-tertiary" data-light={item.l} data-dark={item.d}></div>
+        </div>
+      </div>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .radius-box {
+    background: rgba(242, 140, 62, 0.03);
+  }
+  :global([data-theme="dark"]) .radius-box {
+    background: rgba(242, 140, 62, 0.05);
+  }
+  .token-row {
+    background: rgba(0, 0, 0, 0.02);
+  }
+  :global([data-theme="dark"]) .token-row {
+    background: rgba(255, 255, 255, 0.03);
+  }
+</style>
+
+<script>
+  function updateTokens() {
+    const isDark = document.documentElement.dataset.theme === "dark";
+    document.querySelectorAll(".token-swatch").forEach((el) => {
+      const swatch = el as HTMLElement;
+      swatch.style.background = isDark ? swatch.dataset.dark || "" : swatch.dataset.light || "";
+    });
+    document.querySelectorAll(".token-value").forEach((el) => {
+      const value = el as HTMLElement;
+      value.textContent = isDark ? value.dataset.dark || "" : value.dataset.light || "";
+    });
+  }
+  updateTokens();
+  const observer = new MutationObserver(updateTokens);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+</script>

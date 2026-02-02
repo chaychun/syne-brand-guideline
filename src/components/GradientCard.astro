@@ -1,0 +1,35 @@
+---
+interface Props {
+  name: string;
+  lightGradient: string;
+  darkGradient: string;
+  height?: number;
+}
+
+const { name, lightGradient, darkGradient, height = 120 } = Astro.props;
+const id = `gradient-${name.replace(/\s+/g, "-").toLowerCase()}`;
+---
+
+<div class="text-center">
+  <div class="gradient-glass-frame overflow-hidden rounded-2xl p-1.5 backdrop-blur-[20px]">
+    <div id={id} class="gradient-preview w-full rounded-xl" style={`height: ${height}px;`}></div>
+  </div>
+  <div class="mt-2 font-mono text-[10px] text-theme-fg-tertiary">{name}</div>
+</div>
+
+<style define:vars={{ lightGradient, darkGradient, id }}>
+  .gradient-glass-frame {
+    background: var(--theme-glass-edge);
+    border: 1px solid var(--theme-glass-border);
+    box-shadow: var(--theme-glass-shadow);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .gradient-preview {
+    background: var(--lightGradient);
+  }
+
+  :global([data-theme="dark"]) .gradient-preview {
+    background: var(--darkGradient);
+  }
+</style>

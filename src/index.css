@@ -1,6 +1,75 @@
 @import "tailwindcss";
 
+/* Semantic theme colors - light mode defaults */
+:root {
+  --theme-bg: var(--color-neutral-50);
+  --theme-surface: var(--color-neutral-0);
+  --theme-surface-raised: var(--color-neutral-0);
+  --theme-fg: var(--color-neutral-900);
+  --theme-fg-secondary: var(--color-neutral-500);
+  --theme-fg-tertiary: var(--color-neutral-400);
+  --theme-border: rgba(0, 0, 0, 0.06);
+  --theme-border-subtle: rgba(0, 0, 0, 0.03);
+  --theme-accent: var(--color-primary-500);
+  --theme-accent-subtle: var(--color-primary-50);
+  --theme-accent-text: var(--color-primary-600);
+  --theme-glass-bg: rgba(255, 255, 255, 0.88);
+  --theme-glass-edge: rgba(255, 255, 255, 0.5);
+  --theme-glass-border: rgba(0, 0, 0, 0.06);
+  --theme-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --theme-card-bg: var(--color-neutral-0);
+  --theme-input-bg: var(--color-neutral-100);
+  --theme-tag-bg: var(--color-neutral-100);
+  --theme-hero-bg: var(--color-neutral-50);
+  --theme-hero-glass: rgba(250, 249, 247, 0.7);
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] {
+  --theme-bg: var(--color-neutral-950);
+  --theme-surface: var(--color-neutral-900);
+  --theme-surface-raised: var(--color-neutral-800);
+  --theme-fg: var(--color-neutral-100);
+  --theme-fg-secondary: var(--color-neutral-400);
+  --theme-fg-tertiary: var(--color-neutral-500);
+  --theme-border: rgba(255, 255, 255, 0.08);
+  --theme-border-subtle: rgba(255, 255, 255, 0.04);
+  --theme-accent: var(--color-primary-500);
+  --theme-accent-subtle: rgba(242, 140, 62, 0.12);
+  --theme-accent-text: var(--color-primary-300);
+  --theme-glass-bg: rgba(15, 14, 12, 0.88);
+  --theme-glass-edge: rgba(0, 0, 0, 0.4);
+  --theme-glass-border: rgba(255, 255, 255, 0.1);
+  --theme-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --theme-card-bg: var(--color-neutral-900);
+  --theme-input-bg: var(--color-neutral-800);
+  --theme-tag-bg: rgba(255, 255, 255, 0.06);
+  --theme-hero-bg: var(--color-neutral-950);
+  --theme-hero-glass: rgba(15, 14, 12, 0.6);
+}
+
 @theme {
+  /* Semantic theme colors for Tailwind */
+  --color-theme-bg: var(--theme-bg);
+  --color-theme-surface: var(--theme-surface);
+  --color-theme-surface-raised: var(--theme-surface-raised);
+  --color-theme-fg: var(--theme-fg);
+  --color-theme-fg-secondary: var(--theme-fg-secondary);
+  --color-theme-fg-tertiary: var(--theme-fg-tertiary);
+  --color-theme-border: var(--theme-border);
+  --color-theme-border-subtle: var(--theme-border-subtle);
+  --color-theme-accent: var(--theme-accent);
+  --color-theme-accent-subtle: var(--theme-accent-subtle);
+  --color-theme-accent-text: var(--theme-accent-text);
+  --color-theme-glass-bg: var(--theme-glass-bg);
+  --color-theme-glass-edge: var(--theme-glass-edge);
+  --color-theme-glass-border: var(--theme-glass-border);
+  --color-theme-card-bg: var(--theme-card-bg);
+  --color-theme-input-bg: var(--theme-input-bg);
+  --color-theme-tag-bg: var(--theme-tag-bg);
+  --color-theme-hero-bg: var(--theme-hero-bg);
+  --color-theme-hero-glass: var(--theme-hero-glass);
+
   /* Primary */
   --color-primary-50: #fff7f0;
   --color-primary-100: #ffedd9;

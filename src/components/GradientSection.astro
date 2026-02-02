@@ -1,0 +1,91 @@
+---
+import Section from "./Section.astro";
+import GradientCard from "./GradientCard.astro";
+
+const gradients = [
+  {
+    name: "warmGlow",
+    light: "radial-gradient(ellipse at 50% 50%, #FFA55E 0%, #F5C4A1 35%, #D5CFE1 70%, #EBE7F0 100%)",
+    dark: "radial-gradient(ellipse at 50% 50%, #E07020 0%, #B85A18 35%, #1C1A17 100%)",
+  },
+  {
+    name: "sunrise",
+    light: "linear-gradient(135deg, #F5C4A1 0%, #FFA55E 30%, #E8836B 60%, #C4B8D9 100%)",
+    dark: "linear-gradient(135deg, #1C1A17 0%, #E8836B 50%, #5E9499 100%)",
+  },
+  {
+    name: "mist",
+    light: "linear-gradient(180deg, #FAF9F7 0%, #F3F1EE 30%, #FFEDD9 60%, #EBE7F0 100%)",
+    dark: "linear-gradient(180deg, #1C1A17 0%, #33302A 50%, #1C1A17 100%)",
+  },
+  {
+    name: "ember",
+    light: "radial-gradient(circle at 30% 70%, #F28C3E 0%, #E8836B 40%, #C4B8D9 80%, #F5F3F7 100%)",
+    dark: "radial-gradient(circle at 30% 70%, #F28C3E 0%, #E8836B 40%, #1C1A17 100%)",
+  },
+  {
+    name: "dusk",
+    light: "linear-gradient(135deg, #EBE7F0 0%, #F5C4A1 40%, #FFA55E 70%, #BAB0CE 100%)",
+    dark: "linear-gradient(135deg, #5E9499 0%, #E8836B 50%, #1C1A17 100%)",
+  },
+  {
+    name: "subtle",
+    light: "linear-gradient(180deg, #FAF9F7 0%, #FFF7F0 50%, #F5F3F7 100%)",
+    dark: "linear-gradient(180deg, #1C1A17 0%, #33302A 50%, #1C1A17 100%)",
+  },
+  {
+    name: "oasis",
+    light: "linear-gradient(180deg, #F5C4A1 0%, #CCDFE0 100%)",
+    dark: "linear-gradient(180deg, #E8836B 0%, #5E9499 100%)",
+  },
+  {
+    name: "lagoon",
+    light: "linear-gradient(135deg, #A8C9CB 0%, #FAF9F7 100%)",
+    dark: "linear-gradient(135deg, #5E9499 0%, #1C1A17 100%)",
+  },
+  {
+    name: "meadow",
+    light: "linear-gradient(180deg, #C8D4C0 0%, #F5EFDA 100%)",
+    dark: "linear-gradient(180deg, #A8B8A0 0%, #33302A 100%)",
+  },
+  {
+    name: "horizon",
+    light: "linear-gradient(135deg, #E6F0F0 0%, #FFEDD9 100%)",
+    dark: "linear-gradient(135deg, #5E9499 0%, #F5C4A1 100%)",
+  },
+  {
+    name: "grove",
+    light: "linear-gradient(180deg, #A8B8A0 0%, #F5C4A1 100%)",
+    dark: "linear-gradient(180deg, #A8B8A0 0%, #E8836B 100%)",
+  },
+];
+
+const sunsetColors = [
+  "#0F0E0C", "#1C1A17", "#33302A", "#6B3410", "#8F4513",
+  "#B85A18", "#E07020", "#F28C3E", "#FFA55E", "#FFC087",
+  "#FFD8B0", "#FFEDD9", "#FAF9F7", "#FFFFFF",
+];
+
+const sunsetVertical = `linear-gradient(180deg, ${sunsetColors.map((c, i) => `${c} ${[0, 8, 16, 26, 36, 46, 54, 60, 66, 72, 78, 84, 92, 100][i]}%`).join(", ")})`;
+const sunsetHorizontal = `linear-gradient(90deg, ${[0, 1, 2, 4, 6, 7, 9, 10, 12, 13].map((i, idx) => `${sunsetColors[i]} ${[0, 8, 16, 28, 42, 52, 64, 76, 92, 100][idx]}%`).join(", ")})`;
+---
+
+<Section title="Gradients" subtitle="Warm center, cool edges. Adapts to light and dark modes.">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+    {gradients.map((g) => (
+      <GradientCard name={g.name} lightGradient={g.light} darkGradient={g.dark} />
+    ))}
+  </div>
+</Section>
+
+<Section title="Sunset Palette" subtitle="Black → Orange → White through our primary. For rich backgrounds.">
+  <div class="overflow-hidden rounded-xl">
+    <div class="h-[140px] rounded-t-xl sm:h-[200px]" style={`background: ${sunsetVertical};`}></div>
+    <div class="h-14 rounded-b-xl sm:h-20" style={`background: ${sunsetHorizontal};`}></div>
+  </div>
+  <div class="mt-4 flex flex-wrap justify-center gap-1.5">
+    {sunsetColors.map((c) => (
+      <div class="size-6 rounded-lg border border-gray-500/15 sm:size-8" style={`background: ${c};`}></div>
+    ))}
+  </div>
+</Section>
