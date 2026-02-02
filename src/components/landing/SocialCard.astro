@@ -13,10 +13,10 @@ const { number, lines, caption } = Astro.props;
 
 <GlassContainer>
   <div class="overflow-hidden rounded-xl bg-theme-card-bg">
-    <div class="relative h-[140px] bg-neutral-100 dark:bg-neutral-200">
+    <div class="relative h-[140px] bg-neutral-100">
       <div class="flex flex-col justify-center p-4">
         <div class="font-display text-5xl font-bold leading-none text-accent-coral">{number}</div>
-        <div class="font-heading text-sm font-bold leading-tight text-neutral-900 dark:text-neutral-800">
+        <div class="font-heading text-sm font-bold leading-tight text-neutral-900">
           {lines.map((line, i) => (
             <Fragment>
               {line.startsWith("*") && line.endsWith("*") ? (
@@ -29,7 +29,7 @@ const { number, lines, caption } = Astro.props;
           ))}
         </div>
       </div>
-      <div class="absolute bottom-2 right-2 flex size-7 items-center justify-center rounded-md bg-neutral-900/80 backdrop-blur-sm dark:bg-neutral-800/80">
+      <div class="absolute bottom-2 right-2 flex size-7 items-center justify-center rounded-md bg-neutral-900/80 backdrop-blur-sm">
         <Icon name="instagram" size={16} class="text-white" />
       </div>
     </div>

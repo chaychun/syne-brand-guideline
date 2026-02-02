@@ -79,7 +79,7 @@ import PhoneMockup from "./landing/PhoneMockup.astro";
 
     <!-- Space tag - subtle accent on mobile -->
     <FloatingCard class="bottom-[10%] left-[10%] max-md:bottom-[32%] max-md:left-[3%] max-sm:bottom-[38%]" delay="-4.5s">
-      <div class="inline-flex items-center rounded-full border border-primary-100 bg-primary-50 px-3.5 py-2 font-heading text-[13px] font-medium text-primary-600 dark:border-primary-500/20 dark:bg-primary-500/10 dark:text-primary-400">
+      <div class="inline-flex items-center rounded-full border border-primary-100 bg-primary-50 px-3.5 py-2 font-heading text-[13px] font-medium text-primary-600">
         <Icon name="folderOpen" size={14} class="mr-1.5" />
         Research
       </div>
@@ -111,7 +111,7 @@ import PhoneMockup from "./landing/PhoneMockup.astro";
     <!-- Headline -->
     <h1 class="headline mb-3 text-center font-display font-semibold tracking-tight text-theme-fg">
       <span class="block">Where ideas</span>
-      <span class="highlight-word relative inline-block text-primary-600 dark:text-primary-400">come alive</span>
+      <span class="highlight-word relative inline-block text-primary-600">come alive</span>
     </h1>
 
     <!-- Subheadline -->
@@ -153,7 +153,7 @@ import PhoneMockup from "./landing/PhoneMockup.astro";
         </button>
       </form>
       <!-- Success message (hidden by default, shown after successful submission) -->
-      <div id="success-message" class="hidden items-center justify-center gap-2 py-3.5 text-center font-body text-[15px] text-green-600 opacity-0 transition-opacity duration-300 dark:text-green-400">
+      <div id="success-message" class="hidden items-center justify-center gap-2 py-3.5 text-center font-body text-[15px] text-green-600 opacity-0 transition-opacity duration-300">
         <Icon name="checkCircle" size={20} weight="fill" />
         <span>You're on the list!</span>
       </div>
@@ -184,9 +184,6 @@ import PhoneMockup from "./landing/PhoneMockup.astro";
     border-radius: 4px;
     z-index: -1;
     transform: rotate(-1deg);
-  }
-  :global([data-theme="dark"]) .highlight-word::after {
-    background: rgba(242, 140, 62, 0.25);
   }
 
   /* Content padding for phone mockup */
