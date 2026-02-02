@@ -121,25 +121,42 @@ import PhoneMockup from "./landing/PhoneMockup.astro";
 
     <!-- Email signup -->
     <GlassContainer class="w-full max-w-[460px]">
-      <form id="waitlist-form" class="flex items-center gap-2">
+      <form
+        id="waitlist-form"
+        action="https://api.web3forms.com/submit"
+        method="POST"
+        class="flex items-center gap-1.5"
+      >
         <div class="flex-1">
           <input
             type="email"
             id="email-input"
             name="email"
-            placeholder="Enter your email"
+            required
+            placeholder="Join the waitlist"
             aria-label="Email address"
-            class="w-full rounded-2xl border border-theme-border bg-theme-card-bg px-4 py-3.5 font-body text-[15px] text-theme-fg placeholder:text-theme-fg-tertiary focus:border-primary-400 focus:outline-none focus:ring-[3px] focus:ring-primary-500/10"
+            class="w-full rounded-xl border border-theme-border bg-theme-card-bg px-4 py-3 font-body text-[15px] text-theme-fg placeholder:text-theme-fg-tertiary focus:border-primary-400 focus:outline-none focus:ring-[3px] focus:ring-primary-500/10 disabled:opacity-50"
           />
         </div>
         <button
           type="submit"
-          class="flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl bg-primary-500 px-6 py-3.5 font-heading text-[15px] font-medium text-white hover:bg-primary-600 active:scale-[0.98]"
+          id="submit-btn"
+          aria-label="Submit"
+          class="flex size-[46px] shrink-0 items-center justify-center rounded-xl bg-primary-500 text-white transition-all duration-200 hover:bg-primary-600 active:scale-[0.98] disabled:opacity-70"
         >
-          <span>Join waitlist</span>
-          <Icon name="arrowRight" size={16} />
+          <span class="btn-icon">
+            <Icon name="arrowRight" size={18} />
+          </span>
+          <span class="btn-spinner hidden animate-spin">
+            <Icon name="loader" size={18} />
+          </span>
         </button>
       </form>
+      <!-- Success message (hidden by default, shown after successful submission) -->
+      <div id="success-message" class="hidden items-center justify-center gap-2 py-3.5 text-center font-body text-[15px] text-green-600 opacity-0 transition-opacity duration-300 dark:text-green-400">
+        <Icon name="checkCircle" size={20} weight="fill" />
+        <span>You're on the list!</span>
+      </div>
     </GlassContainer>
   </div>
 
@@ -212,15 +229,87 @@ import PhoneMockup from "./landing/PhoneMockup.astro";
       padding-bottom: 100px;
     }
   }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+  }
 </style>
 
 <script>
   const form = document.getElementById("waitlist-form") as HTMLFormElement;
   const emailInput = document.getElementById("email-input") as HTMLInputElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const btnIcon = submitBtn?.querySelector(".btn-icon") as HTMLElement;
+  const btnSpinner = submitBtn?.querySelector(".btn-spinner") as HTMLElement;
+  const successMessage = document.getElementById("success-message") as HTMLDivElement;
 
-  form?.addEventListener("submit", (e) => {
+  function setLoading(loading: boolean) {
+    emailInput.disabled = loading;
+    submitBtn.disabled = loading;
+    btnIcon?.classList.toggle("hidden", loading);
+    btnSpinner?.classList.toggle("hidden", !loading);
+  }
+
+  function showSuccess() {
+    // Animate out the form
+    form.style.opacity = "0";
+    form.style.transform = "scale(0.95)";
+    form.style.transition = "opacity 200ms, transform 200ms";
+
+    setTimeout(() => {
+      form.classList.add("hidden");
+      successMessage.classList.remove("hidden");
+      successMessage.classList.add("flex");
+      // Trigger reflow then animate in
+      void successMessage.offsetWidth;
+      successMessage.style.opacity = "1";
+    }, 200);
+
+    // Clear the form
+    emailInput.value = "";
+  }
+
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    // TODO: Implement waitlist API integration
-    console.log("Beta signup:", emailInput.value);
+    setLoading(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "03f766f7-fe94-4b8b-b8f1-1236060697f9",
+          subject: "New Syne Waitlist Signup",
+          from_name: "Syne Waitlist",
+          email: emailInput.value,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        showSuccess();
+      } else {
+        throw new Error(data.message || "Submission failed");
+      }
+    } catch (err) {
+      setLoading(false);
+      console.error("Form submission error:", err);
+      form.style.animation = "shake 0.4s ease-in-out";
+      form.addEventListener(
+        "animationend",
+        () => {
+          form.style.animation = "";
+        },
+        { once: true }
+      );
+    }
   });
 </script>
