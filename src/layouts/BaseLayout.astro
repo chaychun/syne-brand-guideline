@@ -2,13 +2,14 @@
 interface Props {
   title: string;
   description?: string;
+  forceLight?: boolean;
 }
 
-const { title, description = "A better way to think, create, and bring your ideas to life." } = Astro.props;
+const { title, description = "A better way to think, create, and bring your ideas to life.", forceLight = false } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme={forceLight ? "light" : undefined}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
