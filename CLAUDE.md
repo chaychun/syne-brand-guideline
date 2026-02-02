@@ -4,7 +4,7 @@ Interactive brand guide for Syne.
 
 ## Stack
 
-- Astro 5, React 19, TypeScript
+- Astro 5, TypeScript
 - Tailwind CSS v4 (via @tailwindcss/vite)
 - oxlint (linting), oxfmt (formatting with Tailwind class sorting)
 - bun (package manager)
@@ -22,10 +22,18 @@ Interactive brand guide for Syne.
 
 - `src/pages/` — Astro pages (index, brand, 404)
 - `src/layouts/` — Astro layouts (BaseLayout, BrandLayout)
-- `src/components/` — reusable React components (atoms + molecules)
-- `src/components/*.astro` — Astro components (Section, HeroSection, ColorSection, etc.)
-- `src/components/islands/` — React islands for complex interactive sections
-- `src/sections/` — brand guide content sections (React)
-- `src/theme/` — design tokens (colors, gradients, fonts, useTheme hook)
-- `src/index.css` — Tailwind config with custom theme tokens
+- `src/components/` — Astro components (Section, Icon, GlassCard, PhoneFrame, etc.)
+- `src/index.css` — Tailwind config with custom theme tokens and gradients
 - `astro.config.mjs` — Astro configuration
+
+## Theme System
+
+Theme colors are defined as CSS custom properties in `src/index.css`:
+
+- Light mode defaults in `:root`
+- Dark mode overrides in `[data-theme="dark"]`
+- Use `text-theme-fg`, `bg-theme-surface`, etc. Tailwind classes or `var(--theme-*)` CSS variables
+
+## Icons
+
+Icons use `phosphor-icons-astro` via `src/components/Icon.astro` wrapper. Add new icons by importing from `phosphor-icons-astro` and adding to `ICON_MAP`.

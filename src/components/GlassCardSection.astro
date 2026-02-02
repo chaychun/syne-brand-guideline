@@ -1,0 +1,131 @@
+---
+import Section from "./Section.astro";
+import GlassCard from "./GlassCard.astro";
+import GlassContainer from "./GlassContainer.astro";
+import GlassSection from "./GlassSection.astro";
+import OpaqueSection from "./OpaqueSection.astro";
+import Icon from "./Icon.astro";
+---
+
+<!-- Glass Card -->
+<Section
+  title="Glass Card"
+  subtitle="Glass edge on all sides with opaque body. Best on gradient backgrounds."
+>
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+    <div class="glass-demo-dusk flex items-center justify-center rounded-2xl p-5 sm:p-8">
+      <GlassCard class="w-full max-w-[260px]">
+        <div class="text-h3 mb-1.5 text-theme-fg">Design principles</div>
+        <div class="text-body-sm mb-3 leading-relaxed text-theme-fg-secondary">
+          Notes on spatial thinking and connection-first design.
+        </div>
+        <div class="flex gap-1.5">
+          {["Design", "Core"].map((tag) => (
+            <span class="rounded-full bg-[rgba(242,140,62,0.1)] px-2.5 py-0.5 text-[11px] font-medium text-primary-600">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </GlassCard>
+    </div>
+    <div class="glass-demo-ember flex items-center justify-center rounded-2xl p-5 sm:p-8">
+      <GlassCard class="w-full max-w-[260px]">
+        <div class="text-h3 mb-1.5 text-theme-fg">Meeting with team</div>
+        <div class="text-body-sm mb-3 leading-relaxed text-theme-fg-secondary">
+          Discuss new card creation flow and capture UX.
+        </div>
+        <div class="text-[11px] text-theme-fg-tertiary">Today · 3:00 PM</div>
+      </GlassCard>
+    </div>
+  </div>
+</Section>
+
+<!-- Glass Card Composable -->
+<Section
+  title="Glass Card Composable"
+  subtitle="Compose GlassContainer with GlassSection and OpaqueSection in any order."
+>
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+    <div class="glass-demo-mist flex items-center justify-center rounded-2xl p-5 sm:p-8">
+      <GlassContainer class="w-full max-w-[280px]">
+        <GlassSection>
+          <div class="space-y-2">
+            <div class="indicator-subtle h-2.5 w-24 rounded-full"></div>
+            <div class="indicator-muted h-2.5 w-40 rounded-full"></div>
+          </div>
+        </GlassSection>
+        <OpaqueSection>
+          <div class="text-h3 mb-3 text-theme-fg">Building your app</div>
+          {["Setting up auth", "Database schema", "Email notifications"].map((step, i) => (
+            <div class="mb-2 flex items-center gap-2.5">
+              <div
+                class={`flex size-5 items-center justify-center rounded-full ${i < 2 ? "bg-[rgba(76,175,80,0.12)] text-[#4CAF50]" : "bg-theme-tag-bg text-theme-fg-tertiary"}`}
+              >
+                <Icon name={i < 2 ? "check" : "loader"} size={12} />
+              </div>
+              <span class={`text-body-sm ${i < 2 ? "text-theme-fg-secondary" : "text-theme-fg-tertiary"}`}>
+                {step}
+              </span>
+            </div>
+          ))}
+        </OpaqueSection>
+      </GlassContainer>
+    </div>
+    <div class="glass-demo-dusk flex items-center justify-center rounded-2xl p-5 sm:p-8">
+      <GlassContainer class="w-full max-w-[280px]">
+        <GlassSection>
+          <div class="space-y-2">
+            <div class="indicator-subtle h-2.5 w-32 rounded-full"></div>
+            <div class="indicator-muted h-2.5 w-48 rounded-full"></div>
+          </div>
+        </GlassSection>
+        <OpaqueSection>
+          <div class="text-h3 text-theme-fg-tertiary">What would you change?</div>
+          <div class="mt-4 flex items-center gap-2">
+            <div class="flex size-8 items-center justify-center rounded-lg border border-theme-border text-theme-fg-tertiary">
+              <Icon name="plus" size={16} />
+            </div>
+            <div class="text-caption flex items-center gap-1.5 rounded-lg border border-theme-border px-3 py-1.5 text-theme-fg-secondary">
+              <Icon name="pencil" size={14} class="text-primary-500" />
+              Add styling
+            </div>
+            <div class="ml-auto flex size-8 items-center justify-center rounded-lg bg-primary-500 text-white">
+              <Icon name="arrowUp" size={16} />
+            </div>
+          </div>
+        </OpaqueSection>
+        <GlassSection class="py-3">
+          <div class="glass-footer-text text-center text-[11px]">
+            Footer on glass
+          </div>
+        </GlassSection>
+      </GlassContainer>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .glass-demo-dusk {
+    background: var(--gradient-dusk);
+  }
+  .glass-demo-ember {
+    background: var(--gradient-ember);
+  }
+  .glass-demo-mist {
+    background: var(--gradient-mist);
+  }
+
+  .indicator-subtle {
+    background: var(--theme-indicator-subtle);
+  }
+  .indicator-muted {
+    background: var(--theme-indicator-muted);
+  }
+
+  .glass-footer-text {
+    color: rgba(0, 0, 0, 0.3);
+  }
+  :global([data-theme="dark"]) .glass-footer-text {
+    color: rgba(255, 255, 255, 0.4);
+  }
+</style>

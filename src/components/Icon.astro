@@ -1,0 +1,119 @@
+---
+import {
+  PhHouse,
+  PhMagnifyingGlass,
+  PhPlus,
+  PhCamera,
+  PhLink,
+  PhHash,
+  PhArrowUp,
+  PhNote,
+  PhGraph,
+  PhFolderOpen,
+  PhCaretLeft,
+  PhArrowRight,
+  PhDotsThree,
+  PhFunnel,
+  PhGridFour,
+  PhList,
+  PhCheck,
+  PhCheckCircle,
+  PhSun,
+  PhMoon,
+  PhPencil,
+  PhPaperPlaneTilt,
+  PhImage,
+  PhX,
+  PhCaretRight,
+  PhTag,
+  PhClock,
+  PhCalendar,
+  PhBook,
+  PhSparkle,
+  PhCircleNotch,
+} from "phosphor-icons-astro";
+
+export type IconName = "home" | "search" | "plus" | "camera" | "link" | "hash" | "arrowUp" | "note" | "graph" | "folderOpen" | "caretLeft" | "arrowRight" | "dots" | "funnel" | "grid" | "list" | "check" | "checkCircle" | "sun" | "moon" | "pencil" | "send" | "image" | "x" | "caretRight" | "tag" | "clock" | "calendar" | "book" | "sparkle" | "loader";
+
+export const ICON_NAMES: IconName[] = [
+  "home",
+  "search",
+  "plus",
+  "camera",
+  "link",
+  "hash",
+  "arrowUp",
+  "note",
+  "graph",
+  "folderOpen",
+  "caretLeft",
+  "arrowRight",
+  "dots",
+  "funnel",
+  "grid",
+  "list",
+  "check",
+  "checkCircle",
+  "sun",
+  "moon",
+  "pencil",
+  "send",
+  "image",
+  "x",
+  "caretRight",
+  "tag",
+  "clock",
+  "calendar",
+  "book",
+  "sparkle",
+  "loader",
+];
+
+const ICON_MAP = {
+  home: PhHouse,
+  search: PhMagnifyingGlass,
+  plus: PhPlus,
+  camera: PhCamera,
+  link: PhLink,
+  hash: PhHash,
+  arrowUp: PhArrowUp,
+  note: PhNote,
+  graph: PhGraph,
+  folderOpen: PhFolderOpen,
+  caretLeft: PhCaretLeft,
+  arrowRight: PhArrowRight,
+  dots: PhDotsThree,
+  funnel: PhFunnel,
+  grid: PhGridFour,
+  list: PhList,
+  check: PhCheck,
+  checkCircle: PhCheckCircle,
+  sun: PhSun,
+  moon: PhMoon,
+  pencil: PhPencil,
+  send: PhPaperPlaneTilt,
+  image: PhImage,
+  x: PhX,
+  caretRight: PhCaretRight,
+  tag: PhTag,
+  clock: PhClock,
+  calendar: PhCalendar,
+  book: PhBook,
+  sparkle: PhSparkle,
+  loader: PhCircleNotch,
+} as const;
+
+type IconWeight = "thin" | "light" | "regular" | "bold" | "fill" | "duotone";
+
+interface Props {
+  name: IconName;
+  size?: number | string;
+  weight?: IconWeight;
+  class?: string;
+}
+
+const { name, size = 20, weight = "regular", class: className } = Astro.props;
+const IconComponent = ICON_MAP[name];
+---
+
+<IconComponent size={size} weight={weight} class={className} />

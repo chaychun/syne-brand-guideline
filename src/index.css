@@ -22,6 +22,35 @@
   --theme-tag-bg: var(--color-neutral-100);
   --theme-hero-bg: var(--color-neutral-50);
   --theme-hero-glass: rgba(250, 249, 247, 0.7);
+
+  /* Gradients - light mode */
+  --gradient-warm-glow: radial-gradient(
+    ellipse at 50% 50%,
+    #ffa55e 0%,
+    #f5c4a1 35%,
+    #d5cfe1 70%,
+    #ebe7f0 100%
+  );
+  --gradient-sunrise: linear-gradient(135deg, #f5c4a1 0%, #ffa55e 30%, #e8836b 60%, #c4b8d9 100%);
+  --gradient-mist: linear-gradient(180deg, #faf9f7 0%, #f3f1ee 30%, #ffedd9 60%, #ebe7f0 100%);
+  --gradient-ember: radial-gradient(
+    circle at 30% 70%,
+    #f28c3e 0%,
+    #e8836b 40%,
+    #c4b8d9 80%,
+    #f5f3f7 100%
+  );
+  --gradient-dusk: linear-gradient(135deg, #ebe7f0 0%, #f5c4a1 40%, #ffa55e 70%, #bab0ce 100%);
+  --gradient-subtle: linear-gradient(180deg, #faf9f7 0%, #fff7f0 50%, #f5f3f7 100%);
+  --gradient-oasis: linear-gradient(180deg, #f5c4a1 0%, #ccdfe0 100%);
+  --gradient-lagoon: linear-gradient(135deg, #a8c9cb 0%, #faf9f7 100%);
+  --gradient-meadow: linear-gradient(180deg, #c8d4c0 0%, #f5efda 100%);
+  --gradient-horizon: linear-gradient(135deg, #e6f0f0 0%, #ffedd9 100%);
+  --gradient-grove: linear-gradient(180deg, #a8b8a0 0%, #f5c4a1 100%);
+
+  /* Theme-aware indicator colors */
+  --theme-indicator-subtle: rgba(0, 0, 0, 0.08);
+  --theme-indicator-muted: rgba(0, 0, 0, 0.05);
 }
 
 /* Dark mode overrides */
@@ -46,6 +75,23 @@
   --theme-tag-bg: rgba(255, 255, 255, 0.06);
   --theme-hero-bg: var(--color-neutral-950);
   --theme-hero-glass: rgba(15, 14, 12, 0.6);
+
+  /* Gradients - dark mode */
+  --gradient-warm-glow: radial-gradient(ellipse at 50% 50%, #e07020 0%, #b85a18 35%, #1c1a17 100%);
+  --gradient-sunrise: linear-gradient(135deg, #1c1a17 0%, #e8836b 50%, #5e9499 100%);
+  --gradient-mist: linear-gradient(180deg, #1c1a17 0%, #33302a 50%, #1c1a17 100%);
+  --gradient-ember: radial-gradient(circle at 30% 70%, #f28c3e 0%, #e8836b 40%, #1c1a17 100%);
+  --gradient-dusk: linear-gradient(135deg, #5e9499 0%, #e8836b 50%, #1c1a17 100%);
+  --gradient-subtle: linear-gradient(180deg, #1c1a17 0%, #33302a 50%, #1c1a17 100%);
+  --gradient-oasis: linear-gradient(180deg, #e8836b 0%, #5e9499 100%);
+  --gradient-lagoon: linear-gradient(135deg, #5e9499 0%, #1c1a17 100%);
+  --gradient-meadow: linear-gradient(180deg, #a8b8a0 0%, #33302a 100%);
+  --gradient-horizon: linear-gradient(135deg, #5e9499 0%, #f5c4a1 100%);
+  --gradient-grove: linear-gradient(180deg, #a8b8a0 0%, #e8836b 100%);
+
+  /* Theme-aware indicator colors */
+  --theme-indicator-subtle: rgba(255, 255, 255, 0.15);
+  --theme-indicator-muted: rgba(255, 255, 255, 0.1);
 }
 
 @theme {

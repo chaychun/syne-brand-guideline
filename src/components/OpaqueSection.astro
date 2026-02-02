@@ -1,0 +1,18 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class={`opaque-section rounded-xl p-5 ${className}`}>
+  <slot />
+</div>
+
+<style>
+  .opaque-section {
+    background: var(--theme-card-bg);
+    border: 1px solid var(--theme-border);
+  }
+</style>

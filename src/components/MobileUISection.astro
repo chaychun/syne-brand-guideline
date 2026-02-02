@@ -1,0 +1,391 @@
+---
+import Section from "./Section.astro";
+import PhoneFrame from "./PhoneFrame.astro";
+import GlassCard from "./GlassCard.astro";
+import GlassContainer from "./GlassContainer.astro";
+import Icon from "./Icon.astro";
+---
+
+<Section
+  title="Mobile UI — Screens"
+  subtitle="iPhone mockups showing how the system applies."
+>
+  <div class="space-y-4">
+    <!-- Library Screen -->
+    <div class="screen-showcase flex flex-col items-center gap-6 py-8 sm:gap-8 sm:py-10 md:flex-row md:gap-12">
+      <div class="shrink-0">
+        <PhoneFrame>
+          <div class="flex h-full flex-col">
+            <div class="flex-1 px-4 pt-6">
+              <div class="mb-0.5 font-heading text-[22px] font-semibold text-theme-fg">Library</div>
+              <div class="mb-3 text-[13px] text-theme-fg-secondary">47 cards · 3 spaces</div>
+              <div class="mb-4 flex items-center gap-2 rounded-xl bg-theme-input-bg px-3 py-2.5">
+                <Icon name="search" size={14} class="text-theme-fg-tertiary opacity-60" />
+                <span class="text-[13px] text-theme-fg-tertiary">Search cards...</span>
+              </div>
+              <div class="mb-3 flex gap-1.5">
+                {["All", "Notes", "Links", "Images"].map((f, i) => (
+                  <span class={`whitespace-nowrap rounded-full px-3 py-1.5 text-[11px] font-medium ${i === 0 ? "bg-theme-accent text-white" : "bg-theme-tag-bg text-theme-fg-secondary"}`}>
+                    {f}
+                  </span>
+                ))}
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                {[
+                  { title: "Design system", meta: "5 connections", type: "primary" },
+                  { title: "Brand refs", meta: "Space · 12", type: "secondary" },
+                  { title: "Meeting notes", meta: "Today", type: "neutral" },
+                  { title: "Product roadmap", meta: "8 connections", type: "cream" },
+                  { title: "Swift patterns", meta: "3 connections", type: "sage" },
+                  { title: "Article: PKM", meta: "Link · 2 conn.", type: "neutral" },
+                ].map((card) => (
+                  <div class={`card-${card.type} rounded-xl border border-theme-border-subtle p-3`}>
+                    <div class="mb-0.5 font-heading text-[13px] font-medium text-theme-fg">{card.title}</div>
+                    <div class="text-[10px] text-theme-fg-tertiary">{card.meta}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div class="flex justify-around border-t border-theme-border-subtle px-4 pb-7 pt-2">
+              {[
+                { label: "Library", icon: "book" as const, active: true },
+                { label: "Search", icon: "search" as const, active: false },
+                { label: "Capture", icon: "plus" as const, active: false },
+              ].map((tab) => (
+                <div class="text-center">
+                  <div class={`mx-auto mb-1 flex size-6 items-center justify-center rounded-md ${tab.active ? "bg-theme-accent" : "bg-transparent"}`}>
+                    <Icon name={tab.icon} size={16} class={tab.active ? "text-white" : "text-theme-fg-tertiary"} />
+                  </div>
+                  <div class={`text-[9px] font-medium ${tab.active ? "text-theme-accent" : "text-theme-fg-tertiary"}`}>{tab.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </PhoneFrame>
+      </div>
+      <div class="flex max-w-sm flex-col text-center md:text-left">
+        <h3 class="text-h2 mb-2 text-theme-fg">Library</h3>
+        <p class="text-body-sm text-theme-fg-secondary">
+          Card grid with 2-column layout. Filter chips use pill shape with active state in accent color.
+        </p>
+        <ul class="mt-3 inline-flex flex-col items-start space-y-1">
+          <li class="text-caption flex items-center gap-2 text-theme-fg-tertiary">
+            <span class="size-1 shrink-0 rounded-full bg-theme-fg-tertiary"></span>
+            12px corner radius on cards
+          </li>
+          <li class="text-caption flex items-center gap-2 text-theme-fg-tertiary">
+            <span class="size-1 shrink-0 rounded-full bg-theme-fg-tertiary"></span>
+            Subtle tinted backgrounds per type
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card Detail Screen -->
+    <div class="screen-showcase flex flex-col items-center gap-6 py-8 sm:gap-8 sm:py-10 md:flex-row-reverse md:gap-12">
+      <div class="shrink-0">
+        <PhoneFrame>
+          <div class="px-4 pt-6">
+            <div class="mb-4 flex items-center justify-between">
+              <button class="flex cursor-pointer items-center gap-0.5 border-none bg-transparent text-[13px] text-theme-accent">
+                <Icon name="caretLeft" size={14} />
+                Back
+              </button>
+              <button class="cursor-pointer border-none bg-transparent text-theme-fg-secondary">
+                <Icon name="dots" size={18} />
+              </button>
+            </div>
+            <div class="mb-1 font-heading text-[18px] font-semibold text-theme-fg">Design principles</div>
+            <div class="mb-3 text-[11px] text-theme-fg-tertiary">Note · Created Jan 28 · 5 connections</div>
+            <div class="text-body-sm mb-4 leading-relaxed text-theme-fg-secondary">
+              The core insight: connections are primary, content is secondary. A card is an anchor point in a network of relationships.
+            </div>
+            <div class="text-overline mb-2 text-theme-fg-tertiary">Pinned</div>
+            {[
+              { title: "Syne product spec", type: "Document" },
+              { title: "Design space", type: "Space" },
+            ].map((conn) => (
+              <div class="mb-1.5 flex items-center justify-between rounded-lg bg-theme-input-bg px-3 py-2.5">
+                <div>
+                  <div class="font-heading text-[13px] font-medium text-theme-fg">{conn.title}</div>
+                  <div class="text-[10px] text-theme-fg-tertiary">{conn.type}</div>
+                </div>
+                <Icon name="caretRight" size={14} class="text-theme-fg-secondary" />
+              </div>
+            ))}
+            <div class="text-overline mb-2 mt-4 text-theme-fg-tertiary">Connections</div>
+            {["UX research notes", "Card interaction sketch", "Meeting Jan 25"].map((c) => (
+              <div class="border-b border-theme-border-subtle py-2 text-[13px] text-theme-fg">{c}</div>
+            ))}
+          </div>
+        </PhoneFrame>
+      </div>
+      <div class="flex max-w-sm flex-col text-center md:text-left">
+        <h3 class="text-h2 mb-2 text-theme-fg">Card Detail</h3>
+        <p class="text-body-sm text-theme-fg-secondary">
+          Hierarchical typography separates title, metadata, and body. Pinned items use elevated surface treatment.
+        </p>
+        <ul class="mt-3 inline-flex flex-col items-start space-y-1">
+          <li class="text-caption flex items-center gap-2 text-theme-fg-tertiary">
+            <span class="size-1 shrink-0 rounded-full bg-theme-fg-tertiary"></span>
+            Section headers in overline style
+          </li>
+          <li class="text-caption flex items-center gap-2 text-theme-fg-tertiary">
+            <span class="size-1 shrink-0 rounded-full bg-theme-fg-tertiary"></span>
+            List items with subtle dividers
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Quick Capture Screen -->
+    <div class="screen-showcase flex flex-col items-center gap-6 py-8 sm:gap-8 sm:py-10 md:flex-row md:gap-12">
+      <div class="shrink-0">
+        <PhoneFrame bg="var(--gradient-mist)">
+          <div class="flex h-full flex-col px-4 pb-8 pt-6">
+            <div class="flex flex-1 flex-col items-center justify-center">
+              <div class="mb-6 size-[140px] rounded-full blur-[16px]" style="background: radial-gradient(circle, rgba(242,140,62,0.2) 0%, rgba(196,184,217,0.1) 60%, transparent 100%)"></div>
+              <div class="-mt-16 mb-1.5 text-center font-heading text-[17px] font-semibold text-theme-fg">What's on your mind?</div>
+              <div class="text-center text-[13px] text-theme-fg-secondary">Capture a note, link, or image</div>
+            </div>
+            <GlassCard style="margin-top: auto">
+              <div class="min-h-[36px] text-[14px] text-theme-fg-tertiary">Start typing...</div>
+              <div class="mt-2.5 flex items-center justify-between">
+                <div class="flex gap-1.5">
+                  {(["camera", "link", "hash"] as const).map((icon) => (
+                    <div class="flex size-7 items-center justify-center rounded-lg bg-theme-tag-bg">
+                      <Icon name={icon} size={15} class="text-theme-fg-secondary" />
+                    </div>
+                  ))}
+                </div>
+                <div class="flex size-8 items-center justify-center rounded-lg bg-theme-accent text-white">
+                  <Icon name="arrowUp" size={16} />
+                </div>
+              </div>
+            </GlassCard>
+          </div>
+        </PhoneFrame>
+      </div>
+      <div class="flex max-w-sm flex-col text-center md:text-left">
+        <h3 class="text-h2 mb-2 text-theme-fg">Quick Capture</h3>
+        <p class="text-body-sm text-theme-fg-secondary">
+          Centered layout with ambient gradient. Input card uses glass effect at bottom of viewport.
+        </p>
+        <ul class="mt-3 inline-flex flex-col items-start space-y-1">
+          <li class="text-caption flex items-center gap-2 text-theme-fg-tertiary">
+            <span class="size-1 shrink-0 rounded-full bg-theme-fg-tertiary"></span>
+            Radial gradient for focus
+          </li>
+          <li class="text-caption flex items-center gap-2 text-theme-fg-tertiary">
+            <span class="size-1 shrink-0 rounded-full bg-theme-fg-tertiary"></span>
+            Icon buttons in muted containers
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Spaces Screen -->
+    <div class="screen-showcase flex flex-col items-center gap-6 py-8 sm:gap-8 sm:py-10 md:flex-row-reverse md:gap-12">
+      <div class="shrink-0">
+        <PhoneFrame>
+          <div class="px-4 pt-6">
+            <div class="mb-4 flex items-center justify-between">
+              <button class="flex cursor-pointer items-center gap-0.5 border-none bg-transparent text-[13px] text-theme-accent">
+                <Icon name="caretLeft" size={14} />
+                Library
+              </button>
+              <button class="cursor-pointer border-none bg-transparent text-theme-fg-secondary">
+                <Icon name="dots" size={18} />
+              </button>
+            </div>
+            <div class="space-header mb-3 rounded-xl p-4">
+              <div class="mb-0.5 font-heading text-[17px] font-semibold text-theme-fg">Design</div>
+              <div class="text-[12px] text-theme-fg-secondary">Space · 8 cards · Static</div>
+            </div>
+            <div class="mb-3 flex w-fit gap-0.5 rounded-lg bg-theme-input-bg p-0.5">
+              {["Grid", "List"].map((m, i) => (
+                <span class={`rounded-md px-3 py-1 text-[11px] font-medium ${i === 0 ? "view-toggle-active" : "text-theme-fg-tertiary"}`}>
+                  {m}
+                </span>
+              ))}
+            </div>
+            {["Design principles", "UI inspiration board", "Color exploration", "Typography research", "Competitor analysis"].map((c) => (
+              <div class="flex items-center justify-between border-b border-theme-border-subtle py-3">
+                <div>
+                  <div class="font-heading text-[13px] font-medium text-theme-fg">{c}</div>
+                  <div class="text-[10px] text-theme-fg-tertiary">Note · 3 connections</div>
+                </div>
+                <Icon name="caretRight" size={14} class="text-theme-fg-secondary" />
+              </div>
+            ))}
+          </div>
+        </PhoneFrame>
+      </div>
+      <div class="flex max-w-sm flex-col text-center md:text-left">
+        <h3 class="text-h2 mb-2 text-theme-fg">Spaces</h3>
+        <p class="text-body-sm text-theme-fg-secondary">
+          Space header uses tinted container matching brand primary. Segmented control for view switching.
+        </p>
+        <ul class="mt-3 inline-flex flex-col items-start space-y-1">
+          <li class="text-caption flex items-center gap-2 text-theme-fg-tertiary">
+            <span class="size-1 shrink-0 rounded-full bg-theme-fg-tertiary"></span>
+            Accent border on space card
+          </li>
+          <li class="text-caption flex items-center gap-2 text-theme-fg-tertiary">
+            <span class="size-1 shrink-0 rounded-full bg-theme-fg-tertiary"></span>
+            Grid/List toggle pattern
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Share Extension Screen -->
+    <div class="screen-showcase flex flex-col items-center gap-6 py-8 sm:gap-8 sm:py-10 md:flex-row md:gap-12">
+      <div class="shrink-0">
+        <PhoneFrame bg="var(--share-sheet-bg)">
+          <div class="flex h-full flex-col">
+            <!-- Blurred website background -->
+            <div class="flex-1 px-4 pt-4 opacity-40">
+              <div class="rounded-xl bg-theme-surface p-3">
+                <div class="mb-2 text-[14px] font-semibold text-theme-fg">Best movies of 2025</div>
+                <div class="flex gap-2">
+                  {[1, 2, 3].map(() => (
+                    <div class="h-14 w-11 rounded-md bg-theme-input-bg"></div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <!-- Share sheet with glass border -->
+            <GlassContainer class="mx-2 mb-8 rounded-[20px]">
+              <div class="rounded-[14px] bg-theme-card-bg px-4 pb-5 pt-3">
+                <!-- Handle -->
+                <div class="share-handle mx-auto mb-4 h-1 w-9 rounded-full"></div>
+                <!-- App icon + title -->
+                <div class="mb-3 flex items-center gap-3">
+                  <div class="size-10 rounded-xl" style="background: var(--gradient-warm-glow)"></div>
+                  <div>
+                    <div class="font-heading text-[15px] font-semibold text-theme-fg">Save to Syne</div>
+                    <div class="text-[11px] text-theme-fg-tertiary">movies.example.com</div>
+                  </div>
+                </div>
+                <!-- Link preview -->
+                <div class="link-preview mb-3 rounded-xl p-3">
+                  <div class="mb-0.5 font-heading text-[13px] font-medium text-theme-fg">Best Movies of 2025 — Ranked</div>
+                  <div class="text-[11px] text-theme-fg-tertiary">The definitive list of must-watch films this year</div>
+                </div>
+                <!-- Space selector -->
+                <div class="text-overline mb-3 text-theme-fg-tertiary">Add to space</div>
+                <div class="mb-4 flex items-center gap-1.5">
+                  {["Entertainment", "Research"].map((s, i) => (
+                    <span class={`rounded-full px-2.5 py-1 text-[11px] font-medium ${i === 0 ? "bg-theme-accent text-white" : "bg-theme-tag-bg text-theme-fg-secondary"}`}>
+                      {s}
+                    </span>
+                  ))}
+                  <div class="flex size-6 items-center justify-center rounded-full bg-theme-tag-bg">
+                    <Icon name="plus" size={14} class="text-theme-fg-secondary" />
+                  </div>
+                </div>
+                <button class="w-full cursor-pointer rounded-xl border-none bg-theme-accent py-3 font-heading text-[14px] font-semibold text-white">
+                  Save Card
+                </button>
+              </div>
+            </GlassContainer>
+          </div>
+        </PhoneFrame>
+      </div>
+      <div class="flex max-w-sm flex-col text-center md:text-left">
+        <h3 class="text-h2 mb-2 text-theme-fg">Share Extension</h3>
+        <p class="text-body-sm text-theme-fg-secondary">
+          Modal sheet with glass border treatment. Dimmed background shows context behind the action.
+        </p>
+        <ul class="mt-3 inline-flex flex-col items-start space-y-1">
+          <li class="text-caption flex items-center gap-2 text-theme-fg-tertiary">
+            <span class="size-1 shrink-0 rounded-full bg-theme-fg-tertiary"></span>
+            Drag handle indicator
+          </li>
+          <li class="text-caption flex items-center gap-2 text-theme-fg-tertiary">
+            <span class="size-1 shrink-0 rounded-full bg-theme-fg-tertiary"></span>
+            Full-width primary action
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  /* Card type backgrounds */
+  .card-primary {
+    background: var(--color-primary-50);
+  }
+  :global([data-theme="dark"]) .card-primary {
+    background: rgba(242, 140, 62, 0.08);
+  }
+
+  .card-secondary {
+    background: var(--color-secondary-50);
+  }
+  :global([data-theme="dark"]) .card-secondary {
+    background: rgba(196, 184, 217, 0.08);
+  }
+
+  .card-neutral {
+    background: var(--color-neutral-100);
+  }
+  :global([data-theme="dark"]) .card-neutral {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .card-cream {
+    background: var(--color-accent-cream);
+  }
+  :global([data-theme="dark"]) .card-cream {
+    background: rgba(245, 239, 218, 0.06);
+  }
+
+  .card-sage {
+    background: #F0F5EE;
+  }
+  :global([data-theme="dark"]) .card-sage {
+    background: rgba(168, 184, 160, 0.08);
+  }
+
+  /* Space header */
+  .space-header {
+    background: var(--color-primary-50);
+    border: 1px solid var(--color-primary-100);
+  }
+  :global([data-theme="dark"]) .space-header {
+    background: rgba(242, 140, 62, 0.06);
+    border-color: rgba(242, 140, 62, 0.12);
+  }
+
+  /* View toggle active state */
+  .view-toggle-active {
+    color: var(--theme-fg);
+    background: var(--theme-surface);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Share sheet styles */
+  :root {
+    --share-sheet-bg: #E8E5E0;
+  }
+  :global([data-theme="dark"]) {
+    --share-sheet-bg: #1C1A17;
+  }
+
+  .share-handle {
+    background: rgba(0, 0, 0, 0.15);
+  }
+  :global([data-theme="dark"]) .share-handle {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .link-preview {
+    background: rgba(0, 0, 0, 0.04);
+  }
+  :global([data-theme="dark"]) .link-preview {
+    background: rgba(255, 255, 255, 0.05);
+  }
+</style>

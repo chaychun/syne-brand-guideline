@@ -1,0 +1,124 @@
+---
+import Section from "./Section.astro";
+---
+
+<!-- Buttons -->
+<Section title="Buttons" subtitle="Pill-shaped. Three variants.">
+  <div class="flex flex-wrap items-center gap-3">
+    <button class="text-body-sm cursor-pointer rounded-full border-none bg-primary-500 px-7 py-3 font-heading font-medium text-white">
+      Primary action
+    </button>
+    <button class="btn-secondary text-body-sm cursor-pointer rounded-full px-7 py-3 font-heading font-medium">
+      Secondary
+    </button>
+    <button class="text-body-sm cursor-pointer rounded-full border-none bg-transparent px-7 py-3 font-heading font-medium text-theme-accent">
+      Tertiary
+    </button>
+    <button class="btn-small cursor-pointer rounded-full border-none px-4 py-2 font-heading text-[13px] font-medium">
+      Small
+    </button>
+  </div>
+</Section>
+
+<!-- Tags -->
+<Section title="Tags & Connections">
+  <div class="flex flex-wrap gap-2">
+    <span class="tag-primary text-caption rounded-full px-3.5 py-1.5">Design</span>
+    <span class="tag-secondary text-caption rounded-full px-3.5 py-1.5">Research</span>
+    <span class="tag-personal text-caption rounded-full px-3.5 py-1.5">Personal</span>
+    <span class="tag-meeting text-caption rounded-full px-3.5 py-1.5">Meeting</span>
+    <span class="text-caption rounded-full bg-theme-tag-bg px-3.5 py-1.5 text-theme-fg-secondary">
+      📎 Attached
+    </span>
+    <span class="tag-mention text-caption rounded-full px-3.5 py-1.5">@Steve</span>
+  </div>
+</Section>
+
+<!-- Inputs -->
+<Section title="Inputs">
+  <div class="flex max-w-[400px] flex-col gap-4">
+    <input
+      type="text"
+      placeholder="Search cards..."
+      readonly
+      class="input-default text-h3 box-border w-full rounded-[14px] px-[18px] py-3.5 font-normal outline-none"
+    />
+    <div class="input-focused text-h3 rounded-[14px] px-[17px] py-[13px] font-normal">
+      <span class="text-theme-fg-secondary">Focused state</span>
+    </div>
+  </div>
+</Section>
+
+<style>
+  /* Secondary button */
+  .btn-secondary {
+    color: var(--theme-fg);
+    background: var(--theme-surface);
+    border: 1px solid var(--theme-border);
+  }
+
+  /* Small button */
+  .btn-small {
+    color: var(--theme-fg-secondary);
+    background: var(--theme-input-bg);
+  }
+
+  /* Tags */
+  .tag-primary {
+    color: var(--color-primary-600);
+    background: var(--theme-accent-subtle);
+  }
+
+  .tag-secondary {
+    color: var(--color-secondary-600);
+    background: var(--color-secondary-50);
+  }
+  :global([data-theme="dark"]) .tag-secondary {
+    color: var(--color-secondary-300);
+    background: rgba(196, 184, 217, 0.12);
+  }
+
+  .tag-personal {
+    color: #6B7D63;
+    background: #F0F5EE;
+  }
+  :global([data-theme="dark"]) .tag-personal {
+    color: #B5C8AD;
+    background: rgba(168, 184, 160, 0.12);
+  }
+
+  .tag-meeting {
+    color: var(--color-neutral-700);
+    background: var(--color-accent-cream);
+  }
+  :global([data-theme="dark"]) .tag-meeting {
+    color: var(--color-neutral-300);
+    background: rgba(245, 239, 218, 0.08);
+  }
+
+  .tag-mention {
+    color: var(--theme-accent-text);
+    background: var(--theme-accent-subtle);
+    border: 1px solid var(--color-primary-200);
+  }
+  :global([data-theme="dark"]) .tag-mention {
+    border-color: rgba(242, 140, 62, 0.25);
+  }
+
+  /* Inputs */
+  .input-default {
+    color: var(--theme-fg);
+    background: var(--theme-input-bg);
+    border: 1px solid var(--theme-border);
+  }
+
+  .input-focused {
+    color: var(--theme-fg);
+    background: var(--theme-input-bg);
+    border: 2px solid var(--color-primary-300);
+    box-shadow: 0 0 0 4px var(--color-primary-50);
+  }
+  :global([data-theme="dark"]) .input-focused {
+    box-shadow: 0 0 0 4px rgba(242, 140, 62, 0.1);
+  }
+</style>

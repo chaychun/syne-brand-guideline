@@ -7,50 +7,27 @@ import ColorSection from "../components/ColorSection.astro";
 import GradientSection from "../components/GradientSection.astro";
 import SpacingSection from "../components/SpacingSection.astro";
 import FooterSection from "../components/FooterSection.astro";
-
-// Complex sections with icons kept as React islands
-import GlassCardIsland from "../components/islands/GlassCardIsland";
-import ComponentsIsland from "../components/islands/ComponentsIsland";
-import LogoIsland from "../components/islands/LogoIsland";
-import IconsIsland from "../components/islands/IconsIsland";
-import MobileUIIsland from "../components/islands/MobileUIIsland";
+import GlassCardSection from "../components/GlassCardSection.astro";
+import ComponentsSection from "../components/ComponentsSection.astro";
+import LogoSection from "../components/LogoSection.astro";
+import IconsSection from "../components/IconsSection.astro";
+import MobileUISection from "../components/MobileUISection.astro";
 ---
 
 <BrandLayout title="Syne Brand Guideline">
   <HeroSection />
 
   <div class="mx-auto max-w-[960px] px-5 pb-30 pt-10 sm:px-8 md:px-12 md:pt-16">
-    <!-- Design Principles (Astro) -->
     <DesignPrinciplesSection />
-
-    <!-- Typography (Astro) -->
     <TypographySection />
-
-    <!-- Colors (Astro) -->
     <ColorSection />
-
-    <!-- Gradients (Astro) -->
     <GradientSection />
-
-    <!-- Glass Card (React island - uses icons) -->
-    <GlassCardIsland client:load />
-
-    <!-- Components (React island - uses theme) -->
-    <ComponentsIsland client:load />
-
-    <!-- Spacing (Astro) -->
+    <GlassCardSection />
+    <ComponentsSection />
     <SpacingSection />
-
-    <!-- Logo (React island - uses React Logo component) -->
-    <LogoIsland client:load />
-
-    <!-- Icons (React island - uses Phosphor icons) -->
-    <IconsIsland client:load />
-
-    <!-- Mobile UI (React island - complex) -->
-    <MobileUIIsland client:load />
-
-    <!-- Footer (Astro) -->
+    <LogoSection />
+    <IconsSection />
+    <MobileUISection />
     <FooterSection />
   </div>
 </BrandLayout>
