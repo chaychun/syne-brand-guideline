@@ -31,9 +31,16 @@ import {
   PhBook,
   PhSparkle,
   PhCircleNotch,
+  PhLightbulb,
+  PhMapPin,
+  PhUser,
+  PhPlay,
+  PhGlobe,
+  PhQuotes,
+  PhInstagramLogo,
 } from "phosphor-icons-astro";
 
-export type IconName = "home" | "search" | "plus" | "camera" | "link" | "hash" | "arrowUp" | "note" | "graph" | "folderOpen" | "caretLeft" | "arrowRight" | "dots" | "funnel" | "grid" | "list" | "check" | "checkCircle" | "sun" | "moon" | "pencil" | "send" | "image" | "x" | "caretRight" | "tag" | "clock" | "calendar" | "book" | "sparkle" | "loader";
+export type IconName = "home" | "search" | "plus" | "camera" | "link" | "hash" | "arrowUp" | "note" | "graph" | "folderOpen" | "caretLeft" | "arrowRight" | "dots" | "funnel" | "grid" | "list" | "check" | "checkCircle" | "sun" | "moon" | "pencil" | "send" | "image" | "x" | "caretRight" | "tag" | "clock" | "calendar" | "book" | "sparkle" | "loader" | "lightbulb" | "mapPin" | "user" | "play" | "globe" | "quotes" | "instagram";
 
 export const ICON_NAMES: IconName[] = [
   "home",
@@ -67,6 +74,13 @@ export const ICON_NAMES: IconName[] = [
   "book",
   "sparkle",
   "loader",
+  "lightbulb",
+  "mapPin",
+  "user",
+  "play",
+  "globe",
+  "quotes",
+  "instagram",
 ];
 
 const ICON_MAP = {
@@ -101,6 +115,13 @@ const ICON_MAP = {
   book: PhBook,
   sparkle: PhSparkle,
   loader: PhCircleNotch,
+  lightbulb: PhLightbulb,
+  mapPin: PhMapPin,
+  user: PhUser,
+  play: PhPlay,
+  globe: PhGlobe,
+  quotes: PhQuotes,
+  instagram: PhInstagramLogo,
 } as const;
 
 type IconWeight = "thin" | "light" | "regular" | "bold" | "fill" | "duotone";

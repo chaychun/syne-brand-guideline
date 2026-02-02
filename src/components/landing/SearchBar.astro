@@ -1,0 +1,14 @@
+---
+import Icon from "../Icon.astro";
+
+interface Props {
+  placeholder?: string;
+}
+
+const { placeholder = "Search..." } = Astro.props;
+---
+
+<div class="flex items-center gap-2 rounded-full border border-theme-glass-border bg-theme-glass-bg px-4 py-2.5 shadow-[var(--theme-glass-shadow)] backdrop-blur-[20px]">
+  <Icon name="search" size={14} class="text-theme-fg-tertiary" />
+  <span class="whitespace-nowrap font-body text-[13px] text-theme-fg-tertiary">{placeholder}</span>
+</div>

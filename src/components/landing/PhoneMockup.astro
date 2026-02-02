@@ -1,0 +1,115 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { title = "What's on your mind?", subtitle = "Your ideas, beautifully connected" } = Astro.props;
+---
+
+<div class="phone-mockup absolute bottom-0 left-1/2 z-[5] -translate-x-1/2">
+  <div class="phone-body relative h-[389px] w-[320px] overflow-hidden rounded-t-[40px] border-[3px] border-b-0 border-neutral-900 bg-theme-bg shadow-[0_-10px_40px_rgba(0,0,0,0.08)] dark:border-black dark:shadow-[0_-10px_40px_rgba(0,0,0,0.3)]">
+    <!-- Dynamic Island -->
+    <div class="absolute left-1/2 top-3 z-10 h-[26px] w-[90px] -translate-x-1/2 rounded-[18px] bg-black"></div>
+
+    <!-- Status bar -->
+    <div class="relative z-[5] flex items-center justify-between px-6 pt-3.5">
+      <span class="font-body text-[13px] font-semibold text-theme-fg">9:41</span>
+      <span class="font-body text-[13px] tracking-wide text-theme-fg opacity-70">...</span>
+    </div>
+
+    <!-- Phone content -->
+    <div class="relative flex h-[calc(100%-50px)] flex-col items-center justify-center px-6">
+      <div class="content-gradient"></div>
+      <div class="relative mt-5 text-center">
+        <div class="mb-1.5 font-heading text-[17px] font-semibold text-theme-fg">{title}</div>
+        <div class="font-body text-[13px] text-theme-fg-secondary">{subtitle}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .content-gradient {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(242, 140, 62, 0.25) 0%,
+      rgba(196, 184, 217, 0.15) 40%,
+      rgba(127, 176, 180, 0.1) 70%,
+      transparent 100%
+    );
+    filter: blur(20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+  }
+  :global([data-theme="dark"]) .content-gradient {
+    background: radial-gradient(
+      circle,
+      rgba(242, 140, 62, 0.3) 0%,
+      rgba(158, 145, 186, 0.2) 40%,
+      rgba(94, 148, 153, 0.1) 70%,
+      transparent 100%
+    );
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .phone-body {
+      width: 260px;
+      height: 316px;
+    }
+    .phone-body > div:first-child {
+      width: 85px;
+      height: 24px;
+      top: 10px;
+    }
+    .content-gradient {
+      width: 130px;
+      height: 130px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .phone-body {
+      width: 240px;
+      height: 292px;
+    }
+  }
+
+  @media (max-height: 800px) {
+    .phone-body {
+      height: 320px;
+    }
+  }
+
+  @media (max-height: 700px) {
+    .phone-body {
+      height: 260px;
+    }
+    .content-gradient {
+      width: 130px;
+      height: 130px;
+    }
+  }
+
+  @media (max-height: 600px) {
+    .phone-body {
+      height: 200px;
+    }
+    .content-gradient {
+      width: 110px;
+      height: 110px;
+    }
+  }
+
+  @media (max-height: 500px) {
+    .phone-body {
+      height: 160px;
+    }
+  }
+</style>

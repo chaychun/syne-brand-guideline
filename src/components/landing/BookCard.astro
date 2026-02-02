@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  author: string;
+}
+
+const { title, author } = Astro.props;
+---
+
+<div>
+  <div class="book-cover relative mb-3 w-full pb-[140%]">
+    <div class="book-spine absolute bottom-0 left-0 top-0 w-2 rounded-l bg-neutral-300 dark:bg-neutral-400"></div>
+    <div class="book-front absolute inset-0 flex flex-col items-center justify-end overflow-hidden rounded-[4px_12px_12px_4px] bg-neutral-100 p-4 shadow-[4px_4px_12px_rgba(0,0,0,0.15)] dark:bg-neutral-200">
+      <div class="book-circle absolute -right-[30%] -top-[20%] h-[40%] w-[120%] rounded-full bg-neutral-900 dark:bg-neutral-800"></div>
+      <div class="book-circle absolute -right-[20%] top-[30%] h-[50%] w-[80%] rounded-full bg-neutral-900 dark:bg-neutral-800"></div>
+      <div class="book-circle absolute bottom-[35%] right-[30%] h-[12%] w-[20%] rounded-full bg-neutral-900 dark:bg-neutral-800"></div>
+      <span class="relative z-[1] font-serif text-[16px] italic text-neutral-900 dark:text-neutral-800">
+        {title}
+      </span>
+    </div>
+  </div>
+  <div class="text-center">
+    <div class="font-heading text-[11px] font-medium uppercase tracking-wide text-theme-fg">
+      {title.toUpperCase()}
+    </div>
+    <div class="font-body text-[11px] text-theme-fg-tertiary">by {author}</div>
+  </div>
+</div>

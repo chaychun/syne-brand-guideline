@@ -1,0 +1,66 @@
+---
+interface Props {
+  class?: string;
+  delay?: string;
+}
+
+const { class: className = "", delay = "0s" } = Astro.props;
+---
+
+<div
+  class:list={["floating-card absolute", className]}
+  style={`animation-delay: ${delay}`}
+>
+  <slot />
+</div>
+
+<style>
+  .floating-card {
+    animation: float-card 6s ease-in-out infinite;
+  }
+
+  @keyframes float-card {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  /* Small desktop: start subtle fading */
+  @media (max-width: 1280px) {
+    .floating-card {
+      opacity: 0.6;
+      filter: blur(0.3px);
+    }
+  }
+
+  /* Large tablet: more fading */
+  @media (max-width: 1024px) {
+    .floating-card {
+      opacity: 0.35;
+      filter: blur(1px);
+    }
+  }
+
+  /* Tablet: more subtle */
+  @media (max-width: 768px) {
+    .floating-card {
+      opacity: 0.2;
+      transform: scale(0.85);
+      animation-duration: 8s;
+      filter: blur(2px);
+    }
+  }
+
+  /* Mobile: very subtle, more blur for depth */
+  @media (max-width: 640px) {
+    .floating-card {
+      opacity: 0.15;
+      transform: scale(0.75);
+      filter: blur(3px);
+    }
+  }
+</style>
